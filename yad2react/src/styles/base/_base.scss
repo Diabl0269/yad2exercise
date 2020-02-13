@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: inherit;
+}
+
+body {
+  color: #363636;
+  direction: rtl;
+  display: block;
+  font: $l-font Rubik, sans-serif;
+  background: $grey;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  &:focus {
+    outline: 0;
+  }
+  &:disabled {
+    cursor: default;
+  }
+}

@@ -1,0 +1,27 @@
+.button__main-nav-bar {
+    background: $orange;
+    color: $white;
+    
+    font-size: 1.1rem;
+    height: 100%;
+    padding: 1rem;
+    &:hover{
+        background: $dark-orange;
+    }
+}
+
+.button__main-nav-bar--actions {
+    padding: 0 10rem 0 0;
+}
+
+.button--add-post {
+    border-right: 0.1px solid $very-dark-orange;;
+}
+
+.button__main-nav-bar--image {
+    background: $orange;
+}
+
+.button__secondary-nav-bar {
+    background: $white;
+}
