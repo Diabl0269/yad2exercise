@@ -13,7 +13,7 @@
     background: $promo-yellow;
     height: 87px;
     width: 695px ;
-    border: $s-border solid $grey;
+    border: $s-border solid $border-color;
     border-radius: $s-border;
     &:hover {
       box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.1);
@@ -63,9 +63,16 @@
           }
       }
   }
-  
+
   .left-container {
-  
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .test {
+      display: flex;
+      flex-direction: column;
+      margin: 0
   }
   
   .img-container {
@@ -74,8 +81,9 @@
       width: 110px;
       border-radius: $border-radius;
       margin-right: $s-mp;
-  }
+    }
   
+
   .smaller-text {
       font-size: $m-font;
   }

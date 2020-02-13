@@ -26,6 +26,9 @@ const ListItem = ({ record }) => {
   const clickHandler = () => setIsOpen(!isOpen);
   return (
     <li className="record-container" onClick={clickHandler}>
+
+    {/* <ClosedListItem src={src} addressDetails={addressDetails} rooms={rooms} */}
+
       <div className="img-container">
         <img className="record__image" src={src} alt="img" />
       </div>
@@ -49,13 +52,16 @@ const ListItem = ({ record }) => {
         </div>
       </div>
 
-      <div className="left-container">
         <div className="record__inside-container">
-          <span className="smaller-text">טאב חדש</span>
-          {formatedPrice}
-          <span>{hasUpdatedToday ? "עודכן היום" : ""}</span>
+          <div className="left-container" >
+            <div className='test'>
+            <span className="smaller-text" onClick={() => alert('כאן יפתח טאב חדש')}>טאב חדש</span>
+            {formatedPrice}
+            <span>{hasUpdatedToday ? "עודכן היום" : ""}</span>
+            </div>
+          </div>
         </div>
-      </div>
+
     </li>
   );
 };

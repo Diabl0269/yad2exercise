@@ -22,9 +22,8 @@ const MainNavBar = () => {
 
   return (
     <div className="main-nav-bar--container">
-
-       <ul className="list__nav-bar right-list">
-        <li className="main-nav-bar--image" key='img'>
+      <ul className="list__nav-bar right-list">
+        <li className="main-nav-bar--image" key="img">
           <button className="main-nav-bar--image">
             <img src="/images/Yad2_logo_white2.svg" alt="yad2logo" />
           </button>
@@ -32,18 +31,24 @@ const MainNavBar = () => {
         {mainNavBarCategories.map(category => (
           <li key={category.text}>
             <button
+              onTouchMove
               className="main-nav-bar-button"
               onClick={() => category.clickHandler(category.text)}
             >
               {category.text}
             </button>
+            <div className="dropdown">
+              בלה בלה בלה
+              <br />
+              ננסה ככה
+            </div>
           </li>
         ))}
       </ul>
 
       <ul className="list__nav-bar">
         {mainNavBarActions.map(action => (
-          <li key={action.text} >
+          <li key={action.text}>
             <button
               className="main-nav-bar-button"
               onClick={() => action.clickHandler(action.text)}
@@ -52,13 +57,12 @@ const MainNavBar = () => {
             </button>
           </li>
         ))}
-        <li key='addListingButton'>
+        <li key="addListingButton">
           <button className="main-nav-bar-button add-post-button">
             פרסום מודעה
           </button>
         </li>
-      </ul> 
-      
+      </ul>
     </div>
   );
 };
