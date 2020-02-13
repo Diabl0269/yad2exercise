@@ -1,60 +1,71 @@
 .list__nav-bar {
-    display: flex;
-    list-style: none;
-    margin: 0; 
-    padding: 0;
-  }
+  display: flex;
+  list-style: none;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  // margin: 0; 
+  // padding: 0;
 
-  //main-nav-bar
-  .main-nav-bar--container {
-    align-items: center;
-    background: $orange;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 5rem;
-    @media (max-width: $mobile-breakpoint) {
-      height: 2rem;
-    }
-  }
-  
-  .main-nav-bar-button {
-    background: $orange;
-    color: $white;
-    height: 100%;
-    padding: .8rem;
-    &:hover{
-        background: $dark-orange;
-    }
-  }
-  
-  .add-post-button {
-    border-right: 0.1px solid $very-dark-orange;
-  }
-  
-  .main-nav-bar--image {
-    background: $orange;
-  }
 
-  //secondary-nav-bar
-  .secondary-nav-bar--container {
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    margin: 0; 
-    height: 4rem;
-    box-shadow: 0 5px 6px 0 $border-color;
-    @media (max-width: $mobile-breakpoint) {
-      visibility: hidden;
-    }
-  }
+}
 
-  .secondary-nav-bar-button {
-    background: white;
-    color: $off-black;
-    height: 100%;
-    padding: 1rem;
-    &:hover{
-        background: $off-white;
-    }
+.right-list {
+  margin: 0;
+  padding: 0;
+}
+
+//main-nav-bar
+.main-nav-bar--container {
+  align-items: center;
+  background: $orange;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 4rem;
+  @media (max-width: $mobile-breakpoint) {
+    height: 2rem;
   }
+}
+
+.main-nav-bar-button {
+  background: $orange;
+  color: $white;
+  height: 4rem;
+  // padding: .8rem;
+  &:hover{
+      background: $dark-orange;
+  }
+}
+
+.add-post-button {
+  border-right: 0.1px solid $very-dark-orange;
+}
+
+.main-nav-bar--image {
+  background: $orange;
+  justify-content: flex-end;
+}
+
+//secondary-nav-bar
+.secondary-nav-bar--container {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0; 
+  height: 3rem;
+  box-shadow: 0 5px 6px 0 $border-color;
+  @media (max-width: $mobile-breakpoint) {
+    visibility: hidden;
+  }
+}
+
+.secondary-nav-bar-button {
+  background: white;
+  color: $off-black;
+  height: 3rem;
+  &:hover{
+      background: $off-white;
+  }
+}

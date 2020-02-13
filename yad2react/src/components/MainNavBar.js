@@ -22,7 +22,8 @@ const MainNavBar = () => {
 
   return (
     <div className="main-nav-bar--container">
-       <ul className="list__nav-bar">
+
+       <ul className="list__nav-bar right-list">
         <li className="main-nav-bar--image" key='img'>
           <button className="main-nav-bar--image">
             <img src="/images/Yad2_logo_white2.svg" alt="yad2logo" />
@@ -39,6 +40,7 @@ const MainNavBar = () => {
           </li>
         ))}
       </ul>
+
       <ul className="list__nav-bar">
         {mainNavBarActions.map(action => (
           <li key={action.text} >
@@ -56,6 +58,7 @@ const MainNavBar = () => {
           </button>
         </li>
       </ul> 
+      
     </div>
   );
 };

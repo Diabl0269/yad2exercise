@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import numeral from "numeral";
 import moment from "moment";
 
@@ -22,8 +22,10 @@ const ListItem = ({ record }) => {
     ? "₪" + numeral(price).format("0,00")
     : "לא צויין מחיר";
   const hasUpdatedToday = moment().isSame(updatedAt, "day");
+  const [isOpen, setIsOpen] = useState(false);
+  const clickHandler = () => setIsOpen(!isOpen);
   return (
-    <li className="record-container">
+    <li className="record-container" onClick={clickHandler}>
       <div className="img-container">
         <img className="record__image" src={src} alt="img" />
       </div>
@@ -47,10 +49,12 @@ const ListItem = ({ record }) => {
         </div>
       </div>
 
-      <div className='record__inside-container left-container'>
-        <span>טאב חדש</span>
-        {formatedPrice}
-        <span>{hasUpdatedToday ? "עודכן היום" : ""}</span>
+      <div className="left-container">
+        <div className="record__inside-container">
+          <span className="smaller-text">טאב חדש</span>
+          {formatedPrice}
+          <span>{hasUpdatedToday ? "עודכן היום" : ""}</span>
+        </div>
       </div>
     </li>
   );

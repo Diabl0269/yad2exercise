@@ -18,7 +18,7 @@ const SecondaryNavBar = () => {
 
   return (
     <div className="secondary-nav-bar--container">
-      <ul className="list__nav-bar">
+      <ul className="list__nav-bar right-list">
         {secondaryNavBarCategories.map(category => (
           <li key={category.text} className="list-item__nav-bar">
             <button
