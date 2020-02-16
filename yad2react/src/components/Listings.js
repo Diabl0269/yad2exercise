@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
-import ListItem from "./ListItem";
+import ListItem from "./ListItem/ListItem";
 import listingsReducer from "../reducers/listings";
 
 const Listings = () => {

@@ -8,7 +8,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 require("./serverInit")(app);
-require("../mongoDB/connection");
 
 const successMsg = chalk.black.bgGreen(`Server is running on port: ${port}`)
 

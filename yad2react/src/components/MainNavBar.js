@@ -31,7 +31,6 @@ const MainNavBar = () => {
         {mainNavBarCategories.map(category => (
           <li key={category.text}>
             <button
-              onTouchMove
               className="main-nav-bar-button"
               onClick={() => category.clickHandler(category.text)}
             >
