@@ -6,7 +6,7 @@ import OpenListItem from "./OpenListItem";
 
 const ListItem = ({ record }) => {
   const defaultStreet = "לא צוין רחוב";
-  const { address, assetDetails, saleDetails, updatedAt } = record;
+  const { address, assetDetails, saleDetails, listingUser, updatedAt } = record;
   const {
     assetType,
     city,

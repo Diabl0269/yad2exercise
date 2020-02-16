@@ -14,6 +14,10 @@ const ClosedListItem = ({
   mainAddress,
   numOfRecordImagesMinusOne
 }) => {
+  const openNewTab = (e) => {
+    e.stopPropagation();
+    alert('כאן יפתח טאב חדש')
+  } 
   return (
     <div className="record-container">
       <RecordImage
@@ -37,7 +41,7 @@ const ClosedListItem = ({
           <div className="align-cloumn">
             <span
               className="smaller-text"
-              onClick={() => alert("כאן יפתח טאב חדש")}
+              onClick={openNewTab}
             >
               טאב חדש
             </span>
