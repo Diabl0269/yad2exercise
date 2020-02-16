@@ -8,17 +8,16 @@ const OpenListItem = ({
   src,
   mainAddress,
   addressDetails,
-  rooms,
-  floor,
-  squareMeters,
+  assetDetails,
   formatedPrice,
-  firstName, lastName
+  listingUser
 }) => {
+  const {rooms, floor, squareMeters} = assetDetails;
+  const {firstName, phone, email} = listingUser;
   const openPhoneDropDown = e => {
     e.stopPropagation();
-    document.getElementById("phoneDropDown").style.display = "flex";
+    document.getElementById("detailsDropDown").style.display = "flex";
   };
-  const displayName = firstName + ' ' + lastName;
   return (
     <div className="record-container record-container__open">
       <RecordImage
@@ -43,13 +42,13 @@ const OpenListItem = ({
 
       <div className="align-column">
         <div className="left-container">{formatedPrice}</div>
-        <button className="phone-button" onClick={openPhoneDropDown}>
+        <button className="details-button" onClick={openPhoneDropDown}>
           הצגת מספר טלפון
         </button>
-        <div id="phoneDropDown" className="phone-dropdown">
-          בלה בלה בלה
-          <br />
-          ננסה ככה
+        <div id="detailsDropDown" className="details__dropdown">
+          <div className="details__dropdown-tab">{firstName}</div>
+          <div className='details__dropdown-tab'>phone</div>
+
         </div>
       </div>
     </div>

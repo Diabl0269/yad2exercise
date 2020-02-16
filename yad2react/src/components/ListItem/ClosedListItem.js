@@ -6,18 +6,17 @@ import RecordAddress from "./RecordAddress";
 const ClosedListItem = ({
   src,
   addressDetails,
-  rooms,
-  floor,
-  squareMeters,
+  assetDetails,
   formatedPrice,
   hasUpdatedToday,
   mainAddress,
   numOfRecordImagesMinusOne
 }) => {
-  const openNewTab = (e) => {
+  const { rooms, floor, squareMeters } = assetDetails;
+  const openNewTab = e => {
     e.stopPropagation();
-    alert('כאן יפתח טאב חדש')
-  } 
+    alert("כאן יפתח טאב חדש");
+  };
   return (
     <div className="record-container">
       <RecordImage
@@ -39,10 +38,7 @@ const ClosedListItem = ({
       <div className="record__inside-container">
         <div className="left-container">
           <div className="align-cloumn">
-            <span
-              className="smaller-text"
-              onClick={openNewTab}
-            >
+            <span className="smaller-text" onClick={openNewTab}>
               טאב חדש
             </span>
             {formatedPrice}

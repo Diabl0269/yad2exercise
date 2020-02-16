@@ -15,7 +15,6 @@ const ListItem = ({ record }) => {
     neighborhood = "",
     area = ""
   } = address;
-  const { floor, rooms, squareMeters } = assetDetails;
   const { price } = saleDetails;
   const mainAddress = `${street} ${streetNumber}`;
   const addressDetails = `${assetType}, ${area}, ${neighborhood}, ${city}`;
@@ -35,18 +34,15 @@ const ListItem = ({ record }) => {
           numOfRecordImagesMinusOne={numOfRecordImagesMinusOne}
           mainAddress={mainAddress}
           addressDetails={addressDetails}
-          rooms={rooms}
-          floor={floor}
-          squareMeters={squareMeters}
+          assetDetails={assetDetails}
           formatedPrice={formatedPrice}
+          listingUser={listingUser}
         />
       ) : (
         <ClosedListItem
           src={src}
           addressDetails={addressDetails}
-          rooms={rooms}
-          floor={floor}
-          squareMeters={squareMeters}
+          assetDetails={assetDetails}
           formatedPrice={formatedPrice}
           hasUpdatedToday={hasUpdatedToday}
           mainAddress={mainAddress}

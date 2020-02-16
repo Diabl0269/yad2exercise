@@ -5,14 +5,12 @@ import Listings from "./Listings";
 
 const MainPage = () => {
   window.onclick = function(event) {
-    if (!event.target.matches("phoneButton")) {
-      var dropdowns = Array.from(document.getElementsByClassName("phone-dropdown"));
-      console.log(dropdowns);
+    if (!event.target.matches("details-button")) {
+      const dropdowns = Array.from(document.getElementsByClassName("details__dropdown"));
       dropdowns.forEach(dropdown => {
         dropdown.style.display = 'none';
         
       });
-      // dropdowns.forEach(dropdown => (dropdown.style.display = "none"));
     }
   };
 
