@@ -1,3 +1,4 @@
+//list
 .listing-container {
   display: flex;
   justify-content: center;
@@ -6,6 +7,7 @@
   align-items: center;
 }
 
+//main container
 .record-container {
   display: flex;
   justify-content: space-between;
@@ -17,12 +19,55 @@
   border-radius: $s-border;
   &:hover {
     box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.1);
+    .img-icon-container {
+      background: transparentize($off-black, 0.15);
+      color: transparentize($off-black, 0.15);
+      position: absolute;
+      border-radius: 30%;
+      width: 45px;
+      height: 35px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      ::selection {
+        color: none;
+        background: none;
+      }
+    }
+    .img-icon {
+      position: absolute;
+      background: white;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      border: black 1px solid;
+      border-radius: 2px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      width: 24px;
+      height: 18px;
+      top: 50%;
+      left: 50%;
+    }
+    .img-icon::before {
+      background-color: white;
+      border: black 1px solid;
+      width: 24px;
+      height: 18px;
+      border-radius: 2px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      content: "";
+      z-index: -1;
+    }
     img {
       transform: scale(1.1);
     }
   }
   img {
-    height: 65px;
     width: 110px;
     border-radius: $border-radius;
   }
@@ -36,6 +81,7 @@
   }
 }
 
+//closed record styles
 .record__inside-container {
   align-items: flex-start baseline;
   display: flex;
@@ -44,6 +90,8 @@
   width: 215px;
   justify-content: center;
   padding: 0 $s-mp;
+  border-left: $s-border solid $border-color;
+  border-right: $s-border solid $border-color;
   span {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -53,8 +101,6 @@
 
 .middle-container {
   align-items: center;
-  border-left: $s-border solid $border-color;
-  border-right: $s-border solid $border-color;
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -77,7 +123,28 @@
   flex-direction: row-reverse;
 }
 
-.test {
+//open record styles
+.record-container__open {
+  height: 120px;
+  img {
+    height: 100%;
+    width: 165px;
+  }
+}
+
+.open-details--middle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: auto;
+}
+
+//utils
+.smaller-text {
+  font-size: $m-font;
+}
+
+.align-cloumn {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -86,57 +153,8 @@
 .img-container {
   overflow: hidden;
   position: relative;
-  height: 65px;
-  width: 110px;
+  height: 80%;
   border-radius: $border-radius;
   margin-right: $s-mp;
-}
-
-.smaller-text {
-  font-size: $m-font;
-}
-
-.img-icon-container {
-  background: transparentize($off-black, 0.15);
-  color: transparentize($off-black, 0.15);
-  position: absolute;
-  border-radius: 30%;
-  width: 45px;
-  height: 35px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  ::selection {
-    color: none;
-    background: none;
-  }
-}
-.img-icon {
-  position: absolute;
-  background: white;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  border: black 1px solid;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  width: 24px;
-  height: 18px;
-  top: 50%;
-  left: 50%;
-}
-.img-icon::before {
-  background-color: white;
-  border: black 1px solid;
-  width: 24px;
-  height: 18px;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  content: "";
-  z-index: -1;
+  margin-left: $s-mp;
 }

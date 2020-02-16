@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import numeral from "numeral";
 import moment from "moment";
-import ClosedListItem from './ClosedListItem';
-import OpenListItem from './OpenListItem';
+import ClosedListItem from "./ClosedListItem";
+import OpenListItem from "./OpenListItem";
 
 const ListItem = ({ record }) => {
   const defaultStreet = "לא צוין רחוב";
@@ -29,19 +29,30 @@ const ListItem = ({ record }) => {
   const clickHandler = () => setIsOpen(!isOpen);
   return (
     <li onClick={clickHandler}>
-
-      {isOpen ? <OpenListItem /> : <ClosedListItem
-        src={src}
-        addressDetails={addressDetails}
-        rooms={rooms}
-        floor={floor}
-        squareMeters={squareMeters}
-        formatedPrice={formatedPrice}
-        hasUpdatedToday={hasUpdatedToday}
-        mainAddress={mainAddress}
-        numOfRecordImagesMinusOne={numOfRecordImagesMinusOne}
-      />}
-
+      {isOpen ? (
+        <OpenListItem
+          src={src}
+          numOfRecordImagesMinusOne={numOfRecordImagesMinusOne}
+          mainAddress={mainAddress}
+          addressDetails={addressDetails}
+          rooms={rooms}
+          floor={floor}
+          squareMeters={squareMeters}
+          formatedPrice={formatedPrice}
+        />
+      ) : (
+        <ClosedListItem
+          src={src}
+          addressDetails={addressDetails}
+          rooms={rooms}
+          floor={floor}
+          squareMeters={squareMeters}
+          formatedPrice={formatedPrice}
+          hasUpdatedToday={hasUpdatedToday}
+          mainAddress={mainAddress}
+          numOfRecordImagesMinusOne={numOfRecordImagesMinusOne}
+        />
+      )}
     </li>
   );
 };
