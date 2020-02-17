@@ -35,8 +35,6 @@ const assetStates = [
 
 const listingSchema = new Schema({
   address: {
-    assetType: { type: String, required: true, enum: assetTypes },
-    assetState: { type: String, required: true, enum: assetStates },
     city: { type: String, required: true },
     street: String,
     streetNumber: Number,
@@ -46,16 +44,20 @@ const listingSchema = new Schema({
     reciveMonthlyUpdates: Boolean
   },
   assetDetails: {
+    assetType: { type: String, required: true, enum: assetTypes },
+    assetState: { type: String, required: true, enum: assetStates },
     floor: { type: Number, required: true },
     totalFloors: { type: Number, require: true },
     handicapAccessible: { type: Boolean, required: true, default: false },
     description: { type: String, max: 200 },
     rooms: Number,
-    squareMeters: { type: Number, required: true },
+    squareMetersBuilt: { type: Number, required: true },
+    squareMetersGarden: Number,
+    furnitureDescription: String
   },
   saleDetails: {
     price: Number,
-    entranceDate: { type: Date }
+    entranceDate: String
   },
   attributes: {
     airConditioned: { type: Boolean, required: true },
@@ -86,8 +88,6 @@ module.exports = listingsModel;
 
 const mockAptForSale = {
   address: {
-    assetType: "טריפלקס",
-    assetState: "משופץ",
     city: "מודיעין",
     street: "המודיענים",
     streetNumber: 13,
@@ -97,13 +97,17 @@ const mockAptForSale = {
     reciveMonthlyUpdates: true
   },
   assetDetails: {
+    assetType: "טריפלקס",
+    assetState: "משופץ",
     floor: 11,
+    rooms: 4,
     totalFloors: 15,
     handicapAccessible: true,
-    description: "בסדר הדירה הזאת"
+    description: "בסדר הדירה הזאת",
+    squareMeters: 133,
+    
   },
   saleDetails: {
-    squareMeters: 133,
     price: 1500000,
     entrance: Date.now()
   },
@@ -125,7 +129,7 @@ const mockAptForSale = {
     furniture: true,
     livingUnit: false
   },
-  listingUser: "5e427983a5054338544fbaa0"
+  listingUser: "5e4a6ee46f74d85594c322e4"
 };
 
 // const mockListingRecord = new listingsModel(mockAptForSale);
@@ -136,7 +140,8 @@ const mockAptForSale = {
 //   ;
 // });
 
-// listingsModel.create(mockAptForSale, (err, created) => {
+// listingsModel.create(mockAptForSale);
+// , (err, created) => {
 //   if (err) console.log(err);
 //   else {
 //     // created.populate("listingUser");
