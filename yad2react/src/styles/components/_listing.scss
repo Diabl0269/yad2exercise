@@ -15,6 +15,7 @@
   background: $promo-yellow;
   height: 87px;
   width: 695px;
+  // width: auto;
   border: $s-border solid $border-color !important;
   border-radius: $s-border;
   &:hover {
@@ -79,116 +80,4 @@
   &:disabled {
     cursor: default;
   }
-}
-
-//closed record styles
-.record__inside-container {
-  align-items: flex-start baseline;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 215px;
-  justify-content: center;
-  padding: 0 $s-mp;
-  border-left: $s-border solid $border-color;
-  border-right: $s-border solid $border-color;
-  span {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-}
-
-.middle-container {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  justify-content: space-evenly;
-  width: 186px;
-  padding: 0;
-  div {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    span {
-      font-weight: 300;
-    }
-  }
-}
-
-.left-container {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
-}
-
-//open record styles
-.record-container__open {
-  height: 120px;
-  img {
-    height: 100%;
-    width: 165px;
-  }
-}
-
-.open-details--middle-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: auto;
-}
-
-//utils
-.smaller-text {
-  font-size: $m-font;
-}
-
-.align-cloumn {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.img-container {
-  overflow: hidden;
-  position: relative;
-  height: 80%;
-  border-radius: $round-border-radius;
-  margin-right: $s-mp;
-  margin-left: $s-mp;
-}
-
-
-//details-dropdown
-.details-button {
-  color: white;
-  background: $green;
-  height: 2rem;
-  width: 10rem;
-  &:hover {
-    background: darken($green, 10%);
-  }
-}
-
-.details__dropdown {
-  background: white;
-  display: none;
-  position: absolute;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-}
-
-.details__dropdown-tab {
-  border-bottom: $s-border solid $border-color;
-  height: 3rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

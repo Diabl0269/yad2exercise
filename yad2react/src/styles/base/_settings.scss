@@ -1,18 +1,18 @@
 //colors
-$promo-yellow: #fdf9c5;
-$off-black: #363636;
-$green: #0fca80;
-$very-dark-orange: #df6200;
-$dark-orange: #ce5b00;
-$orange: #ff7100;
-$off-white: #d5d5d5;
-$white: #ffffff;
-$grey: #f9f9f9;
 $border-color: rgba(0, 0, 0, 0.1);
+$dark-orange: #ce5b00;
+$green: #0fca80;
+$grey: #f9f9f9;
+$off-black: #363636;
+$off-white: #d5d5d5;
+$orange: #ff7100;
+$promo-yellow: #fdf9c5;
+$very-dark-orange: #df6200;
 
 //text-sizes
-$m-font: 14px;
 $l-font: 16px;
+$m-font: 14px;
+$s-font: 12px;
 
 //border-sizes
 $round-border-radius: 3px;
@@ -21,5 +21,29 @@ $s-border: 1px;
 //maring and padding
 $s-mp: 0.4rem;
 
+//other sizes
+$m-size: 3rem;
+$s-size: 2rem;
+$xs-size: 1rem;
+
 //breakpoint
 $mobile-breakpoint: 45rem;
+
+//utils
+.smallest-text {
+  font-size: $s-font;
+}
+
+.smaller-text {
+  font-size: $m-font;
+}
+
+.align-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.push-left {
+  padding-left: $xs-size;
+}

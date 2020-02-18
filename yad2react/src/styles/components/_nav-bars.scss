@@ -1,9 +1,9 @@
 .list__nav-bar {
+  align-items: center;
   display: flex;
-  list-style: none;
   height: 100%;
   justify-content: space-between;
-  align-items: center;
+  list-style: none;
 }
 
 .right-list {
@@ -17,16 +17,16 @@
   background: $orange;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   height: 4rem;
+  justify-content: space-between;
   @media (max-width: $mobile-breakpoint) {
-    height: 2rem;
+    height: $s-size;
   }
 }
 
 .main-nav-bar-button {
   background: $orange;
-  color: $white;
+  color: white;
   height: 4rem;
 &:hover {
   background: $dark-orange;
@@ -52,13 +52,13 @@
 
 //secondary-nav-bar
 .secondary-nav-bar--container {
-  background: white;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 0; 
-  height: 3rem;
+  background: white;
   box-shadow: 0 5px 6px 0 $border-color;
+  display: flex;
+  height: $m-size;
+  justify-content: space-between;
+  margin: 0; 
   @media (max-width: $mobile-breakpoint) {
     visibility: hidden;
   }
@@ -67,7 +67,7 @@
 .secondary-nav-bar-button {
   background: white;
   color: $off-black;
-  height: 3rem;
+  height: $m-size;
   &:hover{
       background: $off-white;
   }
@@ -75,9 +75,9 @@
 
 .dropdown {
   background: white;
-  display: none;
-  position: absolute;
-  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  display: none;
+  min-width: 160px;
   padding: 12px 16px;
+  position: absolute;
 }

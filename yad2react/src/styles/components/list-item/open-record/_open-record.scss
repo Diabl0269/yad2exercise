@@ -1,0 +1,56 @@
+//open record styles
+.record-container__open {
+    height: 120px;
+    margin-left: 0;
+    width: 695px;
+    img {
+      height: 100%;
+      width: 165px;
+    }
+  }
+  
+  .open-listing--middle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: auto;
+  }
+  
+  .img-container {
+    border-radius: $round-border-radius;
+    height: 80%;
+    margin-left: $s-mp;
+    margin-right: $s-mp;
+    overflow: hidden;
+    position: relative;
+  }
+
+  //details
+  .details--table{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .details--table-row {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .details--table-data {
+      margin-left: $s-size;
+  }
+  
+  //footer
+ .open-listing--footer {
+  background: white;
+  border: $s-border solid $border-color;
+  display: flex;
+  flex-direction: row;
+  height: $s-size;
+  justify-content: space-evenly;
+  width: 100%;
+ }

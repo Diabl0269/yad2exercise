@@ -4,15 +4,15 @@ import RecordImage from "./RecordImage";
 import RecordAddress from "./RecordAddress";
 
 const ClosedListItem = ({
-  src,
   addressDetails,
   assetDetails,
   formatedPrice,
   hasUpdatedToday,
   mainAddress,
-  numOfRecordImagesMinusOne
+  numOfRecordImagesMinusOne,
+  src,
 }) => {
-  const { rooms, floor, squareMeters } = assetDetails;
+  const { rooms, floor, totalSquareMeters} = assetDetails;  
   const openNewTab = e => {
     e.stopPropagation();
     alert("כאן יפתח טאב חדש");
@@ -24,20 +24,20 @@ const ClosedListItem = ({
         src={src}
       />
       <RecordAddress
+        addressDetails={addressDetails}
         className="record__inside-container"
         mainAddress={mainAddress}
-        addressDetails={addressDetails}
       />
       <CoreDetails
         className="record__inside-container middle-container"
-        rooms={rooms}
         floor={floor}
-        squareMeters={squareMeters}
+        rooms={rooms}
+        totalSquareMeters={totalSquareMeters}
       />
 
       <div className="record__inside-container">
         <div className="left-container">
-          <div className="align-cloumn">
+          <div className="align-column">
             <span className="smaller-text" onClick={openNewTab}>
               טאב חדש
             </span>

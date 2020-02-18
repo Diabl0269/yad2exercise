@@ -6,20 +6,31 @@ import OpenListItem from "./OpenListItem";
 
 const ListItem = ({ record }) => {
   const defaultStreet = "לא צוין רחוב";
-  const { address, assetDetails, saleDetails, listingUser, updatedAt } = record;
   const {
-    assetType,
+    attributes,
+    address,
+    assetDetails,
+    saleDetails,
+    listingUser,
+    updatedAt
+  } = record;
+  const { assetType } = assetDetails;
+  const {
     city,
     street = defaultStreet,
     streetNumber = "",
     neighborhood = "",
     area = ""
   } = address;
-  const { price } = saleDetails;
+  const { price, entranceDate } = saleDetails;
   const mainAddress = `${street} ${streetNumber}`;
   const addressDetails = `${assetType}, ${area}, ${neighborhood}, ${city}`;
-  const src = "data:image/png;base64," + record.media.imageBase64[0];
-  const numOfRecordImagesMinusOne = record.media.imageBase64.length - 1;
+  const src = record.media.imageBase64
+    ? "data:image/png;base64," + record.media.imageBase64[0]
+    : "/images/noImgs.jpg";
+  const numOfRecordImagesMinusOne = record.media.imageBase64
+    ? record.media.imageBase64.length - 1
+    : null;
   const formatedPrice = price
     ? "₪" + numeral(price).format("0,00")
     : "לא צויין מחיר";
@@ -30,12 +41,14 @@ const ListItem = ({ record }) => {
     <li onClick={clickHandler}>
       {isOpen ? (
         <OpenListItem
+          attributes={attributes}
           src={src}
           numOfRecordImagesMinusOne={numOfRecordImagesMinusOne}
           mainAddress={mainAddress}
           addressDetails={addressDetails}
           assetDetails={assetDetails}
           formatedPrice={formatedPrice}
+          entranceDate={entranceDate}
           listingUser={listingUser}
         />
       ) : (

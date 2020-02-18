@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useReducer } from "react";
 import ListItem from "./ListItem/ListItem";
 import listingsReducer from "../reducers/listings";
+import { PacmanLoader } from "react-spinners";
+
 
 const Listings = () => {
   const [listings, dispatch] = useReducer(listingsReducer, []);
@@ -21,7 +23,9 @@ const Listings = () => {
           />
         ))
       ) : (
-        <p>Loading...</p>
+        <PacmanLoader
+          color={"#ff7100"}
+        />
       )}
     </ul>
   );

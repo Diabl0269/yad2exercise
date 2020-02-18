@@ -1,6 +1,6 @@
 import React from "react";
 
-const CoreDetails = ({ rooms, floor, squareMeters, className }) => {
+const CoreDetails = ({ rooms, floor, totalSquareMeters, className }) => {
     return (
     <div className={className}>
       <div>
@@ -12,7 +12,7 @@ const CoreDetails = ({ rooms, floor, squareMeters, className }) => {
         <span>קומה</span>
       </div>
       <div>
-        {squareMeters}
+        {totalSquareMeters}
         <span>מ"ר</span>
       </div>
     </div>
