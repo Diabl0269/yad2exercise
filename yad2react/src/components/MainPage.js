@@ -15,7 +15,7 @@ const MainPage = () => {
   };
 
   return (
-    <div>
+    <div className='align-column'>
       <MainNavBar />
       <SecondaryNavBar />
       <Listings />

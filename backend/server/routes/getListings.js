@@ -1,16 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const listingsModel = require("../../mongoDB/models/listingsModel");
+const getListings = require("../../mongoDB/crud/getListings");
 
-module.exports = router.get("/get", (req, res, next) => {
-  listingsModel
-    .find({})
-    .populate("listingUser")
-    .exec((err, foundData) => {
-      if (err) return console.log(err);
-      foundData.forEach(listing => {
-        listing.populate("listingUser");
-      });
-      res.send(foundData);
-    });
+module.exports = router.get("/", getListings, (req, res, next) => {
+  if (res.locals.error) res.status(500).send(res.locals.error);
+  else res.send(res.locals.data);
 });

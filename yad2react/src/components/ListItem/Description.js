@@ -18,7 +18,7 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
   const displayArrayAttributes = () =>
     arrayAttributes.map(
       attribute =>
-        Object.keys(attribute).length == 2 && (
+        Object.keys(attribute).length === 2 && (
           <div
             className={
               "open-listing__description__details-item " +

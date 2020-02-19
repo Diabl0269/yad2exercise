@@ -101,63 +101,67 @@ listingSchema.virtual("assetDetails.totalSquareMeters").get(function() {
     : this.assetDetails.squareMetersBuilt;
 });
 
+listingSchema.index({ "$**": "text" })
+
 const listingsModel = mongoose.model("listings", listingSchema);
 
 module.exports = listingsModel;
 
-const mockAptForSale = {
-  address: {
-    city: "מודיעין",
-    street: "המודיענים",
-    streetNumber: 13,
-    entrance: 2,
-    neighborhood: "מזרח העיר",
-    area: "מזרח",
-    reciveMonthlyUpdates: true
-  },
-  assetDetails: {
-    assetType: "טריפלקס",
-    assetState: "משופץ",
-    floor: 11,
-    rooms: 4,
-    totalFloors: 15,
-    furnitureDescription: "ריהוט מטורף, ממש יפה, כדאי לקנות",
-    description: "בסדר הדירה הזאת",
-    squareMetersBuilt: 133,
-    squareMetersGarden: 100
-  },
-  saleDetails: {
-    price: 1500000,
-    entrance: Date.now()
-  },
-  media: {
-    imageBase64: null,
-    videoBase64: null
-  },
-  attributes: {
-    airConditioned: {exists: true},
-    kitchen: {exists: true},
-    lift: {exists: false},
-    bars: {exists: false},
-    renovated: {exists: false},
-    disabledAccess: {exists: false},
-    safeSpace: {exists: false},
-    pandorDoor: {exists: false},
-    warehouse: {exists: false},
-    tadiranAirConditioned: {exists: true},
-    furniture: {exists: true},
-    livingUnit: {exists: false}
-  },
-  listingUser: "5e4a6ee46f74d85594c322e4"
-};
+// const mockAptForSale = {
+//   address: {
+//     city: "מודיעין",
+//     street: "המודיענים",
+//     streetNumber: 13,
+//     entrance: 2,
+//     neighborhood: "מזרח העיר",
+//     area: "מזרח",
+//     reciveMonthlyUpdates: true
+//   },
+//   assetDetails: {
+//     assetType: "טריפלקס",
+//     assetState: "משופץ",
+//     floor: 11,
+//     rooms: 4,
+//     totalFloors: 15,
+//     furnitureDescription: "ריהוט מטורף, ממש יפה, כדאי לקנות",
+//     description: "בסדר הדירה הזאת",
+//     squareMetersBuilt: 133,
+//     squareMetersGarden: 100
+//   },
+//   saleDetails: {
+//     price: 1500000,
+//     entrance: Date.now()
+//   },
+//   media: {
+//     imageBase64: null,
+//     videoBase64: null
+//   },
+//   attributes: {
+//     airConditioned: {exists: true},
+//     kitchen: {exists: true},
+//     lift: {exists: false},
+//     bars: {exists: false},
+//     renovated: {exists: false},
+//     disabledAccess: {exists: false},
+//     safeSpace: {exists: false},
+//     pandorDoor: {exists: false},
+//     warehouse: {exists: false},
+//     tadiranAirConditioned: {exists: true},
+//     furniture: {exists: true},
+//     livingUnit: {exists: false}
+//   },
+//   listingUser: "5e4a6ee46f74d85594c322e4"
+// };
 
 // const mockListingRecord = new listingsModel(mockAptForSale);
 
-// mockListingRecord.save((err, res) =>{
-//   if(err) console.log(err);
-//   else console.log('success');
-//   ;
-// });
+
+//   mockListingRecord.save((err, res) =>{
+//     if(err) console.log(err);
+//     else console.log('success');
+//     ;
+//   });
+
 
 // listingsModel.create(mockAptForSale);
 // , (err, created) => {

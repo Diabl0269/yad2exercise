@@ -2,7 +2,7 @@
 .record-container__open {
     height: 120px;
     margin-left: 0;
-    width: 695px;
+    width: $li-size;
     img {
       height: 100%;
       width: 165px;
@@ -46,11 +46,12 @@
   
   //footer
  .open-listing--footer {
+   align-items: center;
   background: white;
   border: $s-border solid $border-color;
   display: flex;
   flex-direction: row;
   height: $s-size;
   justify-content: space-evenly;
-  width: 100%;
+  width: $li-size;
  }

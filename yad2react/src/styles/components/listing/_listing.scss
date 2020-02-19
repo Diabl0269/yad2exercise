@@ -1,10 +1,9 @@
 //list
 .listing-container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   list-style: none;
-  align-items: center;
+  padding: 0;  
 }
 
 //main container
@@ -14,8 +13,7 @@
   align-items: center;
   background: $promo-yellow;
   height: 87px;
-  width: 695px;
-  // width: auto;
+  width: $li-size;
   border: $s-border solid $border-color !important;
   border-radius: $s-border;
   &:hover {
@@ -37,18 +35,18 @@
       }
     }
     .img-icon {
-      position: absolute;
-      background: white;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      border: black 1px solid;
-      border-radius: 2px;
-      -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
-      width: 24px;
+      -ms-transform: translate(-50%, -50%);
+      -webkit-border-radius: 2px;
+      background: white;
+      border-radius: 2px;
+      border: black 1px solid;
       height: 18px;
-      top: 50%;
       left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
     }
     .img-icon::before {
       background-color: white;
