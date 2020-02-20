@@ -6,6 +6,10 @@
   padding: 0;  
 }
 
+.list-item-container {
+  width: $li-width;
+}
+
 //main container
 .record-container {
   display: flex;
@@ -13,7 +17,7 @@
   align-items: center;
   background: $promo-yellow;
   height: 87px;
-  width: $li-size;
+  width: $li-width;
   border: $s-border solid $border-color !important;
   border-radius: $s-border;
   &:hover {

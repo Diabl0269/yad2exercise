@@ -6,3 +6,9 @@
   background: red;
   width: 60%;
 }
+
+.list-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

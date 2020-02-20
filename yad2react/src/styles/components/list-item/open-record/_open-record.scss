@@ -1,8 +1,8 @@
 //open record styles
 .record-container__open {
-    height: 120px;
+    height: $li-heigth;
     margin-left: 0;
-    width: $li-size;
+    width: $li-width;
     img {
       height: 100%;
       width: 165px;
@@ -53,5 +53,5 @@
   flex-direction: row;
   height: $s-size;
   justify-content: space-evenly;
-  width: $li-size;
+  width: $li-width;
  }

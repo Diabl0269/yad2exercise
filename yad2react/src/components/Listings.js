@@ -1,4 +1,4 @@
-import Filters from './Filters';
+import Filters from "./Filters";
 import ListItem from "./ListItem/ListItem";
 import React, { useEffect, useReducer } from "react";
 import axios from "axios";
@@ -21,17 +21,18 @@ const Listings = () => {
       <Filters />
       <div className="list-center">
         <div>
-          <ul className="listing-container">
-            {listings && listings.length > 0 ? (
-              listings.map(record => (
-                <ListItem key={record._id} record={record} />
-              ))
-            ) : (
-              <div id="loader">
-                <PacmanLoader color={"#ff7100"} />
-              </div>
-            )}
-          </ul>
+          {listings && listings.length > 0 ? (
+            <ul className="listing-container">
+              {listings.map(record => (
+              <ListItem key={record._id} record={record} />
+              ))}
+            </ul>
+          ) : (
+            <div id="loader">
+              <PacmanLoader color={"#ff7100"} />
+            </div>
+          )}
+
           <div className="page-selector"></div>
         </div>
         <div className="map"></div>

@@ -37,8 +37,9 @@ const ListItem = ({ record }) => {
   const hasUpdatedToday = moment().isSame(updatedAt, "day");
   const [isOpen, setIsOpen] = useState(false);
   const clickHandler = () => setIsOpen(!isOpen);
+
   return (
-    <li onClick={clickHandler}>
+    <li className='' onClick={clickHandler}>
       {isOpen ? (
         <OpenListItem
           attributes={attributes}

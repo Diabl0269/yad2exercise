@@ -17,6 +17,7 @@ const OpenListItem = ({
 }) => {
   const { rooms, floor, totalSquareMeters } = assetDetails;
   const { agencyName = "" } = listingUser.userDetails;
+  
   return (
     <div>
       <div className="record-container record-container__open">

@@ -10,13 +10,14 @@ module.exports = (req, res, next) => {
     squareMetersBuilt: {$gte: req.minSquareMetersBuilt, $lte: req.maxSquareMetersBuilt},
     floor: {$gte: req.minFloor, $lte: req.maxFloor},
     
-  // description: { $regex: /[\s\S]+/ },
-  // $text: {$search: /[\s\u0000-\uFFFF]*/  },
+  // description: { $regex: /^[x{0590}\–x{05FF}\\s]*$/ },
+// $text: {$search:  },
     ...req.advanced
   };
 
-///^[\s\u05FF-\u0950\uFB1D-\uFB4F]*$/
+  console.log("/[x{0590}\–x{05FF}\\s]/");
   
+
   listingsModel
     .find(sortObject)
     .sort()
