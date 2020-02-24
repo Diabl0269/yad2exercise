@@ -9,6 +9,15 @@ const Filters = () => {
   const [citySearchValue, setCitySearchValue] = useState();
   const [selectedAssetTypes, setSelectedAssetType] = useState([]);
   const [isAssetTypeDropDownOpen, setAssetTypeDropDownOpen] = useState(false);
+  const [roomsNumber, setRooms] = useState({ min: undefined, max: undefined });
+  const roomsNumberDisplay =
+    !roomsNumber.max && !roomsNumber.min
+      ? "חדרים"
+      : roomsNumber.max && !roomsNumber.min
+      ? `עד - ${roomsNumber.max}`
+      : !roomsNumber.max && roomsNumber.min
+      ? `מ - ${roomsNumber.min}`
+      : `${roomsNumber.min} - ${roomsNumber.max}`;
   const handleCheckboxClick = type => {
     let newSelectedAssetType;
     if (selectedAssetTypes.includes(type))
@@ -19,10 +28,10 @@ const Filters = () => {
     setSelectedAssetType(newSelectedAssetType);
   };
   const listItem = type => (
-    <li className="checkbox_list-item">
+    <li className="checkbox__list-item">
       <input
         type="checkbox"
-        className="checkbox_input"
+        className="checkbox__input"
         onClick={() => handleCheckboxClick(type)}
       />
       {type}
@@ -59,7 +68,7 @@ const Filters = () => {
             סוג נכס
             <div>
               <button
-                className="filters__asset-type-selector"
+                className="filters__filed-box-container"
                 onClick={e => openDropDown(e, "assetTypeDropDown")}
               >
                 {assetTypesCount}
@@ -68,7 +77,7 @@ const Filters = () => {
                 id="assetTypeDropDown"
                 className="filters__asset-type--dropdown"
               >
-                <ul className="checkbox_list">
+                <ul className="checkbox__list">
                   {isAssetTypeDropDownOpen
                     ? assetTypes.map(type => listItem(type))
                     : assetTypes.slice(0, 6).map(type => listItem(type))}
@@ -81,7 +90,10 @@ const Filters = () => {
         {currentListingsType === "מסחרי" ? (
           <div className="filters--field-container">בחרו עסקה</div>
         ) : (
-          <div className="filters--field-container">חדרים</div>
+          <div className="filters--field-container">
+            חדרים
+            <div className="filters__filed-box-container">{roomsNumberDisplay}</div>
+          </div>
         )}
 
         <div className="filters--field-container">מחיר בש"ח</div>

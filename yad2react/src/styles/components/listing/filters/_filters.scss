@@ -22,7 +22,6 @@
   flex-direction: row;
   height: 60px;
   margin: 0 $s-mp 0 $s-mp;
-  // align-items: baseline;
 }
 
 .filters--field-container {
@@ -37,7 +36,67 @@
   }
 }
 
-.filters__asset-type-selector {
+
+.filters__filed-box-container {
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  color: #999;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  font-size: 0.875rem;
+  height: 40px;
+  justify-content: space-between;
+  line-height: 1.0625rem;
+  margin-top: 5px;
+  min-width: 100px;
+  padding: 0 10px 0 5px;
+  width: auto;
+}
+
+//Asset type selector
+.filters__asset-type--dropdown {
+  align-items: center;
+  background: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  min-width: 160px;
+  padding: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.checkbox__list {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  max-height: 192px;
+  overflow: hidden;
+  list-style: none;
+  padding-right: $s-mp;
+}
+
+.checkbox__list-item {
+  line-height: 24px;
+    min-width: 180px;
+}
+
+.checkbox__input {
+  margin-left: $s-mp
+}
+
+//Rooms selector
+.filters__rooms-container {
   -webkit-box-align: center;
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
@@ -58,40 +117,4 @@
   min-width: 100px;
   padding: 0 10px 0 5px;
   width: 100%;
-}
-
-.filters__asset-type--dropdown {
-  align-items: center;
-  background: white;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  display: none;
-  flex-direction: column;
-  min-width: 160px;
-  padding: 0;
-  position: absolute;
-  z-index: 2;
-}
-
-.filters__asset-type-option {
-}
-
-.select-selected:after {
-}
-
-.checkbox_list {
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  max-height: 192px;
-  overflow: hidden;
-  list-style: none;
-  padding-right: $s-mp;
-}
-
-.checkbox_list-item {
-  line-height: 24px;
-    min-width: 180px;
 }
