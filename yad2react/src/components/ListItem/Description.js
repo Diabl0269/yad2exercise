@@ -19,7 +19,7 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
     arrayAttributes.map(
       attribute =>
         Object.keys(attribute).length === 2 && (
-          <div
+          <div key={attribute.text}
             className={
               "open-listing__description__details-item " +
               (!attribute.exists && "dosent-exist")
@@ -29,7 +29,6 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
           </div>
         )
     );
-  // displayArrayAttributes();
 
   return (
     <div className="open-listing__description-container smaller-text">
@@ -80,9 +79,9 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
         <br />
         <b>מה יש בנכס?</b>
         <div className="open-listing__description__details-container no-border">
-          <p className="open-listing__description__details-container no-border smallest-text">
+          <div className="open-listing__description__details-container no-border smallest-text">
             {displayArrayAttributes()}
-          </p>
+          </div>
           {furnitureDescription && (
             <div>
               <b>פירוט ריהוט</b>

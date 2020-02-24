@@ -1,16 +1,13 @@
 import React from "react";
+import openDropDown from '../../utils/openDropDown';
 
 const DetailsDropDown = ({ listingUser }) => {
   const { userDetails } = listingUser;
   const {firstName, phone, phone2 } = userDetails;
-  const openDetailsDropDown = e => {
-    
-    e.stopPropagation();
-    document.getElementById("detailsDropDown").style.display = "flex";
-  };
+
   return (
     <div>
-      <button className="details-button" onClick={openDetailsDropDown}>
+      <button className="details-button" onClick={e => openDropDown(e, 'detailsDropDown')}>
         הצגת מספר טלפון
       </button>
       <div id="detailsDropDown" className="details__dropdown">

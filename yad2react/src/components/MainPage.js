@@ -1,24 +1,21 @@
-import React from "react";
+import React, {useReducer} from "react";
 import MainNavBar from "./MainNavBar";
 import SecondaryNavBar from "./SeconderyNavBar";
 import Listings from "./Listings";
-
+import listingsTypeReducer from '../reducers/listingsType';
+import ListingsTypeContext from '../context/ListingsTypeContext';
+import closeDropDownsHandler from '../utils/closeDropDownsHandler';
 const MainPage = () => {
-  window.onclick = function(event) {
-    if (!event.target.matches("details-button")) {
-      const dropdowns = Array.from(document.getElementsByClassName("details__dropdown"));
-      dropdowns.forEach(dropdown => {
-        dropdown.style.display = 'none';
-        
-      });
-    }
-  };
+  const [currentListingsType, dispatch] = useReducer(listingsTypeReducer, "מכירה");
+  window.onclick = e => closeDropDownsHandler(e);
 
   return (
     <div className='align-column'>
+      <ListingsTypeContext.Provider value={{currentListingsType, dispatch}}>
       <MainNavBar />
       <SecondaryNavBar />
-      <Listings />
+      <Listings currentListingsType={currentListingsType} changeListingsType={dispatch}/>
+      </ListingsTypeContext.Provider>
     </div>
   );
 };

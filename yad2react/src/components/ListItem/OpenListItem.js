@@ -55,7 +55,7 @@ const OpenListItem = ({
         attributes={attributes}
       />
 
-      <div class='open-listing--footer'><div>פרטי התקשרות</div><div>מצאתי טעות</div></div>
+      <div className='open-listing--footer'><div>פרטי התקשרות</div><div>מצאתי טעות</div></div>
     </div>
   );
 };

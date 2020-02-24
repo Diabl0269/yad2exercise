@@ -1,11 +1,10 @@
 import { useRoutes } from "hookrouter";
-import configureStore from "./store/store";
+// import configureStore from "./store/configureStore";
 import routes from "./routes/router";
 
 const App = () => {
-  // const [listings, dispatch] = useReducer(listingsReducer, []);
-  const routeResulet = useRoutes(routes);
-  return routeResulet;
+  const routeResult = useRoutes(routes);
+  return routeResult;
 };
 
 export default App;

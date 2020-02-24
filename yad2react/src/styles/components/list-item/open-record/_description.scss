@@ -33,7 +33,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding-bottom: $s-mp;
+    padding: $s-mp 0 $s-mp 0;
     border-bottom: $s-border solid $border-color;
   }
 
