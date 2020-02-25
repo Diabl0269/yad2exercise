@@ -1,4 +1,4 @@
-import Filters from "./Filters";
+import Filters from "./Filters/Filters";
 import ListItem from "./ListItem/ListItem";
 import React, { useEffect, useReducer } from "react";
 import axios from "axios";

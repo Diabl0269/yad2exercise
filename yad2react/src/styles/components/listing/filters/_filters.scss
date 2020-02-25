@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
+  padding-right: $s-mp;
   & span {
     color: $orange;
     cursor: pointer;
@@ -21,11 +21,10 @@
   display: flex;
   flex-direction: row;
   height: 60px;
-  margin: 0 $s-mp 0 $s-mp;
 }
 
 .filters--field-container {
-  margin: 0 $s-mp 0 $s-mp;
+  margin-left: $m-mp;
   height: 100%;
   align-items: center;
 }
@@ -37,7 +36,7 @@
 }
 
 
-.filters__filed-box-container {
+.filters__field-box-container {
   -webkit-box-align: center;
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
@@ -73,7 +72,7 @@
   z-index: 2;
 }
 
-.checkbox__list {
+.filters__asset-type-checkbox__list {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
@@ -86,27 +85,26 @@
   padding-right: $s-mp;
 }
 
-.checkbox__list-item {
+.filters__asset-type-checkbox__list-item {
   line-height: 24px;
     min-width: 180px;
 }
 
-.checkbox__input {
+.filters__asset-type-checkbox__input {
   margin-left: $s-mp
 }
 
 //Rooms selector
 .filters__rooms-container {
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: justify;
+  // -webkit-box-align: center;
+  // -webkit-box-direction: normal;
+  // -webkit-box-orient: horizontal;
+  // -webkit-box-pack: justify;
   align-items: center;
   background-color: #fff;
   border-radius: 2px;
   border: 1px solid #ccc;
   color: #999;
-  display: -webkit-box;
   display: flex;
   flex-direction: row;
   font-size: 0.875rem;
@@ -117,4 +115,44 @@
   min-width: 100px;
   padding: 0 10px 0 5px;
   width: 100%;
+}
+
+.filters__rooms-dropdown-container {
+  align-items: center;
+  background: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: row;
+  padding: $m-mp;
+  position: absolute;
+  z-index: 2;
+}
+
+.filters__rooms-picker-container {
+  width: 60px;
+  padding: $s-mp;
+  border: $s-border solid $border-color;
+}
+
+//Price selector
+.filters__price-container {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  color: #999;
+  display: flex;
+  flex-direction: row;
+  font-size: 0.875rem;
+  height: 40px;
+  justify-content: space-between;
+  line-height: 1.0625rem;
+  margin-top: 5px;
+  min-width: 170px;
+  padding: 0 10px 0 5px;
+  width: 100%;
+}
+
+.filters__price-inner-container {
+  width: 50%;
 }
