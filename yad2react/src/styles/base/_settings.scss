@@ -36,6 +36,10 @@ $xs-size: 1rem;
 $mobile-breakpoint: 45rem;
 
 //utils
+.border-left {
+  border-left: $s-border solid $border-color;
+}
+
 .smallest-text {
   font-size: $s-font;
 }

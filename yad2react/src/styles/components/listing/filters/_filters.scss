@@ -1,9 +1,9 @@
-.filters-container {
+.filters__basic-container {
   background: white;
   box-shadow: 0 5px 6px 0 $border-color;
   height: $l-size;
-  margin: $s-mp 0 $s-mp 0;
-
+  margin: $s-mp 0 0 0;
+  border-bottom: $s-border solid $border-color;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -102,8 +102,7 @@
   // -webkit-box-pack: justify;
   align-items: center;
   background-color: #fff;
-  border-radius: 2px;
-  border: 1px solid #ccc;
+  border-left: $s-border solid $border-color;
   color: #999;
   display: flex;
   flex-direction: row;
@@ -131,28 +130,42 @@
 .filters__rooms-picker-container {
   width: 60px;
   padding: $s-mp;
-  border: $s-border solid $border-color;
+
+  border-radius: $round-border-radius;
+  border: 1px solid #ccc;
 }
 
 //Price selector
 .filters__price-container {
-  align-items: center;
-  background-color: #fff;
-  border-radius: 2px;
-  border: 1px solid #ccc;
+  border: $s-border solid $border-color;
+  border-radius: $round-border-radius;
   color: #999;
   display: flex;
   flex-direction: row;
   font-size: 0.875rem;
   height: 40px;
-  justify-content: space-between;
   line-height: 1.0625rem;
   margin-top: 5px;
   min-width: 170px;
-  padding: 0 10px 0 5px;
-  width: 100%;
+  // width: 80%;
 }
 
 .filters__price-inner-container {
-  width: 50%;
+  width:100%;
+  height: 100%;
+  outline: none;
+  
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filters__advanced-dropdown-container {
+  background: white;
+  box-shadow: 0 5px 6px 0 $border-color;
+  display: flex;
+  flex-direction: column;
+  padding: 5% 7% 0 7%;
 }
