@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 require("dotenv").config({ path: __dirname + "/.env" });
 const mongoose = require("mongoose");
+console.log(process.env.DB_URL);
 
 const successMsg = chalk.black.bgGreen('mongo connection exists');
 const errorMsg = chalk.black.bgRed('connection error:');
