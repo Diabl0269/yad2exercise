@@ -63,14 +63,14 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
                   </div>
                 )}
                 {squareMetersGarden && (
-                  <div className="open-listing__description__details-fixer">
+                  
                     <div className="open-listing__description__details-item">
                       מ"ר גינה <b>{squareMetersGarden}</b>
                     </div>
-                    <div className="open-listing__description__details-item">
-                      מ"ר בנוי <b>{squareMetersBuilt}</b>
-                    </div>
-                  </div>
+                    // <div className="open-listing__description__details-item">
+                    //   מ"ר בנוי <b>{squareMetersBuilt}</b>
+                    // </div>
+                  
                 )}
               </div>
             )}

@@ -2,7 +2,7 @@ import React from "react";
 
 const PriceFilter = ({ price, setPrice }) => {
   const handleSetPrice = ({ id, value }) => {
-    if ((value === "") | !isNaN(value[value.length - 1]))
+    if ((value === "") || !isNaN(value[value.length - 1]))
       setPrice({ ...price, [id]: value });
   };
 
@@ -18,7 +18,7 @@ const PriceFilter = ({ price, setPrice }) => {
           className="filters__price-inner-container"
         />
         <input
-          type="number"
+          type="text"
           value={price.max}
           onChange={e => handleSetPrice(e.target)}
           id="max"

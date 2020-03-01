@@ -8,7 +8,7 @@ import { PacmanLoader } from "react-spinners";
 const Listings = ({currentListingsType, changeListingsType}) => {
   const [listings, dispatch] = useReducer(listingsReducer, []);
 
-  useEffect(() => {
+ const getFilterdListings = useEffect(() => {
     axios.get("/listings").then(res => {
       if (res.data.length === 0)
         document.querySelector("#loader").innerHTML = "לא נמצאו רשומות";
@@ -19,7 +19,9 @@ const Listings = ({currentListingsType, changeListingsType}) => {
   return (
     <div className="list-container">
 
-      <Filters currentListingsType={currentListingsType} changeListingsType={changeListingsType}/>
+
+      <Filters getFilterdListings={getFilterdListings} />
+
 
       <div className="list-center">
         <div>

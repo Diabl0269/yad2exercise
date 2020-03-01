@@ -1,0 +1,32 @@
+.checkbox__list-col {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    max-height: 192px;
+    overflow: hidden;
+    list-style: none;
+    padding-right: $s-mp;
+  }
+
+  .checkbox__list-row {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+  }
+  
+  .checkbox__list-item {
+    line-height: 24px;
+      min-width: 180px;
+  }
+  
+  .checkbox__input {
+    margin-left: $s-mp
+  }
+
+  .checkbox {
+    margin-left: $s-mp;
+  }

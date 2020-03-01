@@ -1,16 +1,25 @@
 import React, { useContext, useState } from "react";
-import ListingsTypeContext from "../../context/ListingsTypeContext";
-import RoomsFilter from "./RoomsFilter";
+import AdvancedFilters from "./AdvancedFilters/AdvancedFilters";
 import CitiesFilter from "./CitiesFilter";
-import PropertyTypeFilter from "./PropertyTypeFilter";
+import ListingsTypeContext from "../../context/ListingsTypeContext";
 import PriceFilter from "./PriceFilter";
+import PropertyTypeFilter from "./PropertyTypeFilter";
+import RoomsFilter from "./RoomsFilter";
+import FiltersContext from "../../context/FiltersContext";
 
-const Filters = () => {
+const Filters = ({ getFilterdListings }) => {
   const { currentListingsType, dispatch } = useContext(ListingsTypeContext);
   const [citySearchValue, setCitySearchValue] = useState();
   const [selectedAssetTypes, setSelectedAssetType] = useState([]);
   const [roomsNumber, setRooms] = useState({ min: undefined, max: undefined });
   const [price, setPrice] = useState({ min: "", max: "" });
+  const [floor, setFloor] = useState({ min: "", max: "" });
+  const [squareMetersTotal, setSquareMetersTotal] = useState({
+    min: "",
+    max: ""
+  });
+  const [entranceDate, setEntranceDate] = useState();
+  const [selectedAttributes, setSelectedAttributes] = useState([]);
 
   return (
     <div>
@@ -50,12 +59,21 @@ const Filters = () => {
           </button>
         </div>
       </div>
-      <div className='filters__advanced-dropdown-container'>
-            <div className='filters__advanced--asset-attributes'>א</div>
-            <div className='filters__advanced--asset-details'>ב</div>
-            <div className='filters__advanced--free-text'>ג</div>
-            <div className='filters__advanced--search'>ד</div>
-       </div>      
+
+      <FiltersContext.Provider
+        value={{
+          selectedAttributes,
+          setSelectedAttributes,
+          floor,
+          setFloor,
+          squareMetersTotal,
+          setSquareMetersTotal,
+          entranceDate,
+          setEntranceDate}
+        }
+      >
+        <AdvancedFilters />
+      </FiltersContext.Provider>
     </div>
   );
 };

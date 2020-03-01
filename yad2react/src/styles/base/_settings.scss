@@ -9,6 +9,9 @@ $orange: #ff7100;
 $promo-yellow: #fdf9c5;
 $very-dark-orange: #df6200;
 
+//sizes
+$half: 50%;
+
 //text-sizes
 $l-font: 16px;
 $m-font: 14px;
@@ -25,6 +28,7 @@ $li-heigth: 120px;
 //maring and padding
 $m-mp: 1rem;
 $s-mp: 0.4rem;
+$xs-mp: .5%;
 
 //other sizes
 $l-size: 7rem;
@@ -36,6 +40,26 @@ $xs-size: 1rem;
 $mobile-breakpoint: 45rem;
 
 //utils
+.align-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.align-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.background-none {
+  background: none;
+}
+
+.border-bottom {
+  border-bottom: $s-border solid $border-color;
+
+}
+
 .border-left {
   border-left: $s-border solid $border-color;
 }
@@ -48,12 +72,22 @@ $mobile-breakpoint: 45rem;
   font-size: $m-font;
 }
 
-.align-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+.orange-text {
+  color: $orange;
 }
 
 .push-left {
   padding-left: $xs-size;
+}
+
+.bigger-heith{
+
+}
+
+.block {
+  display: block;
+}
+
+.red-background {
+  background: red;
 }
