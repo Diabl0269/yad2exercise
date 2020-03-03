@@ -1,17 +1,27 @@
 const listingsModel = require("../models/listingsModel");
 
 module.exports = (req, res, next) => {
-  // req.text = /[\s\S]*/;
+  console.log(JSON.parse(req.query.price));
+  
   const sortObject = {
-    price: { $gte: req.minPrice, $lte: req.maxPrice },
-    rooms: { $gte: req.minRooms, $lte: req.maxRooms },
-    assetType: req.assetType,
-    roomMates: { $gte: req.minRoommates, $lte: req.maxRoommates },
-    squareMetersBuilt: {
-      $gte: req.minSquareMetersBuilt,
-      $lte: req.maxSquareMetersBuilt
+    price: {
+      $gte: JSON.parse(req.query.price).min,
+      $lte: JSON.parse(req.query.price).max
     },
-    floor: { $gte: req.minFloor, $lte: req.maxFloor },
+    // rooms: {
+    //   $gte: (JSON.parse(req.query.rooms).min = ""),
+    //   $lte: (JSON.parse(req.query.rooms).min = "")
+    // },
+    // assetType: (req.query.assetTypes = []),
+    // roomMates: {
+    //   $gte: (JSON.parse(req.query.roomsMates).min = ""),
+    //   $lte: (JSON.parse(req.query.roomsMates).max = "")
+    // },
+    // squareMetersBuilt: {
+    //   $gte: (JSON.parse(req.query.totalSquareMeters).min = ""),
+    //   $lte: (JSON.parse(req.query.totalSquareMeters).max = "")
+    // },
+    // floor: { $gte: req.minFloor, $lte: req.maxFloor },
 
     //ADD TEXT FILTER HERE
     // console.log("/[x{0590}\–x{05FF}\\s]/");
@@ -20,14 +30,17 @@ module.exports = (req, res, next) => {
 
     ...req.advanced
   };
-
+  console.log(sortObject);
+  
   listingsModel
-    .find(sortObject)
+    .find( {price: {
+      $gte: JSON.parse(req.query.price).max,
+      $lte: JSON.parse(req.query.price).max
+    }})
     .sort()
     .populate("listingUser")
-    .exec((error, data) => {
+    .exec((error, data) => {      
       if (error) {
-        console.log(error);
         res.locals.error = "לא ניתן להתחבר לשרת";
       } else res.locals.data = data;
       next();

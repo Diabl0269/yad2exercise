@@ -3,27 +3,27 @@ import ListItem from "./ListItem/ListItem";
 import React, { useEffect, useReducer } from "react";
 import axios from "axios";
 import listingsReducer from "../reducers/listings";
-import { PacmanLoader } from "react-spinners";
+import Loader from './Loader';
 
 const Listings = ({currentListingsType, changeListingsType}) => {
   const [listings, dispatch] = useReducer(listingsReducer, []);
 
- const getFilterdListings = useEffect(() => {
-    axios.get("/listings").then(res => {
-      if (res.data.length === 0)
-        document.querySelector("#loader").innerHTML = "לא נמצאו רשומות";
-        dispatch({ type: "POPULATE_LISTINGS", listings: res.data });
-    });
-  }, []);
+//  const getFilterdListings = (body = {}) => useEffect(() => {
+//     axios.get("/listings", body).then(res => {
+//       if (res.data.length === 0)
+//         document.querySelector("#loader").innerHTML = "לא נמצאו רשומות";
+//         dispatch({ type: "POPULATE_LISTINGS", listings: res.data });
+//     });
+//   }, []);
 
   return (
     <div className="list-container">
 
 
-      <Filters getFilterdListings={getFilterdListings} />
+      <Filters dispatchPopulateListing={dispatch}/>
 
 
-      <div className="list-center">
+      <div id='listing' className="list-center">
         <div>
 
           {listings && listings.length > 0 ? (
@@ -34,10 +34,7 @@ const Listings = ({currentListingsType, changeListingsType}) => {
             </ul>
 
           ) : (
-
-            <div id="loader">
-              <PacmanLoader color={"#ff7100"} />
-            </div>
+            <Loader />
           )}
 
           <div className="page-selector"></div>

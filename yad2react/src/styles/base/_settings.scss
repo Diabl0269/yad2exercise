@@ -26,7 +26,7 @@ $li-width: 695px;
 $li-heigth: 120px;
 
 //maring and padding
-$m-mp: 1rem;
+$m-mp: 2%;
 $s-mp: 0.4rem;
 $xs-mp: .5%;
 
@@ -49,6 +49,12 @@ $mobile-breakpoint: 45rem;
 .align-row {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-size {
+  height: 4rem;
 }
 
 .background-none {
@@ -80,12 +86,32 @@ $mobile-breakpoint: 45rem;
   padding-left: $xs-size;
 }
 
-.bigger-heith{
+.margin-right {
+  margin-right: $m-mp;
+}
 
+.margin-right-half {
+  margin-right: 50%;
+}
+
+.margin-left {
+  margin-left: $m-mp;
+}
+
+.margin-bottom {
+  margin-bottom: $m-mp;
 }
 
 .block {
   display: block;
+}
+
+.width-half {
+  width: 50%;
+}
+
+.align-self-center {
+  align-self: center;
 }
 
 .red-background {

@@ -4,6 +4,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import "react-datepicker/dist/react-datepicker.css";
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

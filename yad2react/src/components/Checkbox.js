@@ -2,11 +2,11 @@ import React from "react";
 
 const Checkbox = ({ item, selectedItems, setItem }) => {
   const handleCheckboxClick = item => {
-    let newSelectedItem;
+    let newSelectedItems;
     if (selectedItems.includes(item))
-      newSelectedItem = selectedItems.filter(curItem => curItem !== item);
-    else newSelectedItem = selectedItems.concat(item);
-    setItem(newSelectedItem);
+      newSelectedItems = selectedItems.filter(curItem => curItem !== item);
+    else newSelectedItems = selectedItems.concat(item);
+    setItem(newSelectedItems);
   };
 
   return (

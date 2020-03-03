@@ -1,13 +1,18 @@
-import React from 'react';
-import CitiesAutoComplete from '../CitiesAutoComplete';
+import React from "react";
+import CitiesAutoComplete from "../CitiesAutoComplete";
 
-const CitiesFilter = () => {
-    return (
-        <div className="filters--field-container">
-          חפשו עיר
-          <CitiesAutoComplete />
-        </div>
-    )
-}
+
+const CitiesFilter = ({ citySearchValue, setCitySearchValue }) => {
+
+  return (
+    <div className="filters--field-container">
+      חפשו עיר
+      <CitiesAutoComplete
+        value={citySearchValue}
+        changeCitySearchValueHandler={setCitySearchValue}
+      />
+    </div>
+  );
+};
 
 export default CitiesFilter;

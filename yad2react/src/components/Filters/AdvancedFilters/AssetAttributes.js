@@ -5,7 +5,6 @@ import Checkbox from '../../Checkbox';
 const AssetAttributes = () => {
 
 const {selectedAttributes, setSelectedAttributes} = useContext(FiltersContext);
-const a = useContext(FiltersContext)
 
     const attributes = [
         "דלתות פנדור",

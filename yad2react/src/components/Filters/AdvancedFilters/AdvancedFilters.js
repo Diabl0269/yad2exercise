@@ -1,6 +1,8 @@
 import React from "react";
 import AssetAttributes from './AssetAttributes';
 import AssetDetails from './AssetDetails';
+import FreeTextFilter from "./FreeTextFilter";
+import SearchAndReset from './SearchAndReset';
 
 const AdvancedFilters = () => {
 
@@ -8,9 +10,8 @@ const AdvancedFilters = () => {
     <div className="filters__advanced-dropdown-container">
       <AssetAttributes />
       <AssetDetails />
-      {/* <div className="filters__advanced--asset-details border-bottom">ב</div> */}
-      <div className="filters__advanced--free-text border-bottom">ג</div>
-      <div className="filters__advanced--search">ד</div>
+      <FreeTextFilter />
+      <SearchAndReset />
     </div>
   );
 };
