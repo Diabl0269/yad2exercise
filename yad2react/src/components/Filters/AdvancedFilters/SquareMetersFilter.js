@@ -6,8 +6,10 @@ const SquareMetersFilter = () => {
     FiltersContext
   );
   const handleSetSquareMeters = ({ id, value }) => {
-    if (value === "" || !isNaN(value[value.length - 1]))
+    if (value === "" || !isNaN(value[value.length - 1])) {
+      id = id.slice(0, 3);
       setSquareMetersTotal({ ...squareMetersTotal, [id]: value });
+    }
   };
   return (
     <div className="filters--field-container">
@@ -15,7 +17,7 @@ const SquareMetersFilter = () => {
       <div className="filters__price-container">
         <input
           type="text"
-          id="min"
+          id="minSquareMetersTotal"
           value={squareMetersTotal.min}
           onChange={e => handleSetSquareMeters(e.target)}
           className="filters__price-inner-container"
@@ -24,7 +26,7 @@ const SquareMetersFilter = () => {
           type="text"
           value={squareMetersTotal.max}
           onChange={e => handleSetSquareMeters(e.target)}
-          id="max"
+          id="maxSquareMetersTotal"
           className="filters__price-inner-container"
         />
       </div>

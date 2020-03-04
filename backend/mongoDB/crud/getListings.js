@@ -1,27 +1,27 @@
 const listingsModel = require("../models/listingsModel");
+const fixFilterDefaults = require("../../utils/fixFilterDefaults");
 
-module.exports = (req, res, next) => {
-  console.log(JSON.parse(req.query.price));
-  
+module.exports = (req, res, next) => {  
+  fixFilterDefaults(req.body);  
   const sortObject = {
     price: {
-      $gte: JSON.parse(req.query.price).min,
-      $lte: JSON.parse(req.query.price).max
+      $gte: req.body.price.min,
+      $lte: req.body.price.max
     },
     // rooms: {
-    //   $gte: (JSON.parse(req.query.rooms).min = ""),
-    //   $lte: (JSON.parse(req.query.rooms).min = "")
+    //   $gte: (req.body.rooms.min = ""),
+    //   $lte: (req.body.rooms.min = "")
     // },
-    // assetType: (req.query.assetTypes = []),
+    // assetType: (req.body.assetTypes = []),
     // roomMates: {
-    //   $gte: (JSON.parse(req.query.roomsMates).min = ""),
-    //   $lte: (JSON.parse(req.query.roomsMates).max = "")
+    //   $gte: (req.body.roomsMates.min = ""),
+    //   $lte: (req.body.roomsMates.max = "")
     // },
     // squareMetersBuilt: {
-    //   $gte: (JSON.parse(req.query.totalSquareMeters).min = ""),
-    //   $lte: (JSON.parse(req.query.totalSquareMeters).max = "")
+    //   $gte: (req.body.totalSquareMeters.min = ""),
+    //   $lte: (req.body.totalSquareMeters.max = "")
     // },
-    // floor: { $gte: req.minFloor, $lte: req.maxFloor },
+    // floor: { $gte: req.body.minFloor, $lte: req.body.maxFloor },
 
     //ADD TEXT FILTER HERE
     // console.log("/[x{0590}\–x{05FF}\\s]/");
@@ -30,22 +30,7 @@ module.exports = (req, res, next) => {
 
     ...req.advanced
   };
-  console.log(sortObject);
   
 
-  listingsModel.findWithDefaults();
-
-  // listingsModel
-  //   .find( {price: {
-  //     $gte: JSON.parse(req.query.price).max,
-  //     $lte: JSON.parse(req.query.price).max
-  //   }})
-  //   .sort()
-  //   .populate("listingUser")
-  //   .exec((error, data) => {      
-  //     if (error) {
-  //       res.locals.error = "לא ניתן להתחבר לשרת";
-  //     } else res.locals.data = data;
-  //     next();
-  //   });
+  listingsModel.findWithDefaults(sortObject);
 };

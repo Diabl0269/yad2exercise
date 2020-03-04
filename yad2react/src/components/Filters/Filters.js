@@ -14,7 +14,7 @@ const Filters = ({ dispatchPopulateListing }) => {
   const [citySearchValue, setCitySearchValue] = useState("");
   const [selectedAssetTypes, setSelectedAssetType] = useState([]);
   const [rooms, setRooms] = useState({ min: "", max: "" });
-  const [price, setPrice] = useState({ min: undefined, max: undefined });
+  const [price, setPrice] = useState({ min: '', max: '' });
   const [floor, setFloor] = useState({ min: "", max: "" });
   const [squareMetersTotal, setSquareMetersTotal] = useState({
     min: "",
@@ -25,7 +25,7 @@ const Filters = ({ dispatchPopulateListing }) => {
   const [freeText, setFreeText] = useState("");
   const [roomsMates, setRoomMates] = useState({ min: "", max: "" });
 
-  const params = {
+  const data = {
     price,
     rooms,
     selectedAssetTypes,
@@ -34,14 +34,14 @@ const Filters = ({ dispatchPopulateListing }) => {
     floor
   };
 
-  useEffect(() => getFilterdListings(params), []);
+  useEffect(() => getFilterdListings(data), []);
 
-  const getFilterdListings = params => {
+  const getFilterdListings = data => {
     dispatchPopulateListing({
       type: "POPULATE_LISTINGS",
       listings: []
     });
-    axios({ method: "get", url: "/listings", params }).then(res => {
+    axios({ method: "post", url: "/listings", data }).then(res => {
       if (res.data.length === 0)
         document.querySelector("#loader").innerHTML = "לא נמצאו רשומות";
       else
@@ -90,7 +90,7 @@ const Filters = ({ dispatchPopulateListing }) => {
           </button>
           <button
             className="filters--field-container main-nav-bar-button"
-            onClick={() => getFilterdListings(params)}
+            onClick={() => getFilterdListings(data)}
           >
             חיפוש
           </button>

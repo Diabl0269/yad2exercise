@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const moment = require("moment");
 const Schema = mongoose.Schema;
 require("./usersModel");
-const fixFilterDefaults = require('../../utils/fixFilterDefaults')
 
 const assetTypes = [
   "דירה",
@@ -63,20 +62,41 @@ const listingSchema = new Schema(
       entranceDate: String
     },
     attributes: {
-      exclusivity: {text: {type: String, default: 'בלעדיות'}, exists: Boolean},
-      airConditioned: {text: {type: String, default: 'מיזוג'}, exists: Boolean},
-      kitchen: {text: {type: String, default: 'מטבח'}, exists: Boolean},
-      kosherKithecn: {text: {type: String, default: 'מטבח כשר'}, exists: Boolean},
-      lift: {text: {type: String, default: 'מעלית'}, exists: Boolean},
-      bars: {text: {type: String, default: 'סורגים'}, exists: Boolean},
-      renovated: {text: {type: String, default: 'משופצת'}, exists: Boolean},
-      disabledAccess: {text: {type: String, default: 'גישה לנכים'}, exists: Boolean},
-      safeSpace: {text: {type: String, default: 'ממ"ד'}, exists: Boolean},
-      pandorDoor: {text: {type: String, default: 'דלתות פנדור'}, exists: Boolean},
-      warehouse: {text: {type: String, default: 'מחסן'}, exists: Boolean},
-      tadiranAirConditioned: {text: {type: String, default: 'מזגן תדיראן'}, exists: Boolean},
-      furniture: {text: {type: String, default: 'ריהוט'}, exists: Boolean},
-      livingUnit: {text: {type: String, default: 'יחידת דיור'}, exists: Boolean}
+      exclusivity: {
+        text: { type: String, default: "בלעדיות" },
+        exists: Boolean
+      },
+      airConditioned: {
+        text: { type: String, default: "מיזוג" },
+        exists: Boolean
+      },
+      kitchen: { text: { type: String, default: "מטבח" }, exists: Boolean },
+      kosherKithecn: {
+        text: { type: String, default: "מטבח כשר" },
+        exists: Boolean
+      },
+      lift: { text: { type: String, default: "מעלית" }, exists: Boolean },
+      bars: { text: { type: String, default: "סורגים" }, exists: Boolean },
+      renovated: { text: { type: String, default: "משופצת" }, exists: Boolean },
+      disabledAccess: {
+        text: { type: String, default: "גישה לנכים" },
+        exists: Boolean
+      },
+      safeSpace: { text: { type: String, default: 'ממ"ד' }, exists: Boolean },
+      pandorDoor: {
+        text: { type: String, default: "דלתות פנדור" },
+        exists: Boolean
+      },
+      warehouse: { text: { type: String, default: "מחסן" }, exists: Boolean },
+      tadiranAirConditioned: {
+        text: { type: String, default: "מזגן תדיראן" },
+        exists: Boolean
+      },
+      furniture: { text: { type: String, default: "ריהוט" }, exists: Boolean },
+      livingUnit: {
+        text: { type: String, default: "יחידת דיור" },
+        exists: Boolean
+      }
     },
     media: {
       imageBase64: [{ type: String }],
@@ -102,14 +122,24 @@ listingSchema.virtual("assetDetails.totalSquareMeters").get(function() {
     : this.assetDetails.squareMetersBuilt;
 });
 
-listingSchema.index({ "$**": "text" })
+listingSchema.index({ "$**": "text" });
+
+listingSchema.statics.findWithDefaults = async data => {
+  const listings = await listingsModel
+    .find(data)
+    .sort()
+    .populate("listingUser")
+    .exec();
+  console.log(listings);
+    
+  // (error, data) => {
+  // if (error) {
+  // res.locals.error = "לא ניתן להתחבר לשרת";
+  // } else res.locals.data = data;
+  // next();
+};
 
 const listingsModel = mongoose.model("listings", listingSchema);
-
-listingsModel.findWithDefaults = (params) => {
-  fixFilterDefaults(params);
-  console.log(params);
-}
 
 module.exports = listingsModel;
 
@@ -161,13 +191,11 @@ module.exports = listingsModel;
 
 // const mockListingRecord = new listingsModel(mockAptForSale);
 
-
 //   mockListingRecord.save((err, res) =>{
 //     if(err) console.log(err);
 //     else console.log('success');
 //     ;
 //   });
-
 
 // listingsModel.create(mockAptForSale);
 // , (err, created) => {
