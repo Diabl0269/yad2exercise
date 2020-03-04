@@ -36,16 +36,6 @@ const Filters = ({ dispatchPopulateListing }) => {
 
   useEffect(() => getFilterdListings(params), []);
 
-  // const resetValues = () => {
-  //   for (let [key, value] of Object.entries(params)) {
-  //     console.log(`${key}: ${value}`);
-  //     if (typeof value === "object")
-  //       for (let [key, value] of Object.entries(params)) {
-  //         if (value === "") value = undefined;
-  //       }
-  //   }
-  // };
-
   const getFilterdListings = params => {
     dispatchPopulateListing({
       type: "POPULATE_LISTINGS",

@@ -32,17 +32,20 @@ module.exports = (req, res, next) => {
   };
   console.log(sortObject);
   
-  listingsModel
-    .find( {price: {
-      $gte: JSON.parse(req.query.price).max,
-      $lte: JSON.parse(req.query.price).max
-    }})
-    .sort()
-    .populate("listingUser")
-    .exec((error, data) => {      
-      if (error) {
-        res.locals.error = "לא ניתן להתחבר לשרת";
-      } else res.locals.data = data;
-      next();
-    });
+
+  listingsModel.findWithDefaults();
+
+  // listingsModel
+  //   .find( {price: {
+  //     $gte: JSON.parse(req.query.price).max,
+  //     $lte: JSON.parse(req.query.price).max
+  //   }})
+  //   .sort()
+  //   .populate("listingUser")
+  //   .exec((error, data) => {      
+  //     if (error) {
+  //       res.locals.error = "לא ניתן להתחבר לשרת";
+  //     } else res.locals.data = data;
+  //     next();
+  //   });
 };

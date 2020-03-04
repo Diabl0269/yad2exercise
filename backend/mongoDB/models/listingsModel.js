@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const moment = require("moment");
 const Schema = mongoose.Schema;
 require("./usersModel");
+const fixFilterDefaults = require('../../utils/fixFilterDefaults')
 
 const assetTypes = [
   "דירה",
@@ -104,6 +105,11 @@ listingSchema.virtual("assetDetails.totalSquareMeters").get(function() {
 listingSchema.index({ "$**": "text" })
 
 const listingsModel = mongoose.model("listings", listingSchema);
+
+listingsModel.findWithDefaults = (params) => {
+  fixFilterDefaults(params);
+  console.log(params);
+}
 
 module.exports = listingsModel;
 
