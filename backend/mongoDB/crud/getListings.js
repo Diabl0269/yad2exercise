@@ -1,13 +1,13 @@
 const listingsModel = require("../models/listingsModel");
-const fixFilterDefaults = require("../../utils/fixFilterDefaults");
 
-module.exports = (req, res, next) => {  
-  fixFilterDefaults(req.body);  
-  const sortObject = {
+module.exports = async (req, res, next) => {
+  const filterObject = {
     price: {
-      $gte: req.body.price.min,
-      $lte: req.body.price.max
-    },
+      $range: [req.body.price.min, req.body.price.max]
+    }
+    // $gte: req.body.price.min,
+    // $lte: req.body.price.max
+
     // rooms: {
     //   $gte: (req.body.rooms.min = ""),
     //   $lte: (req.body.rooms.min = "")
@@ -28,9 +28,24 @@ module.exports = (req, res, next) => {
     // description: { $regex: /^[x{0590}\–x{05FF}\\s]*$/ },
     // $text: {$search:  },
 
-    ...req.advanced
+    // ...req.advanced
   };
-  
 
-  listingsModel.findWithDefaults(sortObject);
+  try {
+    console.log(filterObject);
+    // filterObject
+    res.locals.data = await listingsModel.find();
+    next();
+  } catch {
+    
+    res.status(500).send("שגיאת שרת");
+  }
+
+  // const listings = await listingsModel
+  //   .find(data)
+  //   .sort()
+  //   .populate("listingUser")
+  //   .exec();
+
+  // res.locals = listingsModel.findWithDefaults(sortObject);
 };

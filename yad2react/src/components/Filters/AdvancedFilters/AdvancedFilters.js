@@ -7,7 +7,7 @@ import SearchAndReset from './SearchAndReset';
 const AdvancedFilters = () => {
 
   return (
-    <div className="filters__advanced-dropdown-container">
+    <div id="advancedFilters" className="filters__advanced-dropdown-container">
       <AssetAttributes />
       <AssetDetails />
       <FreeTextFilter />

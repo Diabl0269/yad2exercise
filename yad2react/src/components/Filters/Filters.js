@@ -7,7 +7,7 @@ import PriceFilter from "./PriceFilter";
 import PropertyTypeFilter from "./PropertyTypeFilter";
 import RoomsFilter from "./RoomsFilter";
 import FiltersContext from "../../context/FiltersContext";
-import Loader from "../Loader";
+import toggleDropDown from '../../utils/toggleDropDown';
 
 const Filters = ({ dispatchPopulateListing }) => {
   const { currentListingsType, dispatch } = useContext(ListingsTypeContext);
@@ -37,6 +37,8 @@ const Filters = ({ dispatchPopulateListing }) => {
   useEffect(() => getFilterdListings(data), []);
 
   const getFilterdListings = data => {
+    console.log('haha');
+    
     dispatchPopulateListing({
       type: "POPULATE_LISTINGS",
       listings: []
@@ -85,7 +87,7 @@ const Filters = ({ dispatchPopulateListing }) => {
           )}
           <PriceFilter price={price} setPrice={setPrice} />
 
-          <button className="filters--field-container filters--advanced-search-button">
+          <button className="filters--field-container filters--advanced-search-button" onClick={e => toggleDropDown(e, 'advancedFilters')}>
             חיפוש מתקדם
           </button>
           <button
@@ -109,7 +111,8 @@ const Filters = ({ dispatchPopulateListing }) => {
           setEntranceDate,
           freeText,
           setFreeText,
-          getFilterdListings
+          getFilterdListings,
+          data
         }}
       >
         <AdvancedFilters />

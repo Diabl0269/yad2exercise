@@ -124,21 +124,6 @@ listingSchema.virtual("assetDetails.totalSquareMeters").get(function() {
 
 listingSchema.index({ "$**": "text" });
 
-listingSchema.statics.findWithDefaults = async data => {
-  const listings = await listingsModel
-    .find(data)
-    .sort()
-    .populate("listingUser")
-    .exec();
-  console.log(listings);
-    
-  // (error, data) => {
-  // if (error) {
-  // res.locals.error = "לא ניתן להתחבר לשרת";
-  // } else res.locals.data = data;
-  // next();
-};
-
 const listingsModel = mongoose.model("listings", listingSchema);
 
 module.exports = listingsModel;
