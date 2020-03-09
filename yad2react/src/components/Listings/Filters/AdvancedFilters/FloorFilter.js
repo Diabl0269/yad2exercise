@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import FiltersContext from "../../../context/FiltersContext";
+import FiltersContext from "../../../../context/FiltersContext";
 
 const FloorFilter = () => {
-  const { floor, setFloor } = useContext(FiltersContext);
+  const [floor, setFloor] = useContext(FiltersContext).filterState.floor
   const numbersOptionsArray = [
     "הכל",
     "מרתף",
@@ -48,10 +48,10 @@ const FloorFilter = () => {
   return (
     <div className="filters--field-container">
       קומה
-      <div className='align-row'>
-      {innerInputContainer("מ-", "min")}
-      {innerInputContainer("עד-", "max")}
-      <datalist id="floorsNumber">{numbersOptionsJSX()}</datalist>
+      <div className="align-row">
+        {innerInputContainer("מ-", "min")}
+        {innerInputContainer("עד-", "max")}
+        <datalist id="floorsNumber">{numbersOptionsJSX()}</datalist>
       </div>
     </div>
   );

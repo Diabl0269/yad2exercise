@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import FiltersContext from "../../../context/FiltersContext";
 
-const PriceFilter = ({ price, setPrice }) => {
+const PriceFilter = () => {
+  const [price, setPrice] = useContext(FiltersContext).filterState.price;
   const handleSetPrice = ({ id, value }) => {
     if (value === "" || !isNaN(value[value.length - 1])) {
       id = id.slice(0, 3);

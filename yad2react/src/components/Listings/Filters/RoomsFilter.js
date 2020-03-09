@@ -1,7 +1,9 @@
-import React from "react";
-import openDropDown from "../../utils/openDropDown";
+import React, { useContext } from "react";
+import openDropDown from '../../../utils/openDropDown';
+import FiltersContext from "../../../context/FiltersContext";
 
-const RoomsFilterBox = ({ roomsNumber, setRooms }) => {
+const RoomsFilterBox = () => {
+  const [roomsNumber, setRooms] = useContext(FiltersContext).filterState.rooms;
   const numbersOptionsArray = [
     "הכל",
     1,

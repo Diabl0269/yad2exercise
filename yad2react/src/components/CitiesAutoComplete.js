@@ -1,7 +1,8 @@
 import React from "react";
 import Autosuggest from "react-autosuggest";
-import cityNames from '../utils/cityNames';
-import theme from '../utils/theme';
+
+import cityNames from "../data/cityNames";
+import theme from "../utils/theme";
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {
@@ -42,9 +43,9 @@ class CitiesAutoComplete extends React.Component {
     this.setState({
       value: newValue
     });
-  
-    this.state.changeCitySearchValueHandler(newValue)
-      };
+
+    this.state.changeCitySearchValueHandler(newValue);
+  };
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.

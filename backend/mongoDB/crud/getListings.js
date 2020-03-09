@@ -3,7 +3,7 @@ const listingsModel = require("../models/listingsModel");
 module.exports = async (req, res, next) => {
   const filterObject = {
     price: {
-      $range: [req.body.price.min, req.body.price.max]
+      // $range: [req.body.price.min, req.body.price.max]
     }
     // $gte: req.body.price.min,
     // $lte: req.body.price.max
@@ -32,9 +32,11 @@ module.exports = async (req, res, next) => {
   };
 
   try {
-    console.log(filterObject);
-    // filterObject
-    res.locals.data = await listingsModel.find();
+    //VERY BAD, DONT USE THIS IN PRODUCTION
+    const result = await listingsModel.find()
+    if(req.body.price.min && req.body.price.max)
+      res.locals.data = result.filter(record => record.saleDetails.price >= req.body.price.min && record.saleDetails.price <= req.body.price.max)
+    else res.locals.data = result    
     next();
   } catch {
     

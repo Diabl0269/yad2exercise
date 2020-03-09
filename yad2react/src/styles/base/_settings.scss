@@ -26,6 +26,7 @@ $li-width: 695px;
 $li-heigth: 120px;
 
 //maring and padding
+$l-mp: 5%;
 $m-mp: 2%;
 $s-mp: 0.4rem;
 $xs-mp: .5%;
@@ -51,6 +52,10 @@ $mobile-breakpoint: 45rem;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.align-right {
+  align-items: initial;
 }
 
 .button-size {
@@ -79,14 +84,30 @@ $mobile-breakpoint: 45rem;
 }
 
 .orange-text {
-  color: $orange;
+  color: $orange !important;
+}
+
+.orange-border { 
+  border-color: $orange !important; 
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .push-left {
   padding-left: $xs-size;
 }
 
-.margin-right {
+.margin-all-large {
+  margin: $l-mp
+}
+
+.margin-right-l {
+  margin-right: $l-mp;
+}
+
+.margin-right-m {
   margin-right: $m-mp;
 }
 

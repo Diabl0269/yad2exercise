@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
-import FiltersContext from "../../../context/FiltersContext";
+import FiltersContext from "../../../../context/FiltersContext";
 import DatePicker from "react-datepicker";
 
 const EntranceDateFilter = () => {
-  const { entranceDate, setEntranceDate } = useContext(FiltersContext);
+  const [entranceDate, setEntranceDate] = useContext(
+    FiltersContext
+  ).filterState.entranceDate;
   const [isTodayArray, setIsToday] = useState([]);
   const isTodayItem = "isToday";
   const placeholderText = "החל מ- הזינו תאריך 📆";
@@ -24,9 +26,8 @@ const EntranceDateFilter = () => {
           }
         />
       </div>
-      <div className="margin-right">
-
-          {/* Should be a checkbox component
+      <div className="margin-right-m">
+        {/* Should be a checkbox component
         <li className="checkbox__list-item">
           <input
             type="checkbox"
@@ -35,7 +36,6 @@ const EntranceDateFilter = () => {
           />
           כניסה מיידית
         </li> */}
-
       </div>
     </div>
   );

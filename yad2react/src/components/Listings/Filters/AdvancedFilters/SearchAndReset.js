@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import FiltersContext from '../../../context/FiltersContext';
+import FiltersContext from '../../../../context/FiltersContext';
 
 
 const SearchAndReset = () => {
 
-    const {getFilterdListings, data} = useContext(FiltersContext);
+    const {getFilterdListings, data} = useContext(FiltersContext).filterState;
 
     return <div className='align-row'>
         <button className='main-nav-bar-button margin-right-half' onClick={() => getFilterdListings(data)}>חיפוש</button>

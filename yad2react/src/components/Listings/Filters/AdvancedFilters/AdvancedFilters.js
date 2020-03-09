@@ -5,7 +5,6 @@ import FreeTextFilter from "./FreeTextFilter";
 import SearchAndReset from './SearchAndReset';
 
 const AdvancedFilters = () => {
-
   return (
     <div id="advancedFilters" className="filters__advanced-dropdown-container">
       <AssetAttributes />

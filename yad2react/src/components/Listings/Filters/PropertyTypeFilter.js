@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import { assetTypes } from "../../utils/assetCategories";
-import openDropDown from "../../utils/openDropDown";
-import Checkbox from "../Checkbox";
+import React, { useState, useContext } from "react";
+import { assetTypes } from '../../../data/assetCategories';
 
-const PropertyTypeFilter = ({ selectedAssetTypes, setSelectedAssetType }) => {
+import openDropDown from "../../../utils/openDropDown";
+import Checkbox from "../../Checkbox";
+import FiltersContext from "../../../context/FiltersContext";
+
+const PropertyTypeFilter = () => {
+  const [selectedAssetTypes, setSelectedAssetType] = useContext(
+    FiltersContext
+  ).filterState.selectedAssetTypes;
   const [isAssetTypeDropDownOpen, setAssetTypeDropDownOpen] = useState(false);
 
-  const buttonID = 'moreTypesFilterButton'
+  const buttonID = "moreTypesFilterButton";
 
   const assetTypesCount =
     selectedAssetTypes.length === 0
@@ -41,14 +46,17 @@ const PropertyTypeFilter = ({ selectedAssetTypes, setSelectedAssetType }) => {
                   .slice(0, 6)
                   .map(type => (
                     <Checkbox
-                    key={type}
+                      key={type}
                       item={type}
                       selectedItems={selectedAssetTypes}
                       setItem={setSelectedAssetType}
                     />
                   ))}
           </ul>
-          <button id={buttonID} className='background-none orange-text'> {displayMoreText} סוגים ></button>
+          <button id={buttonID} className="background-none orange-text">
+            {" "}
+            {displayMoreText} סוגים >
+          </button>
         </div>
       </div>
     </div>

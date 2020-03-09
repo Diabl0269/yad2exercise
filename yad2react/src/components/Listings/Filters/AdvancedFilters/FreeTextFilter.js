@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import FiltersContext from "../../../context/FiltersContext";
+import FiltersContext from "../../../../context/FiltersContext";
 
 const FreeTextFilter = () => {
-  const { freeText, setFreeText } = useContext(FiltersContext);
+  const  [freeText, setFreeText ] = useContext(FiltersContext).filterState.freeText;
 
   return (
     <div className="filters--field-container border-bottom">
