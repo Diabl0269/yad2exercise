@@ -32,14 +32,23 @@ module.exports = async (req, res, next) => {
   };
 
   try {
+    const result = await listingsModel
+      .find()
+      .sort(req.body.sortBy)
+      .populate("listingUser")
+      .exec();
+
     //VERY BAD, DONT USE THIS IN PRODUCTION
-    const result = await listingsModel.find()
-    if(req.body.price.min && req.body.price.max)
-      res.locals.data = result.filter(record => record.saleDetails.price >= req.body.price.min && record.saleDetails.price <= req.body.price.max)
-    else res.locals.data = result    
+    if (req.body.price.min && req.body.price.max)
+      res.locals.data = result.filter(
+        record =>
+          record.saleDetails.price >= req.body.price.min &&
+          record.saleDetails.price <= req.body.price.max
+      );
+    else res.locals.data = result;
+
     next();
   } catch {
-    
     res.status(500).send("שגיאת שרת");
   }
 

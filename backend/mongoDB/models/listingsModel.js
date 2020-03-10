@@ -59,7 +59,7 @@ const listingSchema = new Schema(
     },
     saleDetails: {
       price: Number,
-      entranceDate: String
+      entranceDate: Number
     },
     attributes: {
       exclusivity: {
@@ -102,11 +102,12 @@ const listingSchema = new Schema(
       imageBase64: [{ type: String }],
       videoBase64: [{ type: String }]
     },
-    createdAt: { type: String, default: moment().format() },
-    updatedAt: { type: String, default: moment().format() },
+    // createdAt: { type: String, default: moment().format() },
+    // updatedAt: { type: String, default: moment().format() },
     listingUser: { type: Schema.Types.ObjectId, ref: "users", required: true }
   },
   {
+    timestamps: { createdAt: "createAt", updatedAt: "updatedAt" },
     toObject: {
       virtuals: true
     },
@@ -128,59 +129,64 @@ const listingsModel = mongoose.model("listings", listingSchema);
 
 module.exports = listingsModel;
 
-// const mockAptForSale = {
-//   address: {
-//     city: "מודיעין",
-//     street: "המודיענים",
-//     streetNumber: 13,
-//     entrance: 2,
-//     neighborhood: "מזרח העיר",
-//     area: "מזרח",
-//     reciveMonthlyUpdates: true
-//   },
-//   assetDetails: {
-//     assetType: "טריפלקס",
-//     assetState: "משופץ",
-//     floor: 11,
-//     rooms: 4,
-//     totalFloors: 15,
-//     furnitureDescription: "ריהוט מטורף, ממש יפה, כדאי לקנות",
-//     description: "בסדר הדירה הזאת",
-//     squareMetersBuilt: 133,
-//     squareMetersGarden: 100
-//   },
-//   saleDetails: {
-//     price: 1500000,
-//     entrance: Date.now()
-//   },
-//   media: {
-//     imageBase64: null,
-//     videoBase64: null
-//   },
-//   attributes: {
-//     airConditioned: {exists: true},
-//     kitchen: {exists: true},
-//     lift: {exists: false},
-//     bars: {exists: false},
-//     renovated: {exists: false},
-//     disabledAccess: {exists: false},
-//     safeSpace: {exists: false},
-//     pandorDoor: {exists: false},
-//     warehouse: {exists: false},
-//     tadiranAirConditioned: {exists: true},
-//     furniture: {exists: true},
-//     livingUnit: {exists: false}
-//   },
-//   listingUser: "5e4a6ee46f74d85594c322e4"
-// };
+const mockAptForSale = {
+  address: {
+    city: "ירושלים",
+    street: "הרצל",
+    streetNumber: 2,
+    entrance: 1,
+    neighborhood: "הר הרצל",
+    area: "מערב",
+    reciveMonthlyUpdates: true
+  },
+  assetDetails: {
+    assetType: "דיור מוגן",
+    assetState: "משופץ",
+    floor: 3,
+    rooms: 2,
+    totalFloors: 7,
+    furnitureDescription: "משהו משהו",
+    description: "דירת בוטיק",
+    squareMetersBuilt: 32,
+    squareMetersGarden: 6
+  },
+  saleDetails: {
+    price: 600000,
+    entrance: Date.now()
+  },
+  media: {
+    imageBase64: null,
+    videoBase64: null
+  },
+  attributes: {
+    airConditioned: { exists: true },
+    kitchen: { exists: true },
+    lift: { exists: false },
+    bars: { exists: false },
+    renovated: { exists: false },
+    disabledAccess: { exists: false },
+    safeSpace: { exists: false },
+    pandorDoor: { exists: false },
+    warehouse: { exists: false },
+    tadiranAirConditioned: { exists: true },
+    furniture: { exists: true },
+    livingUnit: { exists: false }
+  },
+  listingUser: "5e4a6ee46f74d85594c322e4"
+};
 
-// const mockListingRecord = new listingsModel(mockAptForSale);
 
-//   mockListingRecord.save((err, res) =>{
-//     if(err) console.log(err);
-//     else console.log('success');
-//     ;
-//   });
+// const registerMocks = async () => {
+//   for(let i = 0; i < 10; i++){
+//     const mockListingRecord = new listingsModel(mockAptForSale);
+//     // mockListingRecord._id = new mongoose.Types.ObjectId();
+//    await mockListingRecord.save((err, res) => {
+//       if (err) console.log(err);
+//       else console.log("success");
+//     });
+//   }
+// }
+// registerMocks()
 
 // listingsModel.create(mockAptForSale);
 // , (err, created) => {
