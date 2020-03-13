@@ -5,12 +5,12 @@ import FiltersContext from "../../../../context/FiltersContext";
 
 const OnlyWithButton = ({ text, only }) => {
   const [value, dispatch] = only;
-  const { filterState, dispatch: listingsDispatch } = useContext(
+  const { queryObj, dispatch: listingsDispatch } = useContext(
     FiltersContext
   );
   const clickHandler = () => {
     dispatch(!value);    
-    getFilterdListings(filterState, listingsDispatch);
+    getFilterdListings(queryObj, listingsDispatch);
   };
   return (
     <div

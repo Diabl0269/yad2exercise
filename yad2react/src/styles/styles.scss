@@ -2,13 +2,14 @@
 @import "./base/settings";
 @import "./base/base";
 @import "./components/button";
-@import "./components/nav-bars";
-@import "./components/listing/listing";
-@import "./components/list-item/closed-record";
-@import "./components/list-item/open-record/open-record";
-@import "./components/list-item/open-record/dropdown";
-@import "./components/list-item/open-record/description";
-@import "./components/listing/filters/filters";
 @import "./components/list";
+@import "./components/list-item/closed-record";
+@import "./components/list-item/open-record/description";
+@import "./components/list-item/open-record/dropdown";
+@import "./components/list-item/open-record/open-record";
+@import "./components/listing/filters/filters";
+@import "./components/listing/listing";
+@import "./components/nav-bars";
 @import './components/checkbox';
-
+@import './components/footer';
+@import './components/pagination';

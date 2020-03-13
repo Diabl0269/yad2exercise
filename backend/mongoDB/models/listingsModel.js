@@ -177,7 +177,7 @@ const mockAptForSale = {
 
 
 // const registerMocks = async () => {
-//   for(let i = 0; i < 10; i++){
+//   for(let i = 0; i < 30; i++){
 //     const mockListingRecord = new listingsModel(mockAptForSale);
 //     // mockListingRecord._id = new mongoose.Types.ObjectId();
 //    await mockListingRecord.save((err, res) => {

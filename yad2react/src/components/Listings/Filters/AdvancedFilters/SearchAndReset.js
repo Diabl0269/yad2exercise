@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import FiltersContext from '../../../../context/FiltersContext';
-
+import getFilterdListings from '../../../../utils/getFilterdListings';
 
 const SearchAndReset = () => {
 
-    const {getFilterdListings, data} = useContext(FiltersContext).filterState;
+    const {queryObj, dispatch} = useContext(FiltersContext);
+    
 
     return <div className='align-row'>
-        <button className='main-nav-bar-button margin-right-half' onClick={() => getFilterdListings(data)}>חיפוש</button>
+        <button className='main-nav-bar-button margin-right-half' onClick={() => getFilterdListings(queryObj, dispatch)}>חיפוש</button>
         <button className='button-size margin-left ' onClick={() => alert('כאן יהיה כפתור ניקוי')}>ניקוי</button>
     </div>
 }

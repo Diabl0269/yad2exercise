@@ -1,10 +1,12 @@
 import React, {useReducer} from "react";
-import MainNavBar from "./MainNavBar";
-import SecondaryNavBar from "./SeconderyNavBar";
-import ListingsContainer from "./Listings/ListingsContainer";
-import listingsTypeReducer from '../reducers/listingsType';
-import ListingsTypeContext from '../context/ListingsTypeContext';
-import closeDropDownsHandler from '../utils/closeDropDownsHandler';
+import Footer from '../Footer';
+import ListingsContainer from "../Listings/ListingsContainer";
+import ListingsTypeContext from '../../context/ListingsTypeContext';
+import MainNavBar from "../MainNavBar";
+import SecondaryNavBar from "../SeconderyNavBar";
+import closeDropDownsHandler from '../../utils/closeDropDownsHandler';
+import listingsTypeReducer from '../../reducers/listingsType';
+
 const MainPage = () => {
   const [currentListingsType, dispatch] = useReducer(listingsTypeReducer, "מכירה");
   window.onclick = e => closeDropDownsHandler(e);
@@ -16,6 +18,7 @@ const MainPage = () => {
       <SecondaryNavBar />
       <ListingsContainer currentListingsType={currentListingsType} changeListingsType={dispatch}/>
       </ListingsTypeContext.Provider>
+      <Footer />
     </div>
   );
 };

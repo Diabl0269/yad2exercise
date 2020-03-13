@@ -1,6 +1,7 @@
 //colors
 $border-color: rgba(0, 0, 0, 0.1);
 $dark-orange: #ce5b00;
+$light-orange: #fff1e5;
 $green: #0fca80;
 $grey: #f9f9f9;
 $off-black: #363636;
@@ -29,7 +30,7 @@ $li-heigth: 120px;
 $l-mp: 5%;
 $m-mp: 2%;
 $s-mp: 0.4rem;
-$xs-mp: .5%;
+$xs-mp: 0.5%;
 
 //other sizes
 $l-size: 7rem;
@@ -68,11 +69,18 @@ $mobile-breakpoint: 45rem;
 
 .border-bottom {
   border-bottom: $s-border solid $border-color;
-
 }
 
 .border-left {
   border-left: $s-border solid $border-color;
+}
+
+.white-text {
+  color: white;
+}
+
+.white-text * {
+  color: white;
 }
 
 .smallest-text {
@@ -87,8 +95,8 @@ $mobile-breakpoint: 45rem;
   color: $orange !important;
 }
 
-.orange-border { 
-  border-color: $orange !important; 
+.orange-border {
+  border-color: $orange !important;
 }
 
 .space-between {
@@ -100,7 +108,7 @@ $mobile-breakpoint: 45rem;
 }
 
 .margin-all-large {
-  margin: $l-mp
+  margin: $l-mp;
 }
 
 .margin-right-l {
@@ -133,6 +141,13 @@ $mobile-breakpoint: 45rem;
 
 .align-self-center {
   align-self: center;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
 }
 
 .red-background {

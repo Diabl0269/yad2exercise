@@ -8,7 +8,7 @@ import FiltersContext from "../../../context/FiltersContext";
 const PropertyTypeFilter = () => {
   const [selectedAssetTypes, setSelectedAssetType] = useContext(
     FiltersContext
-  ).filterState.selectedAssetTypes;
+  ).queryObj.selectedAssetTypes;
   const [isAssetTypeDropDownOpen, setAssetTypeDropDownOpen] = useState(false);
 
   const buttonID = "moreTypesFilterButton";

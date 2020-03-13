@@ -1,13 +1,14 @@
 import axios from "axios";
 import mapStateToData from "./mapStateToData";
 
-const getFilterdListings = async (filtersState, dispatch) => {
-  dispatch([])
-  const filtersData = mapStateToData(filtersState);
-  const res = await axios.post("/listings", filtersData);
+const getFilterdListings = async (queryObj, dispatch) => {
+  dispatch([]);
+  const queryData = mapStateToData(queryObj);
+  const res = await axios.post("/listings", queryData);
   if (res.data.length === 0)
-    document.querySelector("#loader").innerHTML = "לא נמצאו רשומות";
-  dispatch(res.data);
+    return (document.querySelector("#loader").innerHTML = "לא נמצאו רשומות");
+  queryObj.count[1](res.data.count);
+  dispatch(res.data.listings); 
 };
 
 export default getFilterdListings;

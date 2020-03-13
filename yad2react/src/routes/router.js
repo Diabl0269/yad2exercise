@@ -1,8 +1,10 @@
 import React from "react";
-import MainPage from "../components/MainPage";
+import MainPage from "../components/Pages/MainPage";
+import LoginPage from '../components/Pages/LoginPage';
 
 const routes = {
-    '/': () => <MainPage />
+    '/': () => <MainPage />,
+    '/login': () => <LoginPage />
 }
 
 export default routes;

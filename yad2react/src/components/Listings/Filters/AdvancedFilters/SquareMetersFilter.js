@@ -4,7 +4,7 @@ import FiltersContext from "../../../../context/FiltersContext";
 const SquareMetersFilter = () => {
   const [squareMetersTotal, setSquareMetersTotal] = useContext(
     FiltersContext
-  ).filterState.squareMetersTotal;
+  ).queryObj.squareMetersTotal;
   const handleSetSquareMeters = ({ id, value }) => {
     if (value === "" || !isNaN(value[value.length - 1])) {
       id = id.slice(0, 3);

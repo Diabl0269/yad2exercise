@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 const EntranceDateFilter = () => {
   const [entranceDate, setEntranceDate] = useContext(
     FiltersContext
-  ).filterState.entranceDate;
+  ).queryObj.entranceDate;
   const [isTodayArray, setIsToday] = useState([]);
   const isTodayItem = "isToday";
   const placeholderText = "החל מ- הזינו תאריך 📆";

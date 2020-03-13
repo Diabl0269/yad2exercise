@@ -3,7 +3,7 @@ import openDropDown from '../../../utils/openDropDown';
 import FiltersContext from "../../../context/FiltersContext";
 
 const RoomsFilterBox = () => {
-  const [roomsNumber, setRooms] = useContext(FiltersContext).filterState.rooms;
+  const [roomsNumber, setRooms] = useContext(FiltersContext).queryObj.rooms;
   const numbersOptionsArray = [
     "הכל",
     1,

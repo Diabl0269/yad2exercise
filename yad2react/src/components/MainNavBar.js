@@ -1,4 +1,5 @@
 import React from "react";
+import { A } from "hookrouter";
 
 const MainNavBar = () => {
   const dosentExistAlert = text => alert(`כאן יהיה עמוד ${text}`);
@@ -17,7 +18,7 @@ const MainNavBar = () => {
     { text: "השוואת רכבים", clickHandler: dosentExistAlert },
     { text: "חיפושים אחרונים", clickHandler: dosentExistAlert },
     { text: "מודעות שמורות", clickHandler: dosentExistAlert },
-    { text: "אזור אישי", clickHandler: dosentExistAlert }
+    { text: "אזור אישי" }
   ];
 
   return (
@@ -30,12 +31,15 @@ const MainNavBar = () => {
         </li>
         {mainNavBarCategories.map(category => (
           <li key={category.text}>
-            <button
+            { (category.text === 'נדל"ן' && <div className='main-nav-bar-button'>
+                <A  className='white-text' href="/">{category.text} </A>
+                </div>) ||
+              <button
               className="main-nav-bar-button"
               onClick={() => category.clickHandler(category.text)}
             >
               {category.text}
-            </button>
+            </button>}
             <div className="dropdown">
               בלה בלה בלה
               <br />
@@ -44,18 +48,23 @@ const MainNavBar = () => {
           </li>
         ))}
       </ul>
-
       <ul className="list__nav-bar">
-        {mainNavBarActions.map(action => (
-          <li key={action.text}>
-            <button
-              className="main-nav-bar-button"
-              onClick={() => action.clickHandler(action.text)}
-            >
-              {action.text}
-            </button>
-          </li>
-        ))}
+        {mainNavBarActions.map(action => {
+          return (
+            <li key={action.text} >
+              {(action.text === "אזור אישי" && 
+              <div className='main-nav-bar-button'>
+                <A  className='white-text' href="/login">{action.text} </A>
+                </div>) ||
+              <button
+                className="main-nav-bar-button"
+                onClick={() => action.clickHandler(action.text)}
+              >
+                {action.text}
+          </button> }
+            </li>
+          );
+        })}
         <li key="addListingButton">
           <button className="main-nav-bar-button add-post-button">
             פרסום מודעה

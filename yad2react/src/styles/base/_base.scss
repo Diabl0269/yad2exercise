@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  color: #363636;
+  color: $off-black;
   direction: rtl;
   display: block;
   font: $l-font Rubik, sans-serif;
@@ -26,4 +26,8 @@ button {
 }
 ::placeholder {
   color: $off-white;
+}
+
+a {
+  text-decoration: none;
 }

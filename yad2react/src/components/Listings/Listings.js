@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import ListItem from '../ListItem/ListItem';
 import Loader from '../Loader';
+import FiltersContext from "../../context/FiltersContext";
 
-const Listings = ({listings}) => {
+const Listings = () => {
+  const {listings} = useContext(FiltersContext)  
   return listings && listings.length > 0 ? (
     <ul className="listing-container">
       {listings.map(record => (

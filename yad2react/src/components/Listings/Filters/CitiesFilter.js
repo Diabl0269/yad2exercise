@@ -3,7 +3,7 @@ import CitiesAutoComplete from '../../CitiesAutoComplete';
 import FiltersContext from "../../../context/FiltersContext";
 
 const CitiesFilter = () => {  
-const [citySearchValue, setCitySearchValue] = useContext(FiltersContext).filterState.citySearchValue;
+const [citySearchValue, setCitySearchValue] = useContext(FiltersContext).queryObj.citySearchValue;
   return (
     <div className="filters--field-container">
       חפשו עיר

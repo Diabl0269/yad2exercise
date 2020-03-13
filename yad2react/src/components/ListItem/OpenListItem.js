@@ -15,7 +15,7 @@ const OpenListItem = ({
   listingUser,
   attributes
 }) => {
-  const { rooms, floor, totalSquareMeters } = assetDetails;
+  const { rooms, floor, totalSquareMeters } = assetDetails;  
   const { agencyName = "" } = listingUser.userDetails;
   
   return (

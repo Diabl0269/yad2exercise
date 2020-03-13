@@ -3,7 +3,7 @@ import FiltersContext from '../../../../context/FiltersContext';
 import OnlyWithButton from './OnlyWithButton';
 
 const OnlyWithFilter = () => {
-    const { onlyWithPhotos, onlyWithPrice } = useContext(FiltersContext).filterState
+    const { onlyWithPhotos, onlyWithPrice } = useContext(FiltersContext).queryObj
     
     return <div className='align-row '>
         הצג מודעות

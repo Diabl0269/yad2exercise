@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import FiltersContext from "../../../../context/FiltersContext";
 
 const FloorFilter = () => {
-  const [floor, setFloor] = useContext(FiltersContext).filterState.floor
+  const [floor, setFloor] = useContext(FiltersContext).queryObj.floor
   const numbersOptionsArray = [
     "הכל",
     "מרתף",

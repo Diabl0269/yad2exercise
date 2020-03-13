@@ -28,10 +28,12 @@
   background: $orange;
   color: white;
   height: 4rem;
+  display: flex;
+  align-items: center;
+  padding: $s-mp;
 &:hover {
   background: $dark-orange;
 }
-
   &:hover ~div{
         display: block;
   }

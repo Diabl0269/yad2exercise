@@ -1,30 +1,31 @@
 import Filters from "./Filters/Filters";
-import React, { useReducer, useState, useEffect } from "react";
-import Listings from "./Listings";
-import SortBar from "./SortBar/SortBar";
-import listingsReducer from "../../reducers/listings";
-import useFiltersState from "../../hooks/useFiltersState";
 import FiltersContext from "../../context/FiltersContext";
-import getFilterdListings from '../../utils/getFilterdListings';
+import Listings from "./Listings";
+import Pagination from "./Pagination";
+import React, { useReducer, useState, useEffect } from "react";
+import SortBar from "./SortBar/SortBar";
+import getFilterdListings from "../../utils/getFilterdListings";
+import useQuery from "../../hooks/useQuery";
+import useGetListings from '../../utils/useGetListings';
 
-const ListingsContainer = ({ currentListingsType, changeListingsType }) => {
-  // const [listings, dispatch] = useReducer(listingsReducer, []);
+const ListingsContainer = () => {
   const [listings, dispatch] = useState([]);
-  const filterState = useFiltersState();
+  const queryObj = useQuery();
 
-  useEffect(() => {getFilterdListings( filterState, dispatch )}, []);
-
+  useEffect(() => {
+    getFilterdListings(queryObj, dispatch);
+  }, []);
 
   return (
     <div className="list-container">
-      <FiltersContext.Provider value={{filterState, dispatch}}>
+      <FiltersContext.Provider value={{ queryObj, listings, dispatch }}>
         <Filters dispatch={dispatch} />
 
         <div id="listing" className="list-center">
           <div>
             <SortBar />
-            <Listings listings={listings} />
-            <div className="page-selector"></div>
+            <Listings />
+            <Pagination />
           </div>
           <div className="map"></div>
         </div>

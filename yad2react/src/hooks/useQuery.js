@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const useFiltersState = () => {
+const useQuery = () => {
   const edgesObj = { min: "", max: "" };
 
   return {
@@ -16,8 +16,10 @@ const useFiltersState = () => {
     selectedAssetTypes: useState([]),
     selectedAttributes: useState([]),
     squareMetersTotal: useState(edgesObj),
-    sortObj: useState('')
+    sortBy: useState('-updatedAt'),
+    skip: useState(0),
+    count: useState(0)
   };
 };
 
-export default useFiltersState;
+export default useQuery;

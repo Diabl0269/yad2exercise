@@ -9,9 +9,9 @@ import FiltersContext from "../../../context/FiltersContext";
 import toggleDropDown from "../../../utils/toggleDropDown";
 import getFilterdListings from "../../../utils/getFilterdListings";
 
-const Filters = ({ dispatch: dispatchPopulateListing }) => {
+const Filters = () => {
   const { currentListingsType } = useContext(ListingsTypeContext);
-  const { filterState, dispatch } = useContext(FiltersContext);
+  const { queryObj, dispatch } = useContext(FiltersContext);
 
   return (
     <div>
@@ -49,8 +49,7 @@ const Filters = ({ dispatch: dispatchPopulateListing }) => {
           <button
             className="filters--field-container main-nav-bar-button"
             onClick={() => {
-              console.log(filterState);
-              getFilterdListings( filterState, dispatch );
+              getFilterdListings( queryObj, dispatch );
             }}
           >
             חיפוש
