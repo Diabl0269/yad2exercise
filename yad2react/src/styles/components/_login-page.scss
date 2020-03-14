@@ -1,0 +1,17 @@
+.login-form {
+    @include align-column;
+    @include box-shadow;
+    margin: $l-mp 0;
+    padding: $m-mp;
+    width: 25%;
+    background: white;
+
+}
+
+.login-button {
+    @include button($orange, $s-size)
+}
+
+.login--new-user-button {
+    @include button ($off-white, $s-size)
+}

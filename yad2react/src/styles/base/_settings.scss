@@ -12,6 +12,7 @@ $very-dark-orange: #df6200;
 
 //sizes
 $half: 50%;
+$full: 100%;
 
 //text-sizes
 $l-font: 16px;
@@ -33,7 +34,8 @@ $s-mp: 0.4rem;
 $xs-mp: 0.5%;
 
 //other sizes
-$l-size: 7rem;
+$xl-size: 7rem;
+$l-size: 4rem;
 $m-size: 3rem;
 $s-size: 2rem;
 $xs-size: 1rem;
@@ -60,7 +62,7 @@ $mobile-breakpoint: 45rem;
 }
 
 .button-size {
-  height: 4rem;
+  height: $l-size;
 }
 
 .background-none {
@@ -131,12 +133,21 @@ $mobile-breakpoint: 45rem;
   margin-bottom: $m-mp;
 }
 
+.margin-top-bottom-l {
+  margin: $l-mp 0
+}
+
+
 .block {
   display: block;
 }
 
 .width-half {
   width: 50%;
+}
+
+.align-items-center {
+  align-items: center;
 }
 
 .align-self-center {
@@ -152,4 +163,41 @@ $mobile-breakpoint: 45rem;
 
 .red-background {
   background: red;
+}
+
+@mixin full-heigth {
+  height: 100%;
+}
+
+@mixin align-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  align-self: center;
+}
+
+.page {
+  @include full-heigth();
+  @include align-column();
+}
+
+@mixin button($color, $height){
+  align-items: center;
+  justify-content: center;
+  background: $color;
+  color: white;
+  display: flex;
+  height: $height;
+  padding: $s-mp;
+  &:hover {
+    background: darken($color, 10%);
+  }
+  @if $color == $off-white {
+    color: $off-black;
+  } 
+}
+
+@mixin box-shadow {
+  box-shadow: 0 5px 6px 0 $border-color;
 }

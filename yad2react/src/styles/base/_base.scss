@@ -3,13 +3,17 @@
 }
 
 html {
+  height: 100%;
   box-sizing: inherit;
 }
-
+html, body, #app, #app>div {
+  height: 100%
+}
 body {
+  height: 100%;
   color: $off-black;
   direction: rtl;
-  display: block;
+  display: flex;
   font: $l-font Rubik, sans-serif;
   background: $grey;
 }

@@ -17,25 +17,18 @@
   background: $orange;
   display: flex;
   flex-direction: row;
-  height: 4rem;
+  height: $l-size;
   justify-content: space-between;
+  width: 100%;
   @media (max-width: $mobile-breakpoint) {
     height: $s-size;
   }
 }
 
 .main-nav-bar-button {
-  background: $orange;
-  color: white;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  padding: $s-mp;
-&:hover {
-  background: $dark-orange;
-}
-  &:hover ~div{
-        display: block;
+  @include button($orange, 4rem);
+  &:hover ~ div {
+    display: block;
   }
 }
 
@@ -60,7 +53,7 @@
   display: flex;
   height: $m-size;
   justify-content: space-between;
-  margin: 0; 
+  margin: 0;
   @media (max-width: $mobile-breakpoint) {
     visibility: hidden;
   }
@@ -70,8 +63,7 @@
   background: white;
   color: $off-black;
   height: $m-size;
-  &:hover{
-      background: $off-white;
+  &:hover {
+    background: $off-white;
   }
 }
-
