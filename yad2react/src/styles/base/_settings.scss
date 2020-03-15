@@ -11,6 +11,7 @@ $promo-yellow: #fdf9c5;
 $very-dark-orange: #df6200;
 
 //sizes
+$quarter: 25%;
 $half: 50%;
 $full: 100%;
 
@@ -55,6 +56,13 @@ $mobile-breakpoint: 45rem;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+@mixin align-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;  
 }
 
 .align-right {
@@ -180,6 +188,15 @@ $mobile-breakpoint: 45rem;
 .page {
   @include full-heigth();
   @include align-column();
+}
+
+@mixin white-container($width) {
+  @include align-column;
+  @include box-shadow;
+  margin: $l-mp 0;
+  padding: $m-mp;
+  width: $width;
+  background: white;
 }
 
 @mixin button($color, $height){

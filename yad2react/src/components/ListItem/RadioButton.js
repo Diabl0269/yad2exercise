@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import getFilterdListings from "../../utils/getFilterdListings";
+import getFilterdListings from '../../communication/getFilterdListings';
 import FiltersContext from "../../context/FiltersContext";
 
 export default ({ value, group, className }) => {

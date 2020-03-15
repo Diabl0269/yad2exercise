@@ -1,5 +1,5 @@
 import axios from "axios";
-import mapStateToData from "./mapStateToData";
+import mapStateToData from "../utils/mapStateToData";
 
 const getFilterdListings = async (queryObj, dispatch) => {
   dispatch([]);

@@ -1,4 +1,4 @@
-const listingModel = require("../models/listingsModel");
+const listingModel = require("../../models/listingsModel");
 
 module.exports = (req, res, next) => {
   const newListing = req.body;

@@ -1,0 +1,19 @@
+.sign-up--form {
+  @include white-container($half);
+  align-items: flex-start;
+  form {
+    width: $full;
+  }
+  p {
+    color: red;
+    text-align: center;
+  }
+  span {
+    margin-left: $l-mp;
+    white-space: nowrap;
+  }
+  button {
+    margin-right: $half;
+    @include button($orange, $m-size);
+  }
+}

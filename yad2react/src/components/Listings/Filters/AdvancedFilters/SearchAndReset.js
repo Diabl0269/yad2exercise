@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import FiltersContext from '../../../../context/FiltersContext';
-import getFilterdListings from '../../../../utils/getFilterdListings';
+import getFilterdListings from '../../../../communication/getFilterdListings';
 
 const SearchAndReset = () => {
 

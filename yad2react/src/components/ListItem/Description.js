@@ -8,7 +8,6 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
     entranceDate = "",
     furnitureDescription = "",
     parking,
-    squareMetersBuilt,
     squareMetersGarden,
     totalFloors
   } = assetDetails;

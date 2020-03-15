@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import login from "../utils/login";
+import login from "../communication/login";
 import useLogin from "../hooks/useLogin";
 import { navigate } from "hookrouter";
 
@@ -32,7 +32,7 @@ const LoginForm = () => {
         <button className="margin-top-bottom-l login-button" onClick={login}>
           התחברות
         </button>
-        <button className="login--new-user-button">יצירת משתמש</button>
+        <button className="login--new-user-button" onClick={() => navigate('/signup')} >יצירת משתמש</button>
       </form>
     </div>
   );

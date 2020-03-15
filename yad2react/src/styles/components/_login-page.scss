@@ -1,11 +1,5 @@
 .login-form {
-    @include align-column;
-    @include box-shadow;
-    margin: $l-mp 0;
-    padding: $m-mp;
-    width: 25%;
-    background: white;
-
+    @include white-container($quarter)
 }
 
 .login-button {

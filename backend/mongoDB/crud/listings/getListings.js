@@ -1,4 +1,4 @@
-const listingsModel = require("../models/listingsModel");
+const listingsModel = require("../../models/listingsModel");
 
 module.exports = async (req, res, next) => {
   const filterObject = {

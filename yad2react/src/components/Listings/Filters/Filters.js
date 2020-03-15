@@ -7,7 +7,7 @@ import PropertyTypeFilter from "./PropertyTypeFilter";
 import RoomsFilter from "./RoomsFilter";
 import FiltersContext from "../../../context/FiltersContext";
 import toggleDropDown from "../../../utils/toggleDropDown";
-import getFilterdListings from "../../../utils/getFilterdListings";
+import getFilterdListings from "../../../communication/getFilterdListings";
 
 const Filters = () => {
   const { currentListingsType } = useContext(ListingsTypeContext);

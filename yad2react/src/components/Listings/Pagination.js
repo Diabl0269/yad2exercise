@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ReactPaginate from "react-paginate";
 import FiltersContext from "../../context/FiltersContext";
-import getFilterdListings from "../../utils/getFilterdListings";
+import getFilterdListings from '../../communication/getFilterdListings';
 
 const Pagination = () => {
   const { queryObj, dispatch } = useContext(FiltersContext);
