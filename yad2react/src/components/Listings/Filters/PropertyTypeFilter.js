@@ -9,7 +9,7 @@ const PropertyTypeFilter = () => {
   const [selectedAssetTypes, setSelectedAssetType] = useContext(
     FiltersContext
   ).queryObj.selectedAssetTypes;
-  const [isAssetTypeDropDownOpen, setAssetTypeDropDownOpen] = useState(false);
+  const [isAssetTypeDropDownOpen] = useState(false);
 
   const buttonID = "moreTypesFilterButton";
 

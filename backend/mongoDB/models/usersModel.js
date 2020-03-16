@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-require("dotenv").config({ path: __dirname + "/../.env" });
+require("dotenv").config({ path: __dirname + "../../.env" });
 
 const saltLength = 32;
 
@@ -15,6 +15,12 @@ const usersSchema = new Schema({
     default: crypto.randomBytes(Math.ceil(saltLength)).toString("hex")
   },
   password: { type: String, required: true },
+  tokens: [{
+    token: {
+        type: String,
+        required: true
+    }
+}],
   userDetails: {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -30,13 +36,14 @@ const usersSchema = new Schema({
     phone2: {
       type: String,
       validate(value) {
-        if (!validator.isMobilePhone(value, "he-IL") && value !== '') {
+        if (!validator.isMobilePhone(value, "he-IL") && value !== "") {
           throw Error("Please enter a valid phone number");
         }
       }
     },
     email: {
       type: String,
+      unique: true,
       required: true,
       validate(value) {
         if (!validator.isEmail(value)) {
@@ -47,53 +54,43 @@ const usersSchema = new Schema({
   }
 });
 
-usersSchema.methods.generateAuthToken = async () => {
+usersSchema.pre("save", async function(next) {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, process.env.SECRET);
 
-  user.tokens = user.tokens.concat({ token });
-  await user.save();
+  if (user.password.length < 8) throw Error;
 
-  return token;
-};
-
-usersSchema.pre("save", async function (next ) {
-  const user = this;
-  console.log(user);
-
-  if(user.password.length < 8) 
-    throw Error;
-
-  // if (user.isModified("password")) {
-    // user.password = await bcrypt.hash(user.password + user.salt, 8);
-  // }
+  if (user.isModified("password")) {
+    user.salt = crypto.randomBytes(Math.ceil(saltLength)).toString("hex");
+    user.password = await bcrypt.hash(user.password + user.salt, 8);
+  }
 
   next();
 });
 
+usersSchema.methods.toJSON = function() {
+  const user = this.toObject();
+  delete user.salt;
+  delete user.password;
+  return user;
+};
+
+const tokenLifeTime = 5000;
+
+usersSchema.methods.generateAuthToken = async function() {
+  const user = this;
+  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET, {expiresIn: tokenLifeTime});  
+  user.tokens = user.tokens.concat({ token });
+  await user.save();
+  return token;
+};
+
+usersSchema.statics.login = async (email, password) => {  
+  const user = await usersModel.findOne({'userDetails.email': email})
+  if(!user) return;
+  const isMatch = await bcrypt.compare(password + user.salt, user.password)    
+  return isMatch ? user : null;
+}
+
 const usersModel = mongoose.model("users", usersSchema);
 
 module.exports = usersModel;
-
-const mockUser = {
-  salt: "123",
-  hashedPassword: "abc123",
-  userDetails: {
-    firstName: "טל",
-    lastName: "עפרוני",
-    phone: "0544162895",
-    phone2: "0523158674",
-    email: "what@gmail.com"
-  },
-  address: {
-    city: "תל אביב",
-    neighborhood: "רמת אביב",
-    street: "אבן גבירול",
-    streetNumber: 3,
-    area: "מרכז",
-    birthDate: "03/02/1948"
-  },
-  listings: [{ type: Schema.Types.ObjectId, ref: "listings" }]
-};
-
-// usersModel.create(mockUser)

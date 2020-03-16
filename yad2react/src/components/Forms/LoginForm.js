@@ -1,35 +1,36 @@
 import React, { useState } from "react";
-import login from "../communication/login";
-import useLogin from "../hooks/useLogin";
+import login from '../../communication/login';
+import useLogin from '../../hooks/useLogin';
 import { navigate } from "hookrouter";
 
 const LoginForm = () => {
-  const [loginFail, dispatch] = useState(false);
-  const loginObj = useLogin();
+  const [loginFail, dispatchLoginFail] = useState(false);
+  const {email, password} = useLogin();
 
-  const login = () => {
-    // const token = login(loginObj);
-    // if (!token) return dispatch(true);
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    const user = await login({email: email[0], password: password[0]});        
+    if (!user) return dispatchLoginFail(true);
     navigate('/user')
   };
   return (
     <div className="login-form">
       <h1>עמוד התחברות</h1>
       {loginFail && <p>שם משתמש או סיסמה אינם נכונים</p>}
-      <form className="align-column">
+      <form className="align-column" onSubmit={e => loginHandler(e)}>
         <input
           className="filters__field-box-container"
           type="text"
           placeholder="אימייל"
-          onChange={e => loginObj.email[1](e.target.value)}
+          onChange={e => email[1](e.target.value)}
         />
         <input
           className="filters__field-box-container"
           type="password"
           placeholder="סיסמה"
-          onChange={e => loginObj.password[1](e.target.value)}
+          onChange={e => password[1](e.target.value)}
         />
-        <button className="margin-top-bottom-l login-button" onClick={login}>
+        <button className="margin-top-bottom-l login-button">
           התחברות
         </button>
         <button className="login--new-user-button" onClick={() => navigate('/signup')} >יצירת משתמש</button>

@@ -16,7 +16,7 @@ const MainPage = () => {
       <ListingsTypeContext.Provider value={{currentListingsType, dispatch}}>
       <MainNavBar />
       <SecondaryNavBar />
-      <ListingsContainer currentListingsType={currentListingsType} changeListingsType={dispatch}/>
+      <ListingsContainer />
       </ListingsTypeContext.Provider>
       <Footer />
     </div>

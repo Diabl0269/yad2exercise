@@ -1,14 +1,9 @@
 import React from 'react';
-import MainNavBar from '../MainNavBar';
-import LoginForm from '../LoginForm';
-import Footer from '../Footer';
+import LoginForm from '../Forms/LoginForm';
+import PageTemplate from './PageTemplate';
 
 export default () => {
     return (
-        <div className='page'>
-            <MainNavBar />
-            <LoginForm />
-            <Footer />
-        </div>
+        <PageTemplate Component={LoginForm} />
     )
 }

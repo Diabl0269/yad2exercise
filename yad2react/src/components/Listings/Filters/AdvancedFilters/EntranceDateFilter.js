@@ -6,7 +6,7 @@ const EntranceDateFilter = () => {
   const [entranceDate, setEntranceDate] = useContext(
     FiltersContext
   ).queryObj.entranceDate;
-  const [isTodayArray, setIsToday] = useState([]);
+  const [isTodayArray] = useState([]);
   const isTodayItem = "isToday";
   const placeholderText = "החל מ- הזינו תאריך 📆";
   const datePickerChangeHandler = date => {

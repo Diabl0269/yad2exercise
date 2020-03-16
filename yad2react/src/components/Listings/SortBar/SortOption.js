@@ -12,7 +12,7 @@ const SortOption = () => {
   const displaySort = () => {
     return sortOptions.filter(element => element[1] === sortBy)[0][0];
   };
-  const [sortBy, dispatch] = useContext(FiltersContext).queryObj.sortBy;
+  const [sortBy] = useContext(FiltersContext).queryObj.sortBy;
   const group = "sortBy";
   const options = sortOptions.map(value => {    
     return <RadioButton value={value} group={group} className="margin-all-large"/>;

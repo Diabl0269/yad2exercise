@@ -141,6 +141,10 @@ $mobile-breakpoint: 45rem;
   margin-bottom: $m-mp;
 }
 
+.margin-top-m {
+  margin-top: $m-mp
+}
+
 .margin-top-bottom-l {
   margin: $l-mp 0
 }
@@ -213,6 +217,9 @@ $mobile-breakpoint: 45rem;
   @if $color == $off-white {
     color: $off-black;
   } 
+  @if $color == white {
+    color: $off-black;
+  }
 }
 
 @mixin box-shadow {

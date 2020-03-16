@@ -6,8 +6,11 @@ html {
   height: 100%;
   box-sizing: inherit;
 }
-html, body, #app, #app>div {
-  height: 100%
+html,
+body,
+#app,
+#app > div {
+  height: 100%;
 }
 body {
   height: 100%;
@@ -21,6 +24,7 @@ body {
 button {
   cursor: pointer;
   border: none;
+  @include button($orange, $m-size);
   &:focus {
     outline: 0;
   }

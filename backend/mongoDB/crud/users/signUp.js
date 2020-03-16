@@ -6,8 +6,11 @@ module.exports = async (req, res, next) => {
   const detailsObj = { userDetails, password: req.body.password };
   const user = new usersModel(detailsObj);
   try {
-    await user.save();
+    res.user = await user.save();
+    next()
   } catch (e) {
-    console.log('hey');
+    console.log(e);
+    
+    res.status(422).send(e);
   }
 };

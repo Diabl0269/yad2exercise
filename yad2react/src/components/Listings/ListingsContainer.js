@@ -2,11 +2,10 @@ import Filters from "./Filters/Filters";
 import FiltersContext from "../../context/FiltersContext";
 import Listings from "./Listings";
 import Pagination from "./Pagination";
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SortBar from "./SortBar/SortBar";
 import getFilterdListings from '../../communication/getFilterdListings';
 import useQuery from "../../hooks/useQuery";
-import useGetListings from '../../utils/useGetListings';
 
 const ListingsContainer = () => {
   const [listings, dispatch] = useState([]);

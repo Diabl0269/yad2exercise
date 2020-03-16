@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const generateAuthToken = require('../../middleware/generateAuthToken');
 const signUp = require("../../mongoDB/crud/users/signUp");
 
-module.exports = router.post("/signUp", signUp, (req, res) => {    
-  res.status(200).send();
+module.exports = router.post("/sign-up", signUp, generateAuthToken, (req, res) => {
+  if(!res.user) res.sendStatus(500)
+  res.status(201).send(res.user)
 });

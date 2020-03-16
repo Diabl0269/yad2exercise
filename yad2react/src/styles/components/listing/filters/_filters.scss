@@ -34,9 +34,7 @@
 }
 
 .filters--advanced-search-button {
-  &:hover {
-    background: $off-white;
-  }
+  @include button($off-white, $l-size);
 }
 
 .filters__field-box-container {

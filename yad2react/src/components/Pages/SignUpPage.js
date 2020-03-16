@@ -1,16 +1,9 @@
-import React from 'react';
-import Footer from '../Footer';
-import MainNavBar from '../MainNavBar';
-import SignUpForm from '../SignUpForm';
+import React from "react";
+import SignUpForm from "../Forms/SignUpForm";
+import PageTemplate from "./PageTemplate";
 
 const SignUpPage = () => {
-    return (
-        <div className='page'>
-            <MainNavBar />
-            <SignUpForm />
-            <Footer />
-        </div>
-    )
-}
+  return <PageTemplate Component={SignUpForm} />;
+};
 
 export default SignUpPage;

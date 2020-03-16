@@ -60,6 +60,7 @@
 }
 
 .secondary-nav-bar-button {
+  @include button(white, $m-size);
   background: white;
   color: $off-black;
   height: $m-size;
