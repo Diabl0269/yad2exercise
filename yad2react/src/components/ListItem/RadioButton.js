@@ -9,8 +9,6 @@ export default ({ value, group, className }) => {
 
   const changeSortHandler = async () => {
     sortByDispatch(value[1]);
-    console.log(queryObj.sortBy[0]);
-
     getFilterdListings(queryObj, listingsDispatch);
   };
 

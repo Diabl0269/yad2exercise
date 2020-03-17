@@ -9,9 +9,9 @@ const LoginForm = () => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    const user = await login({email: email[0], password: password[0]});        
-    if (!user) return dispatchLoginFail(true);
-    navigate('/user')
+    const id = await login({email: email[0], password: password[0]});        
+    if (!id) return dispatchLoginFail(true);
+    navigate(`/user/${id}`)
   };
   return (
     <div className="login-form">

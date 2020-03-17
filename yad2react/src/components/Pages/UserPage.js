@@ -1,6 +1,6 @@
 import React from 'react';
 import PageTemplate from './PageTemplate';
-import UserForm from '../Forms/UserForm';
+import UserForm from '../Forms/UserForm/UserForm';
 
 const UserPage = () => {
     return (

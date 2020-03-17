@@ -12,6 +12,7 @@ $very-dark-orange: #df6200;
 
 //sizes
 $quarter: 25%;
+$third: 33%;
 $half: 50%;
 $full: 100%;
 
@@ -220,6 +221,29 @@ $mobile-breakpoint: 45rem;
   @if $color == white {
     color: $off-black;
   }
+}
+
+@mixin field-box {
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  color: #999;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  font-size: 0.875rem;
+  height: 40px;
+  justify-content: space-between;
+  line-height: 1.0625rem;
+  margin-top: 5px;
+  min-width: 120px;
+  padding: $s-mp;
+  width: auto;
 }
 
 @mixin box-shadow {

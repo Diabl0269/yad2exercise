@@ -37,7 +37,7 @@ const SignUpForm = () => {
         {input("text", lastName, "*שם משפחה")}
         {input("text", phone, "*פלאפון")}
         {input("text", phone2, "פלאפון 2")}
-        {input("text", email, "*אימייל")}
+        {input("text", email, "*אימייל")}   
         {input("password", password, "*סיסמה", "לפחות שמונה תווים")}
         <button tabIndex="0">הרשם</button>
       </form>

@@ -5,8 +5,6 @@ import FiltersContext from "../context/FiltersContext";
 
 const useGetListings = async () => {
   const { queryObj, dispatch, count } = useContext(FiltersContext);
-  console.log(count);
-
   dispatch([]);
   const queryData = mapStateToData(queryObj);
   const res = await axios.post("/listings", queryData);

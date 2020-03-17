@@ -8,9 +8,7 @@ module.exports = async (req, res, next) => {
   try {
     res.user = await user.save();
     next()
-  } catch (e) {
-    console.log(e);
-    
+  } catch (e) {    
     res.status(422).send(e);
   }
 };

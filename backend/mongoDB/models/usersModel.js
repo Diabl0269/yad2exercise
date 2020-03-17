@@ -15,12 +15,14 @@ const usersSchema = new Schema({
     default: crypto.randomBytes(Math.ceil(saltLength)).toString("hex")
   },
   password: { type: String, required: true },
-  tokens: [{
-    token: {
+  tokens: [
+    {
+      token: {
         type: String,
         required: true
+      }
     }
-}],
+  ],
   userDetails: {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -74,22 +76,38 @@ usersSchema.methods.toJSON = function() {
   return user;
 };
 
-const tokenLifeTime = 5000;
+const tokenLifeTime = 10000;
 
 usersSchema.methods.generateAuthToken = async function() {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET, {expiresIn: tokenLifeTime});  
+  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET, {
+    expiresIn: tokenLifeTime
+  });
   user.tokens = user.tokens.concat({ token });
   await user.save();
   return token;
 };
 
-usersSchema.statics.login = async (email, password) => {  
-  const user = await usersModel.findOne({'userDetails.email': email})
-  if(!user) return;
-  const isMatch = await bcrypt.compare(password + user.salt, user.password)    
-  return isMatch ? user : null;
+usersSchema.methods.filterExpiredTokens = async function() {
+  const user = this;
+  const tokens = user.tokens.filter(token =>
+    jwt.verify(token.token, process.env.JWT_SECRET, (res, err) =>
+      err || res.name === "TokenExpiredError" ? false : true
+    )
+  );
+  if(tokens.length !== user.tokens.length)
+    await user.save();
+    return;
 }
+
+usersSchema.statics.login = async (email, password) => {
+  const user = await usersModel.findOne({ "userDetails.email": email });
+  if (!user) return;
+  await user.filterExpiredTokens();
+  const isMatch = await bcrypt.compare(password + user.salt, user.password);
+  const token = await user.generateAuthToken();
+  return isMatch ? user : null;
+};
 
 const usersModel = mongoose.model("users", usersSchema);
 

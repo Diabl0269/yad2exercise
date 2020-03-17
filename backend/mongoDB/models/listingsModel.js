@@ -174,25 +174,3 @@ const mockAptForSale = {
   },
   listingUser: "5e4a6ee46f74d85594c322e4"
 };
-
-
-// const registerMocks = async () => {
-//   for(let i = 0; i < 30; i++){
-//     const mockListingRecord = new listingsModel(mockAptForSale);
-//     // mockListingRecord._id = new mongoose.Types.ObjectId();
-//    await mockListingRecord.save((err, res) => {
-//       if (err) console.log(err);
-//       else console.log("success");
-//     });
-//   }
-// }
-// registerMocks()
-
-// listingsModel.create(mockAptForSale);
-// , (err, created) => {
-//   if (err) console.log(err);
-//   else {
-//     // created.populate("listingUser");
-//     console.log('success');
-//   }
-// }).then(t => console.log(t));
