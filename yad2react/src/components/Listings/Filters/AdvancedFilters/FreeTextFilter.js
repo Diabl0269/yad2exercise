@@ -10,7 +10,7 @@ const FreeTextFilter = () => {
         טקסט חופשי
         <input
           type="text"
-          className="filters__field-box-container margin-bottom"
+          className="filters__field-box-container margin-bottom-m"
           value={freeText}
           onChange={e => setFreeText(e.target.value)}
         />

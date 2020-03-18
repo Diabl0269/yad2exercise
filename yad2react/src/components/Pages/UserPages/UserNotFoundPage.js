@@ -1,6 +1,6 @@
 import React from "react";
-import PageTemplate from "./PageTemplate";
-import NotFoundForm from '../Forms/NotFound';
+import PageTemplate from "../PageTemplate";
+import NotFoundForm from '../../Forms/NotFound';
 
 const UserNotFoundPage = () => {
   return <PageTemplate Component={NotFoundForm} />;

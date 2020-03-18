@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import updateUser from '../../../communication/updateUser';
+import UserContext from "../../../context/UserContext";
 
 
-const UpdateDetails = ({ user }) => {
+const UserUpdateForm = () => {
+  const {userDetails: user} = useContext(UserContext).user
+  console.log(user);
+  
   const [userUpdateMessage, setUserUpdateMessage] = useState('');
   const requiredFieldMessage = "שדה חובה";
   const ExpandedFiled = ({ text, type }) => (
-    <div className="align-row">
+    <div>
       {text + ":"}
       <Field type={type} name={type} />
       <ErrorMessage
@@ -18,7 +22,7 @@ const UpdateDetails = ({ user }) => {
     </div>
   );
   return (
-    <div id="formContainer">
+    <div id="updateFormContainer">
       <h1>עדכון משתמש</h1>
       <Formik
         initialValues={{ password: "", ...user }}
@@ -38,11 +42,11 @@ const UpdateDetails = ({ user }) => {
         }}
         onSubmit={async (values) => {
           const successfulUpdate = await updateUser(values);
-        //   setUserUpdateMessage(successfulUpdate ? "משתמש עודכן בהצלחה!" : 'תקלת שרת')
+          setUserUpdateMessage(successfulUpdate ? "משתמש עודכן בהצלחה!" : 'תקלת שרת')
         }}
       >
         {() => (
-          <Form className="user-update-form">
+          <Form>
             {userUpdateMessage}
             <ExpandedFiled text="שם פרטי" type="firstName" />
             <ExpandedFiled text="שם משפחה" type="lastName" />
@@ -58,4 +62,4 @@ const UpdateDetails = ({ user }) => {
   );
 };
 
-export default UpdateDetails;
+export default UserUpdateForm;

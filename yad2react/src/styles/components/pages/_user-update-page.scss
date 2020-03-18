@@ -1,0 +1,26 @@
+#updateFormContainer {
+    @include white-container($third);
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: $full;
+    }
+    div {
+        width: $full;
+        @include align-row;
+    }
+    input {
+        @include field-box;
+    }
+    button {
+        margin-top: $l-mp;
+        @include button($orange, $s-size)
+    }
+}
+
+.error-message-container {
+    position: absolute;
+    align-self: flex-end;
+    color: red;
+}

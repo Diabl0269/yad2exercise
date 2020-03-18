@@ -138,8 +138,12 @@ $mobile-breakpoint: 45rem;
   margin-left: $m-mp;
 }
 
-.margin-bottom {
+.margin-bottom-m {
   margin-bottom: $m-mp;
+}
+
+.margin-bottom-l {
+  margin-bottom: $l-mp;
 }
 
 .margin-top-m {

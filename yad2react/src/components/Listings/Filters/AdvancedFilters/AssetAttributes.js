@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import FiltersContext from "../../../../context/FiltersContext";
-import Checkbox from "../../../Checkbox";
+import Checkbox from "../../../utils/Checkbox";
 
 const AssetAttributes = () => {
   const [selectedAttributes, setSelectedAttributes] = useContext(

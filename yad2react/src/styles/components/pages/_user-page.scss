@@ -1,4 +1,4 @@
-.user-form {
+.user-page {
     @include white-container($third);
     #userField {
         @include align-row;    
@@ -7,7 +7,7 @@
         margin: $l-mp 0;
         width: 100%;
     }
-    #formContainer {
+    #userDetailsFormContainer {
         width: 100%;        
         display: flex;
         flex-direction: column;
@@ -20,26 +20,4 @@
         width: $half;
         align-self: center;
     }
-}
-
-.user-update-form {
-    @include align-column;
-    width: $full;
-    div {
-        width: $full;
-    }
-    justify-content: space-around;
-    input {
-        @include field-box;
-    }
-    button {
-        margin-top: $l-mp;
-        @include button($orange, $s-size)
-    }
-}
-
-.error-message-container {
-    position: absolute;
-    align-self: flex-end;
-    color: red;
 }

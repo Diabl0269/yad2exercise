@@ -4,7 +4,7 @@ import Listings from "./Listings";
 import Pagination from "./Pagination";
 import React, { useState, useEffect } from "react";
 import SortBar from "./SortBar/SortBar";
-import getFilterdListings from '../../communication/getFilterdListings';
+import getFilterdListings from "../../communication/getFilterdListings";
 import useQuery from "../../hooks/useQuery";
 
 const ListingsContainer = () => {

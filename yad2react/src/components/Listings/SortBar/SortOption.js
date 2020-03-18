@@ -15,7 +15,7 @@ const SortOption = () => {
   const [sortBy] = useContext(FiltersContext).queryObj.sortBy;
   const group = "sortBy";
   const options = sortOptions.map(value => {    
-    return <RadioButton value={value} group={group} className="margin-all-large"/>;
+    return <RadioButton key={value} value={value} group={group} className="margin-all-large"/>;
   });
 
   return (

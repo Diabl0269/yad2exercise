@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ListItem from '../ListItem/ListItem';
-import Loader from '../Loader';
+import Loader from '../utils/Loader';
 import FiltersContext from "../../context/FiltersContext";
 
 const Listings = () => {

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { assetTypes } from '../../../data/assetCategories';
 
 import openDropDown from "../../../utils/openDropDown";
-import Checkbox from "../../Checkbox";
+import Checkbox from "../../utils/Checkbox";
 import FiltersContext from "../../../context/FiltersContext";
 
 const PropertyTypeFilter = () => {

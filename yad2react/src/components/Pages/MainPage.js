@@ -1,9 +1,9 @@
 import React, {useReducer} from "react";
-import Footer from '../Footer';
+import Footer from '../utils/Footer';
 import ListingsContainer from "../Listings/ListingsContainer";
 import ListingsTypeContext from '../../context/ListingsTypeContext';
-import MainNavBar from "../MainNavBar";
-import SecondaryNavBar from "../SeconderyNavBar";
+import MainNavBar from "../utils/MainNavBar";
+import SecondaryNavBar from "../utils/SeconderyNavBar";
 import closeDropDownsHandler from '../../utils/closeDropDownsHandler';
 import listingsTypeReducer from '../../reducers/listingsType';
 

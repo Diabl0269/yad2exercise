@@ -1,16 +1,12 @@
 import axios from "axios";
 
-export default async (dispatch) => {
-  const { token } = localStorage;
-  if (!token) return;
+export default async () => {
+  const { id } = localStorage;
+  if (!id) return;
   try {
-    const user = await axios.get("/users", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });    
-    return dispatch(user.data.userDetails);
+    const res = await axios.get(`/users/${id}`);        
+    return res.data;
   } catch {
-    return dispatch(false);
+    return;
   }
 };

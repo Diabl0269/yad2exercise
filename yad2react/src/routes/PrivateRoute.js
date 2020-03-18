@@ -1,9 +1,10 @@
 import React from "react";
-import { navigate } from "hookrouter";
-import UserNotFoundPage from "../components/Pages/UserNotFoundPage";
+import LoginPage from "../components/Pages/LoginPage";
 
 const PrivateRoute = ({ Component }) => {
-  return localStorage.token ? <Component /> : <UserNotFoundPage />;
+  const jwtRegex = /^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/
+  
+  return jwtRegex.test(localStorage.token) ? <Component /> : <LoginPage />;
 };
 
 export default PrivateRoute;

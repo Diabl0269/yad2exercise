@@ -1,8 +1,11 @@
 import React from "react";
 import { A } from "hookrouter";
-
 const MainNavBar = () => {
+  const id = localStorage.id;
+  const personalZoneUri = `/user/${id}`
+
   const dosentExistAlert = text => alert(`כאן יהיה עמוד ${text}`);
+  
   const mainNavBarCategories = [
     { text: 'נדל"ן', clickHandler: dosentExistAlert },
     { text: "רכב", clickHandler: dosentExistAlert },
@@ -54,7 +57,7 @@ const MainNavBar = () => {
             <li key={action.text} >
               {(action.text === "אזור אישי" && 
               <div className='main-nav-bar-button'>
-                <A  className='white-text' href="/login">{action.text} </A>
+                <A  className='white-text' href={personalZoneUri}>{action.text} </A>
                 </div>) ||
               <button
                 className="main-nav-bar-button"

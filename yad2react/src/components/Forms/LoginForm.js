@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import login from '../../communication/login';
 import useLogin from '../../hooks/useLogin';
+import UserContext from '../../context/UserContext';
 import { navigate } from "hookrouter";
 
 const LoginForm = () => {
   const [loginFail, dispatchLoginFail] = useState(false);
   const {email, password} = useLogin();
+  const setUser = useContext(UserContext).user[1];
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    const id = await login({email: email[0], password: password[0]});        
-    if (!id) return dispatchLoginFail(true);
-    navigate(`/user/${id}`)
+    const user = await login({email: email[0], password: password[0]});          
+    if (!user) return dispatchLoginFail(true);
+    localStorage.setItem('id', user._id)
+    console.log(user);
+    
+    setUser(user);
+    navigate(`/user/${user._id}`)
   };
   return (
     <div className="login-form">

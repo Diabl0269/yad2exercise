@@ -12,7 +12,10 @@
 @import "./components/nav-bars";
 @import './components/checkbox';
 @import './components/footer';
+@import './components/loader';
+@import './components/pages/login-page';
+@import './components/pages/not-found-page';
+@import './components/pages/sign-up-page';
+@import './components/pages/user-page';
+@import './components/pages/user-update-page';
 @import './components/pagination';
-@import './components/login-page';
-@import './components/sign-up-page';
-@import './components/user-page';

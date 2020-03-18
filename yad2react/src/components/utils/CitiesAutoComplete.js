@@ -1,8 +1,7 @@
 import React from "react";
 import Autosuggest from "react-autosuggest";
-
-import cityNames from "../data/cityNames";
-import theme from "../utils/theme";
+import theme from '../../utils/theme';
+import cityNames from "../../data/cityNames";
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {

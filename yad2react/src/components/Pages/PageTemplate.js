@@ -1,6 +1,6 @@
 import React from "react";
-import MainNavBar from "../MainNavBar";
-import Footer from "../Footer";
+import MainNavBar from "../utils/MainNavBar";
+import Footer from "../utils/Footer";
 
 export default ({ Component }) => {
   return (
