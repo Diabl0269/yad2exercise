@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import useUserDetails from '../../hooks/useUserDetails';
 import { navigate } from "hookrouter";
 import signUp from '../../communication/signUp';
-
+import UserContext from "../../context/UserContext";
 
 const SignUpForm = () => {
+  const [userContext, setUser] = useContext(UserContext)
   const [attemptFailed, dispatch] = useState(false);
   const userDetails = useUserDetails();
   const { firstName, lastName, phone, phone2, email, password } = userDetails;
@@ -26,6 +27,7 @@ const SignUpForm = () => {
     if (!user) return dispatch(true);
     alert("משתמש נוצר בהצלחה");
     localStorage.setItem('token',user.tokens[0].token);
+    setUser(user)
     navigate(`/user`);
   };
   return (

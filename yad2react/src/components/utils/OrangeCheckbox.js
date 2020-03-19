@@ -1,22 +1,35 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { Checkbox } from "@material-ui/core";
 import MuiCheckbox from "@material-ui/core/Checkbox";
 
 const color = "#ff7100";
 
-export default withStyles({
+const style = withStyles({
   root: {
-    color
+    color,
+    display: "flex",
+    "flex-direction": "row",
+    width: "50%",
+    flexWrap: "wrap"
   }
-})(props => {
+});
+
+export default style(props => {
+  const {
+    form: { setFieldValue },
+    field: { name }
+  } = props;
+  const clickHandler = e => {
+    setFieldValue(name, e.target.checked);
+  };
+
   return (
     <MuiCheckbox
       color="default"
       {...props}
-      onClick={() => }
-      checked={!!props.value}
+      onClick={e => clickHandler(e)}
+      value="true"
+      id={name}
     />
   );
-  // return <Checkbox  color1="default" {...props}/>
 });

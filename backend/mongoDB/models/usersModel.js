@@ -23,6 +23,14 @@ const usersSchema = new Schema({
       }
     }
   ],
+  listings: [
+    {
+      listing: {
+        type: Schema.Types.ObjectId,
+        ref: "listings"
+      }
+    }
+  ],
   userDetails: {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -90,15 +98,22 @@ usersSchema.methods.generateAuthToken = async function() {
 
 usersSchema.methods.filterExpiredTokens = async function() {
   const user = this;
-  const tokens = user.tokens.filter(token =>
-    jwt.verify(token.token, process.env.JWT_SECRET, (res, err) =>
-      err || res.name === "TokenExpiredError" ? false : true
-    )
-  );
-  if(tokens.length !== user.tokens.length)
-    await user.save();
-    return;
-}
+  let tokens;
+  try {
+    tokens = user.tokens.filter(token => {
+      return jwt.verify(token.token, process.env.JWT_SECRET, (err, res) =>
+        err && err.name === "TokenExpiredError" ? false : true
+      );
+    });
+    if (tokens.length !== user.tokens.length) {
+      user.tokens = tokens;
+      await user.save();
+    }
+  } catch (e) {
+    console.log(e);
+  }
+  return;
+};
 
 usersSchema.statics.login = async (email, password) => {
   const user = await usersModel.findOne({ "userDetails.email": email });

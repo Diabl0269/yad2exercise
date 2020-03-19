@@ -33,17 +33,22 @@ class CitiesAutoComplete extends React.Component {
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: this.props.value,
-      changeCitySearchValueHandler: this.props.changeCitySearchValueHandler,
-      suggestions: []
+      setValue: this.props.setValue,
+      suggestions: [],
+      formik: this.props.formik
     };
   }
 
   onChange = (event, { newValue }) => {
     this.setState({
       value: newValue
-    });
+    });    
+    console.log(this.state.value);
+    
+if(this.state.formik)
+    this.state.setValue()
 
-    this.state.changeCitySearchValueHandler(newValue);
+    this.state.setValue(newValue);
   };
 
   // Autosuggest will call this function every time you need to update suggestions.

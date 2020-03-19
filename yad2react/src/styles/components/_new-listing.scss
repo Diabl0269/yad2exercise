@@ -1,0 +1,59 @@
+#newListingContainer {
+  @include white-container($third);
+  .MuiFormGroup-root {
+    width: $full;
+  }
+  .MuiFormControlLabel-root {
+    // width: $full;
+    // @include align-row;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: $full;
+  }
+
+  div {
+    width: $full;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #uploadMedia {
+    width: $third;
+    @include field-box;
+    
+      &:hover {
+        cursor: pointer;
+    
+    }
+    input {
+      display: none;
+    }
+    
+  }
+  input {
+    width: $half;
+    @include field-box;
+  }
+  textarea {
+    @include field-box;
+  }
+  button {
+    margin-top: $l-mp;
+    @include button($orange, $s-size);
+  }
+}
+
+#newListingForm {
+  label {
+    width: $quarter;
+  }
+}
+
+.new-listing--field--container {
+  @include align-column;
+  width: $full;
+}

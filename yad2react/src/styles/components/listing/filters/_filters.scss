@@ -29,7 +29,6 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  // align-items: center;
   justify-content: space-around;
 }
 
@@ -58,6 +57,9 @@
   min-width: 120px;
   padding: $s-mp;
   width: auto;
+  &:hover{
+    background: none;
+  }
 }
 
 //Asset type selector

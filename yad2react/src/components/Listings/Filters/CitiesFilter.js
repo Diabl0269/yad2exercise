@@ -10,7 +10,7 @@ const [citySearchValue, setCitySearchValue] = useContext(FiltersContext).queryOb
       חפשו עיר
       <CitiesAutoComplete
         value={citySearchValue}
-        changeCitySearchValueHandler={setCitySearchValue}
+        setValue={setCitySearchValue}
       />
     </div>
   );

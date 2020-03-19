@@ -42,7 +42,6 @@ const listingSchema = new Schema(
       entrance: Number,
       neighborhood: String,
       area: String,
-      reciveMonthlyUpdates: Boolean
     },
     assetDetails: {
       assetType: { type: String, required: true, enum: assetTypes },
@@ -102,8 +101,6 @@ const listingSchema = new Schema(
       imageBase64: [{ type: String }],
       videoBase64: [{ type: String }]
     },
-    // createdAt: { type: String, default: moment().format() },
-    // updatedAt: { type: String, default: moment().format() },
     listingUser: { type: Schema.Types.ObjectId, ref: "users", required: true }
   },
   {

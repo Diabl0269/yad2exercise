@@ -1,31 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpandedField from "../ExpandedField";
 import fieldsObj from "../../../utils/listingObj";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import { navigate } from "hookrouter";
-import OrangeCheckbox from "../../utils/OrangeCheckbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { Checkbox } from "formik-material-ui";
+import FormGroup from "@material-ui/core/FormGroup";
+import DatePicker from "./NewListingFormFields/DatePicker";
+import Attributes from "./NewListingFormFields/Attributes";
+
+import CityAutoComplete from "./NewListingFormFields/CityAutoComplete";
+import MediaUpload from "./NewListingFormFields/MediaUpload";
 
 const NewListingForm = ({ accessDB, nextURL }) => {
   const requiredFieldMessage = "שדה חובה";
   const title = "מודעה חדשה";
   const notRequiredFields = [];
+  const [selectedDate, handleDateChange] = useState(new Date());
   const handleSubmit = async values => {
-    console.log(values);
-
-    const res = await accessDB();
-    if (nextURL) navigate(nextURL);
+    //   const res = await accessDB();
+    //   if (nextURL) navigate(nextURL);
   };
 
   const validate = values => {
     const errors = {};
-    console.log(values);
-    
-    // for (let [key, value] of Object.entries(values)) {
-    //   if (notRequiredFields.includes(key)) continue; //add not requierd fields here
-    //   if (!value) errors[key] = requiredFieldMessage;
-    // }
+
+    for (let [key, value] of Object.entries(values)) {
+      if (notRequiredFields.includes(key)) continue; //add not requierd fields here
+      if (!value) errors[key] = requiredFieldMessage;
+    }
 
     return errors;
   };
@@ -36,40 +37,46 @@ const NewListingForm = ({ accessDB, nextURL }) => {
   }
 
   return (
-    <div id="updateFormContainer">
+    <div id="newListingContainer">
       <h1>{title}</h1>
       <Formik
         initialValues={fieldsValues}
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
-          <Form id="expendedForm">
-            {fieldsObj.map(field => {
-              if (field.name)
-                return (
-                  <FormControlLabel
-                    control={
-                      <Field
-                        component={OrangeCheckbox}
-                        onClick={() => field.value = !field.value}
-                        type={field.type}
-                        value={field.value}
-                        inputProps={{type: 'checkbox'}}
-                      />
-                    }
-                    label={field.text}
-                  />
-                );
-
-              return (
-                <ExpandedField
-                  key={field.type}
-                  text={field.text}
-                  type={field.type}
-                />
-              );
-            })}
+        {({ isSubmitting, values, setFieldValue }) => (
+          <Form id="newListingForm">
+            <FormGroup>
+              {fieldsObj.map(field => {
+                if (field.type === "city") {
+                  const value = values[field.type];
+                  return (
+                    <CityAutoComplete
+                      field={field}
+                      value={value}
+                      setFieldValue={setFieldValue}
+                    />
+                  );
+                }
+                if (field.name === "date") return <DatePicker field={field} />;
+                if (
+                  field.type === "imageBase64" ||
+                  field.type === "videoBase64"
+                )
+                  return <MediaUpload field={field} setFieldValue={setFieldValue}/>;
+                if (field.name === "attributes")
+                  return <Attributes field={field} />;
+                if (field.type === "furnitureDescription")
+                  return (
+                    <ExpandedField
+                      className="full-row"
+                      field={field}
+                      component="textarea"
+                    />
+                  );
+                return <ExpandedField className="full-row" field={field} />;
+              })}
+            </FormGroup>
             <button type="submit">עדכן נתונים</button>
           </Form>
         )}

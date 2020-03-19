@@ -16,9 +16,8 @@ export default [
   { type: "squareMetersBuilt", value: empty, text: 'מ"ר בנוי' },
   { type: "squareMetersGarden", value: empty, text: 'מ"ר גינה' },
   { type: "description", value: empty, text: "תיאור" },
-  { type: "tadiranAirConditioned", value: empty, text: "מזגן תדיראן" },
   { type: "price", value: empty, text: "מחיר" },
-  { type: "entranceDate", value: empty, text: "תאריך כניסה" },
+  { type: "entranceDate", value: new Date(), text: "תאריך כניסה", name: 'date' },
   { type: "exclusivity", value: empty, text: "בלעדיות", name: "attributes" },
   { type: "airConditioned", value: empty, text: "מיזוג", name: "attributes" },
   { type: "kitchen", value: empty, text: "מטבח", name: "attributes" },
@@ -31,8 +30,9 @@ export default [
   { type: "pandorDoor", value: empty, text: "דלתות פנדור", name: "attributes" },
   { type: "warehouse", value: empty, text: "מחסן", name: "attributes" },
   { type: "furniture", value: empty, text: "ריהוט", name: "attributes" },
-  { type: "furnitureDescription", value: empty, text: "תיאור ריהוט", name: "attributes" },
   { type: "livingUnit", value: empty, text: "יחדית דיור", name: "attributes" },
+  { type: "tadiranAirConditioned", value: empty, text: "מזגן תדיראן", name: "attributes" },
+  { type: "furnitureDescription", value: empty, text: "תיאור ריהוט" },
   { type: "imageBase64", value: empty, text: "תמונות" },
   { type: "videoBase64", value: empty, text: "סרטונים" }
 ];
