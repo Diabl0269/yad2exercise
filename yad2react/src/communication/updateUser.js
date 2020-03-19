@@ -1,19 +1,21 @@
 import axios from "axios";
 
-export default async (user,values) => {
+export default async (user, values) => {
   const { token } = localStorage;
   if (!token) return;
-  const updates = {...user, ...values}
-  const id = window.location.pathname.replace('/user/', '');
+  const updates = { ...user, ...values };
+  const id = window.location.pathname.split("/")[2];
 
   try {
-    const res = axios.patch(`/users/${id}`, updates,{
+    const res = await axios.patch(`/users/${id}`, updates, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
-    return true;
-  } catch {
-      return false;
+    return res.data;
+  } catch (e) {
+    console.log(e);
+
+    return false;
   }
 };

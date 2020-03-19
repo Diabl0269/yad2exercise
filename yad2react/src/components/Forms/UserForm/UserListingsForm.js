@@ -4,7 +4,7 @@ import updateUser from "../../../communication/updateUser";
 import UserContext from "../../../context/UserContext";
 import Loader from "../../utils/Loader";
 
-const UserUpdateForm = () => {
+const UserListingsForm = () => {
 
   const user = useContext(UserContext);
   const [userUpdateMessage, setUserUpdateMessage] = useState("");
@@ -74,4 +74,4 @@ const UserUpdateForm = () => {
   );
 };
 
-export default UserUpdateForm;
+export default UserListingsForm;

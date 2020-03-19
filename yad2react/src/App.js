@@ -6,17 +6,17 @@ import getUser from "./communication/getUser";
 
 const App = () => {
   const router = useRoutes(routes);
-  const [user, setUser] = useState({});
+  const user = useState({});
 
   useEffect(() => {
     const fetchUser = async () => {
       const data = await getUser();
-      setUser(data);
+      if (data) user[1](data);
     };
     fetchUser();
   }, []);
 
-  return <UserContext.Provider value={{ user }}>{router}</UserContext.Provider>;
+  return <UserContext.Provider value={user}>{router}</UserContext.Provider>;
 };
 
 export default App;

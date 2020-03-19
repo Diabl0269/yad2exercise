@@ -4,7 +4,7 @@
 // import UpdateUserDetailsForm from "./UpdateUserDetailsForm";
 
 // const UserForm = () => {
-//   const [user, dispatch] = useState(true);
+//   const [user, dispatch] = useState (true);
 //   const [update, toggleUpdate] = useState(false);
 //   useEffect(() => {
 //     getUser(dispatch);

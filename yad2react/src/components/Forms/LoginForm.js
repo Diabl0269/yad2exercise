@@ -7,17 +7,16 @@ import { navigate } from "hookrouter";
 const LoginForm = () => {
   const [loginFail, dispatchLoginFail] = useState(false);
   const {email, password} = useLogin();
-  const setUser = useContext(UserContext).user[1];
+  const [user, setUser] = useContext(UserContext);
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    const user = await login({email: email[0], password: password[0]});          
-    if (!user) return dispatchLoginFail(true);
-    localStorage.setItem('id', user._id)
-    console.log(user);
-    
-    setUser(user);
-    navigate(`/user/${user._id}`)
+    const userData = await login({email: email[0], password: password[0]});              
+    if (!userData) return dispatchLoginFail(true);
+    localStorage.setItem('id', userData._id)
+    localStorage.setItem('token', userData.tokens[userData.tokens.length - 1].token)
+    setUser(userData);
+    navigate(`/user`)
   };
   return (
     <div className="login-form">

@@ -26,7 +26,7 @@ const SignUpForm = () => {
     if (!user) return dispatch(true);
     alert("משתמש נוצר בהצלחה");
     localStorage.setItem('token',user.tokens[0].token);
-    navigate(`/user/${user._id}`);
+    navigate(`/user`);
   };
   return (
     <div className="sign-up--form">
