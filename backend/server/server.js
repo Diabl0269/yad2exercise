@@ -9,9 +9,6 @@ app.use(bodyParser.json());
 
 require("./serverInit")(app);
 
-require('../aws/playground')
-
-
 const successMsg = chalk.black.bgGreen(`Server is running on port: ${port}`)
 
 app.listen(port, () => console.log(successMsg));

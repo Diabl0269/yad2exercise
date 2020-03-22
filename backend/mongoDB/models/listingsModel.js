@@ -98,8 +98,8 @@ const listingSchema = new Schema(
       }
     },
     media: {
-      imageBase64: [{ type: String }],
-      videoBase64: [{ type: String }]
+      images: [{ type: String }],
+      videos: [{ type: String }]
     },
     listingUser: { type: Schema.Types.ObjectId, ref: "users", required: true }
   },
@@ -152,8 +152,8 @@ const mockAptForSale = {
     entrance: Date.now()
   },
   media: {
-    imageBase64: null,
-    videoBase64: null
+    images: null,
+    videos: null
   },
   attributes: {
     airConditioned: { exists: true },

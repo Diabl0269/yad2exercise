@@ -7,7 +7,13 @@ var params = {
   Key: "jerry.png"
 };
 
+getMedia = () => {}
 s3.getObject(params, (err, data) => {
   if (err) console.log(err, err.stack);
   else console.log(data);
 });
+
+// s3.listObjects(params, (err, data) => {
+//   if (err) console.log(err, err.stack);
+//   else console.log(data);
+// });
