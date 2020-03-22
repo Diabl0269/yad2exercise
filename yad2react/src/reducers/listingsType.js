@@ -1,4 +1,4 @@
-const listingsTypeReducer = (state, action) => {
+export default (state, action) => {
     switch(action.type) {
         case 'RENT':
             return 'השכרה'

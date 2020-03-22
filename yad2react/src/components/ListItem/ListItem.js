@@ -39,7 +39,7 @@ const ListItem = ({ record }) => {
   const clickHandler = () => setIsOpen(!isOpen);
 
   return (
-    <li className='' onClick={clickHandler}>
+    <li onClick={clickHandler}>
       {isOpen ? (
         <OpenListItem
           attributes={attributes}

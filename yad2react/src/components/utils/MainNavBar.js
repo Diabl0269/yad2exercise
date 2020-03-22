@@ -1,8 +1,7 @@
 import React from "react";
 import { A } from "hookrouter";
 const MainNavBar = () => {
-  const id = localStorage.id;
-  const personalZoneUri = `/user/${id}`
+  const personalZoneUri = `/user`
 
   const dosentExistAlert = text => alert(`כאן יהיה עמוד ${text}`);
   

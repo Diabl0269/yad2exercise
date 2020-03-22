@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import useUserDetails from '../../hooks/useUserDetails';
+import React, { useState, useContext } from "react";
+import useUserDetails from "../../hooks/useUserDetails";
 import { navigate } from "hookrouter";
-import signUp from '../../communication/signUp';
+import signUp from "../../communication/signUp";
 import UserContext from "../../context/UserContext";
 
 const SignUpForm = () => {
-  const [userContext, setUser] = useContext(UserContext)
+  const setUser = useContext(UserContext)[1];
   const [attemptFailed, dispatch] = useState(false);
   const userDetails = useUserDetails();
   const { firstName, lastName, phone, phone2, email, password } = userDetails;
@@ -26,8 +26,8 @@ const SignUpForm = () => {
     const user = await signUp(userDetails);
     if (!user) return dispatch(true);
     alert("משתמש נוצר בהצלחה");
-    localStorage.setItem('token',user.tokens[0].token);
-    setUser(user)
+    localStorage.setItem("token", user.tokens[0].token);
+    setUser(user);
     navigate(`/user`);
   };
   return (
@@ -39,7 +39,7 @@ const SignUpForm = () => {
         {input("text", lastName, "*שם משפחה")}
         {input("text", phone, "*פלאפון")}
         {input("text", phone2, "פלאפון 2")}
-        {input("text", email, "*אימייל")}   
+        {input("text", email, "*אימייל")}
         {input("password", password, "*סיסמה", "לפחות שמונה תווים")}
         <button tabIndex="0">הרשם</button>
       </form>

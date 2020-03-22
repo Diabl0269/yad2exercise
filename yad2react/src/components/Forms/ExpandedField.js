@@ -1,12 +1,11 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
 
-export default ({  className='', component, field }) => {
-  const {type, text} = field
+export default ({ component, field: { type, text } }) => {
   return (
-    <div key={type} className={className}>
+    <div key={type}>
       {text + ":"}
-      <Field type={type} name={type} component={component} className='' />
+      <Field type={type} name={type} component={component} />
       <ErrorMessage
         name={type}
         component="div"
@@ -14,4 +13,4 @@ export default ({  className='', component, field }) => {
       />
     </div>
   );
-}
+};

@@ -1,20 +1,19 @@
 export default {
   container: {
-    "flex-direction": "row-reverse",
+    flexDirection: "row-reverse",
     display: "flex",
     position: "relative"
   },
   input: {
     width: "auto",
-    "max-width": "183px",
-    "border-radius": "2px",
+    maxWidth: "183px",
+    borderRadius: "2px",
     border: "1px solid #ccc",
     fontFamily: "Helvetica, sans-serif",
     fontSize: 16,
     fontWeight: 300,
     height: 40,
     padding: "10px 10px 10px 0",
-    width: "auto"
   },
   inputFocused: {
     outline: "none"

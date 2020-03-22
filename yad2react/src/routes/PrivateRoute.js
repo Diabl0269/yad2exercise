@@ -1,5 +1,4 @@
 import React from "react";
-import LoginPage from "../components/Pages/LoginPage";
 import { navigate } from "hookrouter";
 
 const PrivateRoute = ({ Component }) => {

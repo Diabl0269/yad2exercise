@@ -32,10 +32,11 @@ class CitiesAutoComplete extends React.Component {
     // Suggestions also need to be provided to the Autosuggest,
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
-      value: this.props.value,
+      formik: this.props.formik,
+      name: this.props.name,
       setValue: this.props.setValue,
       suggestions: [],
-      formik: this.props.formik
+      value: this.props.value,
     };
   }
 
@@ -43,10 +44,9 @@ class CitiesAutoComplete extends React.Component {
     this.setState({
       value: newValue
     });    
-    console.log(this.state.value);
-    
+
 if(this.state.formik)
-    this.state.setValue()
+    this.state.setValue(this.state.name, newValue)
 
     this.state.setValue(newValue);
   };

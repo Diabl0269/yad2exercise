@@ -26,10 +26,10 @@ export default style(props => {
   return (
     <MuiCheckbox
       color="default"
-      {...props}
-      onClick={e => clickHandler(e)}
-      value="true"
       id={name}
+      onClick={clickHandler}
+      value="true"
+      {...props}
     />
   );
 });
