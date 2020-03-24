@@ -1,6 +1,7 @@
 import React from "react";
+import DisplayArrayAttributes from "../utils/DisplayArrayAttributes";
 
-const Description = ({ agencyName, assetDetails, attributes }) => {
+export default ({ agencyName, assetDetails, attributes }) => {
   const {
     assetState,
     assetType,
@@ -9,25 +10,11 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
     furnitureDescription = "",
     parking,
     squareMetersGarden,
+    squareMetersBuilt,
     totalFloors
   } = assetDetails;
   const displayEntranceDate = entranceDate || "לא צוין תאריך כניסה";
-
-  const arrayAttributes = Object.values(attributes);
-  const displayArrayAttributes = () =>
-    arrayAttributes.map(
-      attribute =>
-        Object.keys(attribute).length === 2 && (
-          <div key={attribute.text}
-            className={
-              "open-listing__description__details-item " +
-              (!attribute.exists && "dosent-exist")
-            }
-          >
-            {attribute.text}
-          </div>
-        )
-    );
+  const attributesArray = Object.values(attributes);
 
   return (
     <div className="open-listing__description-container smaller-text">
@@ -62,14 +49,14 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
                   </div>
                 )}
                 {squareMetersGarden && (
-                  
+                  <div className="align-row width-full">
                     <div className="open-listing__description__details-item">
                       מ"ר גינה <b>{squareMetersGarden}</b>
                     </div>
-                    // <div className="open-listing__description__details-item">
-                    //   מ"ר בנוי <b>{squareMetersBuilt}</b>
-                    // </div>
-                  
+                    <div className="open-listing__description__details-item">
+                      מ"ר בנוי <b>{squareMetersBuilt}</b>
+                    </div>
+                  </div>
                 )}
               </div>
             )}
@@ -79,7 +66,7 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
         <b>מה יש בנכס?</b>
         <div className="open-listing__description__details-container no-border">
           <div className="open-listing__description__details-container no-border smallest-text">
-            {displayArrayAttributes()}
+            <DisplayArrayAttributes attributesArray={attributesArray} />
           </div>
           {furnitureDescription && (
             <div>
@@ -92,5 +79,3 @@ const Description = ({ agencyName, assetDetails, attributes }) => {
     </div>
   );
 };
-
-export default Description;

@@ -44,21 +44,21 @@ const listingSchema = new Schema(
       area: String,
     },
     assetDetails: {
-      assetType: { type: String, required: true, enum: assetTypes },
       assetState: { type: String, required: true, enum: assetStates },
+      assetType: { type: String, required: true, enum: assetTypes },
       balconies: Number,
       description: { type: String, max: 200 },
       floor: { type: Number, required: true },
       furnitureDescription: String,
       parking: Number,
-      totalFloors: { type: Number, require: true },
       rooms: Number,
       squareMetersBuilt: { type: Number, required: true },
-      squareMetersGarden: Number
+      squareMetersGarden: Number,
+      totalFloors: { type: Number, require: true },
     },
     saleDetails: {
       price: Number,
-      entranceDate: Number
+      entranceDate: Date
     },
     attributes: {
       exclusivity: {

@@ -7,7 +7,7 @@ import getUser from "./communication/getUser";
 const App = () => {
   const router = useRoutes(routes);
   const user = useState({});
-
+  
   useEffect(() => {
     const fetchUser = async () => {
       const data = await getUser();

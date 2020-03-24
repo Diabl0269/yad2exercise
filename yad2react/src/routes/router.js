@@ -16,7 +16,7 @@ const routes = {
 
   "/user": () => <PrivateRoute Component={UserDetailsPage} />,
   "/user/new-listing": () => <PrivateRoute Component={NewListingPage} />,
-  "/user/user-listings": () => <PrivateRoute Component={UserListingsPage} />,
+  "/user/listings": () => <PrivateRoute Component={UserListingsPage} />,
   "/user/update": () => <PrivateRoute Component={UserUpdatePage} />,
   "/*": () => <NotFoundPage />
 };

@@ -16,7 +16,7 @@ export default [
   { type: "assetState", value: empty, text: "מצב הנכס" },
   { type: "price", value: empty, text: "מחיר" , notReuired: true},
   { type: "balconies", value: 0, text: "מרפסות", notReuired: true },
-  { type: "entranceDate", value: new Date(), text: "תאריך כניסה", name: 'date' , notReuired: true},
+  { type: "entranceDate", value: new Date().toLocaleDateString(), text: "תאריך כניסה", name: 'date' , notReuired: true},
   { type: "parking", value: empty, text: "חניה", name: "attributes" },
   { type: "exclusivity", value: empty, text: "בלעדיות", name: "attributes" },
   { type: "airConditioned", value: empty, text: "מיזוג", name: "attributes" },

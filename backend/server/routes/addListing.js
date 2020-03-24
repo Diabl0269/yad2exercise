@@ -1,11 +1,25 @@
-const express = require("express");
-const router = express.Router();
 const addListing = require("../../mongoDB/crud/listings/addLIsting");
-const uploadMedia = require('../../aws/uploadMedia');
+const express = require("express");
+const logMessage = require("../../middleware/logMessage");
 const multer = require("multer");
+const parseNewListingBody = require('../../middleware/parseNewListingBody');
 const upload = multer();
+const uploadMedia = require("../../middleware/uploadMedia");
+const fieldSize = "10mb";
+const router = express.Router();
 
-module.exports = router.post("/add", upload.single("media"), uploadMedia, addListing, (req, res, next) => {  
-  if (res.locals.error) res.status(500).send(res.locals.error);
-  else res.status(201).send(res.locals.message);
-});
+module.exports = router.post(
+  "/add",
+  upload.fields([
+    { name: "images", fieldSize },
+    { name: "videos", fieldSize }
+  ]),
+  parseNewListingBody,
+  uploadMedia,
+  addListing,
+  logMessage,
+  (req, res) => {
+    if (req.error) res.sendStatus(500);
+    else res.sendStatus(201);
+  }
+);

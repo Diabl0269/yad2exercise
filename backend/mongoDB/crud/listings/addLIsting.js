@@ -3,11 +3,22 @@ const listingModel = require("../../models/listingsModel");
 module.exports = async (req, res, next) => {
   const newListing = req.body;
 
+  const successMessage = "Listing added successfully \n";
+  const errorMessage = "Unable to add listing \n";
   try {
-    await listingModel.create(newListing);
-    res.locals.message = "הרשומה נוספה בהצלחה";
+    //Add the listing
+    const listing = await listingModel.create(newListing);
+    const { id } = listing;
+    
+    //Update user listings data
+    req.user.listings.push(id);
+    req.user.save();
+
+    req.message += successMessage;
     next();
-  } catch {
-    res.status(500).send("לא ניתן להתחבר לשרת");
+  } catch (e) {
+    req.error += e;
+    req.message += errorMessage;
+    next();
   }
 };

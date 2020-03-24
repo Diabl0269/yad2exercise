@@ -30,7 +30,7 @@ const ListItem = ({ record }) => {
     : "/images/noImgs.jpg";
   const numOfRecordImagesMinusOne = record.media.imageBase64
     ? record.media.imageBase64.length - 1
-    : null;
+    : null;    
   const formatedPrice = price
     ? "₪" + numeral(price).format("0,00")
     : "לא צויין מחיר";

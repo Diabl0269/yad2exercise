@@ -36,7 +36,7 @@ export default {
     top: 51,
     width: 280,
     zIndex: 2,
-    "border-radius": "2px"
+    borderRadius: "2px"
   },
   suggestionsList: {
     margin: 0,

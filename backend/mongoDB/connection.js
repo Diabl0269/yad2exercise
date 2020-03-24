@@ -1,9 +1,9 @@
-const chalk = require('chalk');
 require("dotenv").config({ path: __dirname + "/../.env" });
 const mongoose = require("mongoose");
+const { success, failure } = require('../utils/messageColor');
 
-const successMsg = chalk.black.bgGreen('mongo connection exists');
-const errorMsg = chalk.black.bgRed('connection error:');
+const successMsg = success('mongo connection exists');
+const errorMsg = failure('connection error:');
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, errorMsg));

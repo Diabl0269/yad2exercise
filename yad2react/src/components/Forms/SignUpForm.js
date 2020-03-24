@@ -26,7 +26,6 @@ const SignUpForm = () => {
     const user = await signUp(userDetails);
     if (!user) return dispatch(true);
     alert("משתמש נוצר בהצלחה");
-    localStorage.setItem("token", user.tokens[0].token);
     setUser(user);
     navigate(`/user`);
   };

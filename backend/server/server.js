@@ -1,13 +1,13 @@
-const chalk = require("chalk");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
+const { success } = require('../utils/messageColor');
 
 app.use(bodyParser.json());
 
 require("./serverInit")(app);
 
-const successMsg = chalk.black.bgGreen(`Server is running on port: ${port}`);
+const successMsg = success(`Server is running on port: ${port}`);
 
 app.listen(port, () => console.log(successMsg));

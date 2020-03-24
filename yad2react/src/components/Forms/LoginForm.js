@@ -8,12 +8,11 @@ const LoginForm = () => {
   const [loginFail, dispatchLoginFail] = useState(false);
   const {email, password} = useLogin();
   const setUser = useContext(UserContext)[1];
-
+  
   const loginHandler = async (e) => {
     e.preventDefault();
     const userData = await login({email: email[0], password: password[0]});              
     if (!userData) return dispatchLoginFail(true);
-    localStorage.setItem('token', userData.tokens[userData.tokens.length - 1].token)
     setUser(userData);
     navigate(`/user`)
   };

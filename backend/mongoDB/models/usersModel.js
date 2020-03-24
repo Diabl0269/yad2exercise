@@ -99,18 +99,18 @@ usersSchema.methods.generateAuthToken = async function() {
 usersSchema.methods.filterExpiredTokens = async function() {
   const user = this;
   let tokens;
-  try {
-    tokens = user.tokens.filter(token => {
-      return jwt.verify(token.token, process.env.JWT_SECRET, (err, res) =>
-        err && err.name === "TokenExpiredError" ? false : true
-      );
-    });
-    if (tokens.length !== user.tokens.length) {
-      user.tokens = tokens;
+  tokens = user.tokens.filter(token => {
+    return jwt.verify(token.token, process.env.JWT_SECRET, (err, res) =>
+      err && err.name === "TokenExpiredError" ? false : true
+    );
+  });
+  if (tokens.length !== user.tokens.length) {
+    user.tokens = tokens;
+    try {
       await user.save();
+    } catch (e) {
+      console.log(e);
     }
-  } catch (e) {
-    console.log(e);
   }
   return;
 };

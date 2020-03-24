@@ -9,6 +9,7 @@ import FormFields from "./NewListingFormFields/FormFields";
 const NewListingForm = () => {
   const title = "מודעה חדשה";
   const serverErrorMessage = "תקלת שרת, אנה נסה שנית מאוחר יותר";
+  const requiredFieldMessage = "שדה חובה";
   const [displayServerErrorMessage, setDisplayServerErrorMessage] = useState(
     false
   );
@@ -18,8 +19,8 @@ const NewListingForm = () => {
   }
 
   const handleSubmit = async values => {
-
-    if (await addListing(values)) {
+    const listingAdded = await addListing(values);
+    if (listingAdded) {
       alert("המודעה נוספה בהצלחה");
       //   //   return if (nextURL) navigate(nextURL);
     }
@@ -30,12 +31,12 @@ const NewListingForm = () => {
     const errors = {};
 
     //Add Errors here
-    // fieldsObj.forEach(({ type, name, notReuired }) => {
-    //   const key = type;
-    //   const value = values[key];
-    //   if (name === "attributes" || notReuired) return; //add not requierd fields here
-    //   if (!value) errors[key] = requiredFieldMessage;
-    // });
+    fieldsObj.forEach(({ type, name, notReuired }) => {
+      const key = type;
+      const value = values[key];
+      if (name === "attributes" || notReuired) return; //add not requierd fields here
+      if (!value) errors[key] = requiredFieldMessage;
+    });
 
     return errors;
   };
