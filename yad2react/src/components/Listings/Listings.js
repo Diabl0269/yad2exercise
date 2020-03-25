@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import ListItem from '../ListItem/ListItem';
-import Loader from '../utils/Loader';
-import FiltersContext from "../../context/FiltersContext";
+import React, { useContext } from 'react'
+import ListItem from '../ListItem/ListItem'
+import Loader from '../utils/Loader'
+import FiltersContext from '../../context/FiltersContext'
 
 const Listings = () => {
-  const {listings} = useContext(FiltersContext)  
+  const { listings } = useContext(FiltersContext)
   return listings && listings.length > 0 ? (
     <ul className="listing-container">
       {listings.map(record => (
@@ -13,7 +13,7 @@ const Listings = () => {
     </ul>
   ) : (
     <Loader />
-  );
-};
+  )
+}
 
-export default Listings;
+export default Listings

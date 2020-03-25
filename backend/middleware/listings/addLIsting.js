@@ -1,4 +1,4 @@
-const listingModel = require("../../models/listingsModel");
+const listingModel = require("../../mongoDB/models/listingsModel");
 
 module.exports = async (req, res, next) => {
   const newListing = req.body;
@@ -9,6 +9,8 @@ module.exports = async (req, res, next) => {
     //Add the listing
     const listing = await listingModel.create(newListing);
     const { id } = listing;
+    console.log(listing);
+    
     
     //Update user listings data
     req.user.listings.push(id);

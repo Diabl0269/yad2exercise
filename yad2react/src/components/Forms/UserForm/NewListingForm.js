@@ -1,45 +1,46 @@
-import React, { useState } from "react";
-import fieldsObj from "../../../utils/listingObj";
-import { Formik, Form } from "formik";
-import { navigate } from "hookrouter";
-import FormGroup from "@material-ui/core/FormGroup";
-import addListing from "../../../communication/addListing";
-import FormFields from "./NewListingFormFields/FormFields";
+import React, { useState } from 'react'
+import fieldsObj from '../../../utils/listingObj'
+import { Formik, Form } from 'formik'
+import { navigate } from 'hookrouter'
+import FormGroup from '@material-ui/core/FormGroup'
+import addListing from '../../../communication/addListing'
+import FormFields from './NewListingFormFields/FormFields'
 
 const NewListingForm = () => {
-  const title = "מודעה חדשה";
-  const serverErrorMessage = "תקלת שרת, אנה נסה שנית מאוחר יותר";
-  const requiredFieldMessage = "שדה חובה";
+  const title = 'מודעה חדשה'
+  const userURI = '/user'
+  const serverErrorMessage = 'תקלת שרת, אנה נסה שנית מאוחר יותר'
+  const requiredFieldMessage = 'שדה חובה'
   const [displayServerErrorMessage, setDisplayServerErrorMessage] = useState(
     false
-  );
-  const fieldsValues = {};
+  )
+  const fieldsValues = {}
   for (let field of fieldsObj) {
-    fieldsValues[field.type] = field.value;
+    fieldsValues[field.type] = field.value
   }
 
   const handleSubmit = async values => {
-    const listingAdded = await addListing(values);
+    const listingAdded = await addListing(values)
     if (listingAdded) {
-      alert("המודעה נוספה בהצלחה");
-      //   //   return if (nextURL) navigate(nextURL);
+      alert('המודעה נוספה בהצלחה')
+      navigate(userURI)
     }
-    setDisplayServerErrorMessage(true);
-  };
+    setDisplayServerErrorMessage(true)
+  }
 
   const validate = values => {
-    const errors = {};
+    const errors = {}
 
     //Add Errors here
     fieldsObj.forEach(({ type, name, notReuired }) => {
-      const key = type;
-      const value = values[key];
-      if (name === "attributes" || notReuired) return; //add not requierd fields here
-      if (!value) errors[key] = requiredFieldMessage;
-    });
+      const key = type
+      const value = values[key]
+      if (name === 'attributes' || notReuired) return //add not requierd fields here
+      if (!value) errors[key] = requiredFieldMessage
+    })
 
-    return errors;
-  };
+    return errors
+  }
 
   return (
     <div id="newListingContainer">
@@ -58,7 +59,7 @@ const NewListingForm = () => {
         </Form>
       </Formik>
     </div>
-  );
-};
+  )
+}
 
-export default NewListingForm;
+export default NewListingForm

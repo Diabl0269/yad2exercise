@@ -14,6 +14,6 @@ module.exports = async files => {
     });
     mediaKeys.push(mediaKey);
   });
-
+  
   return mediaKeys;
 };

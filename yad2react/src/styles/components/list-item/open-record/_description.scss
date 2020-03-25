@@ -1,59 +1,58 @@
 //description
-.open-listing__description-container  {
-    display: flex;
-    background: white;
-    width: $li-width;
-    border: $s-border solid $border-color;
-  }
-  
-  .open-listing__description-sub-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: $s-mp;
-  } 
-  
-  .open-listing__description--ad {
-    background: $grey;
-    width: 173px;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .open-listing__description--agency {
-    display: flex;
-    border-bottom: $s-border solid $border-color;
-    width: 100%;
-  }
+.open-listing__description-container {
+  display: flex;
+  background: white;
+  width: $li-width;
+  border: $s-border solid $border-color;
+}
 
-  .open-listing__description__details-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: $s-mp 0 $s-mp 0;
-    border-bottom: $s-border solid $border-color;
-  }
+.open-listing__description-sub-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: $s-mp;
+}
 
-  .open-listing__description__details-item{
-    padding: $xs-mp;
-    width: $quarter;
+.open-listing__description--ad {
+  background: $grey;
+  width: 173px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  }
+.open-listing__description--agency {
+  display: flex;
+  border-bottom: $s-border solid $border-color;
+  width: 100%;
+}
 
-.open-listing__description__details-fixer{
+.open-listing__description__details-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: $s-mp 0 $s-mp 0;
+  border-bottom: $s-border solid $border-color;
+}
+
+.open-listing__description__details-item {
+  padding: $xs-mp;
+  width: $quarter;
+}
+
+.open-listing__description__details-fixer {
   display: inline-flex;
   flex-direction: row;
 }
 
-.open-listing__description--footer{
+.open-listing__description--footer {
   width: 100%;
 }
 
 .dosent-exist {
-  color: darken($grey, 20%)
+  color: darken($grey, 20%);
 }
 
 .no-border {

@@ -1,4 +1,4 @@
-const usersModel = require("../../models/usersModel");
+const usersModel = require("../../mongoDB/models/usersModel");
 
 module.exports = async (req, res, next) => {
   const { firstName, lastName, phone, phone2, email } = req.body;

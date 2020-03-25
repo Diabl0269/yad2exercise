@@ -1,6 +1,8 @@
-const listingsModel = require("../../models/listingsModel");
+const listingsModel = require('../../mongoDB/models/listingsModel')
 
 module.exports = async (req, res, next) => {
+  const errorMessage = 'Failed to retrive listings \n'
+  const successMessage = 'Got listings successfully \n'
   const filterObject = {
     // price: {
     // saleDetails: {
@@ -34,19 +36,24 @@ module.exports = async (req, res, next) => {
     // description: { $regex: /^[x{0590}\–x{05FF}\\s]*$/ },
     // $text: {$search:  },
     // ...req.advanced
-  };
+  }
+  if (req.user) filterObject.listingUser = req.userID
 
   try {
-    res.locals.count = await listingsModel.countDocuments();
-    res.locals.data = await listingsModel
-      .find()
+    res.count = await listingsModel.countDocuments(filterObject)
+    res.listings = await listingsModel
+      .find(filterObject)
       .sort(req.body.sortBy)
       .skip(req.body.skip)
       .limit(10)
-      .populate("listingUser")
-      .exec();
-    next();
-  } catch {
-    res.status(500).send("שגיאת שרת");
+      .populate('listingUser', '-password -_id -salt -tokens')
+      .exec()
+    req.message = successMessage
+
+    next()
+  } catch (e) {
+    req.error = e
+    req.message = errorMessage
+    next()
   }
-};
+}

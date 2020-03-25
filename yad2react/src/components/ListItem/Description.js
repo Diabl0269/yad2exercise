@@ -15,7 +15,7 @@ export default ({ agencyName, assetDetails, attributes }) => {
   } = assetDetails;
   const displayEntranceDate = entranceDate || "לא צוין תאריך כניסה";
   const attributesArray = Object.values(attributes);
-
+  
   return (
     <div className="open-listing__description-container smaller-text">
       <div className="open-listing__description--ad">כאן תהיה פרסומת</div>

@@ -1,31 +1,37 @@
-import Filters from "./Filters/Filters";
-import FiltersContext from "../../context/FiltersContext";
-import Listings from "./Listings";
-import ListingsTypeContext from '../../context/ListingsTypeContext';
-import Pagination from "./Pagination";
-import React, { useState, useEffect, useReducer } from "react";
-import SortBar from "./SortBar/SortBar";
-import getFilterdListings from "../../communication/getFilterdListings";
-import listingsTypeReducer from "../../reducers/listingsType";
-import useQuery from "../../hooks/useQuery";
+import Filters from './Filters/Filters'
+import FiltersContext from '../../context/FiltersContext'
+import Listings from './Listings'
+import ListingsTypeContext from '../../context/ListingsTypeContext'
+import Pagination from './Pagination'
+import React, { useState, useEffect, useReducer } from 'react'
+import SortBar from './SortBar/SortBar'
+import getFilterdListings from '../../communication/getFilterdListings'
+import listingsTypeReducer from '../../reducers/listingsType'
+import useQuery from '../../hooks/useQuery'
+import getListings from '../../communication/getListings'
 
 const ListingsContainer = () => {
   const [currentListingsType, dispatchListingsType] = useReducer(
     listingsTypeReducer,
-    "מכירה"
-  );
-  const [listings, dispatch] = useState([]);
-  const queryObj = useQuery();
+    'מכירה'
+  )
+
+  const [listings, listingsDispatch] = useState([])
+  const queryObj = useQuery()
 
   useEffect(() => {
-    getFilterdListings(queryObj, dispatch);
-  }, []);
+    getListings(queryObj, listingsDispatch)
+  }, [])
 
   return (
     <div className="list-container">
-      <FiltersContext.Provider value={{ queryObj, listings, dispatch }}>
-        <ListingsTypeContext.Provider value={{ currentListingsType, dispatchListingsType }}>
-          <Filters dispatch={dispatch} />
+      <FiltersContext.Provider
+        value={{ queryObj, listings, dispatch: listingsDispatch }}
+      >
+        <ListingsTypeContext.Provider
+          value={{ currentListingsType, dispatchListingsType }}
+        >
+          <Filters dispatch={listingsDispatch} />
 
           <div id="listing" className="list-center">
             <div>
@@ -38,7 +44,7 @@ const ListingsContainer = () => {
         </ListingsTypeContext.Provider>
       </FiltersContext.Provider>
     </div>
-  );
-};
+  )
+}
 
-export default ListingsContainer;
+export default ListingsContainer

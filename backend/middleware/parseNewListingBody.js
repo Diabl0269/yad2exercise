@@ -1,7 +1,8 @@
-module.exports = (req, res, next) => {  
+module.exports = (req, res, next) => {   
   req.body = JSON.parse(req.body.fields);
   const { body } = req;
   req.body = {
+    listingType: body.listingType,
     address: {
       city: body.city,
       street: body.street,
@@ -47,7 +48,7 @@ module.exports = (req, res, next) => {
       images: [],
       videos: []
     },
-    listingUser: req.user._id
+    listingUser: req.userID
   };
   next()
 };

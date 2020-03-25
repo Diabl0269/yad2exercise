@@ -1,12 +1,13 @@
-const addListing = require("../../mongoDB/crud/listings/addLIsting");
+const addListing = require("../../middleware/listings/addLIsting");
 const express = require("express");
 const logMessage = require("../../middleware/logMessage");
 const multer = require("multer");
 const parseNewListingBody = require('../../middleware/parseNewListingBody');
 const upload = multer();
-const uploadMedia = require("../../middleware/uploadMedia");
+const uploadMedia = require("../../middleware/media/uploadMedia");
 const fieldSize = "10mb";
 const router = express.Router();
+const getUser = require('../../middleware/users/getUser');
 
 module.exports = router.post(
   "/add",
@@ -14,6 +15,7 @@ module.exports = router.post(
     { name: "images", fieldSize },
     { name: "videos", fieldSize }
   ]),
+  getUser,
   parseNewListingBody,
   uploadMedia,
   addListing,

@@ -1,16 +1,16 @@
-import axios from "axios";
+import axios from 'axios'
 
 export default async () => {
-  const { token } = localStorage;
-  if (!token) return;
+  const { token } = localStorage
+  if (!token) return
   try {
-    const user = await axios.get("/users", {
+    const { status } = await axios.get('/users/auth', {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    });
-    return user.data;
+    })
+    return status === 200 ? true : false
   } catch {
-    return;
+    return
   }
-};
+}

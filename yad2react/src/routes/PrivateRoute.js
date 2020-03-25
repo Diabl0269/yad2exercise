@@ -1,13 +1,15 @@
-import React from "react";
-import { navigate } from "hookrouter";
+import React, { useEffect } from 'react'
+import { navigate } from 'hookrouter'
+import auth from '../communication/auth'
 
-const PrivateRoute = ({ Component }) => {
-  const loginPageURI= '/login'
-  const jwtRegex = /^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/;
-  const {token} = localStorage
-  const jwtValid = jwtRegex.test(token) 
-  if (!jwtValid) navigate(loginPageURI);
-  return <Component />;
-};
-
-export default PrivateRoute;
+export default ({ Component }) => {
+  const loginPageURI = '/login'
+  useEffect(() => {
+    const checkAuth = async () => {
+      const isAuth = await auth()
+      if (!isAuth) navigate(loginPageURI)
+    }
+    checkAuth()
+  }, [])
+  return <Component />
+}

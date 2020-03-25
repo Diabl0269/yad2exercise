@@ -1,8 +1,6 @@
 import React from 'react'
 
-export default ({attributesArray}) => {
-    console.log(attributesArray);
-    
+export default ({attributesArray}) => { 
     return attributesArray.map(
       attribute =>
          (

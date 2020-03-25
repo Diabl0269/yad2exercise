@@ -1,4 +1,5 @@
 #loader {
-    align-self: center;
-    margin-bottom: $m-size;
+    // align-self: center;
+    @include align-column;
+    margin: $m-size;
   }
