@@ -25,11 +25,13 @@
     width: 0;
   }
   button {
-    margin-top: $l-mp;
     @include button($orange, $s-size);
   }
   label {
     width: $quarter;
+  }
+  #submitButton {
+    margin-top: $l-mp;
   }
 }
 

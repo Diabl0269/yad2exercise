@@ -8,7 +8,7 @@ const UserDetailsButtons = () => {
     localStorage.setItem('token', '')
     localStorage.setItem('id', '')
     user[1]({})
-    navigate('/')
+    navigate('/', true)
   }
   const handleDelete = () => {
     alert('will delete')
@@ -17,7 +17,7 @@ const UserDetailsButtons = () => {
     <div className="align-column">
       <div className="align-row">
         <button onClick={() => navigate('/user/update')}>עדכן נתונים</button>
-        <button onClick={() => navigate('/user/new-listing')}>מודעה חדשה</button>
+        <button onClick={() => navigate('/user/listings/add')}>מודעה חדשה</button>
         <button onClick={() => navigate('/user/listings')}>הצג מודעות</button>
         <button onClick={() => handleDelete()}>מחק משתמש</button>
       </div>

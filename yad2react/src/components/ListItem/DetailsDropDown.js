@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import openDropDown from '../../utils/openDropDown';
+import ListItemContext from "../../context/ListItemContext";
 
-const DetailsDropDown = ({ listingUser }) => {
-  const { userDetails } = listingUser;
-  const {firstName, phone, phone2 } = userDetails;
+const DetailsDropDown = () => {
+  const { listingUser: {userDetails: {firstName, phone, phone2}}} = useContext(ListItemContext)
 
   return (
     <div>

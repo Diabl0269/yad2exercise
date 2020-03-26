@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import DisplayArrayAttributes from "../utils/DisplayArrayAttributes";
+import ListItemContext from "../../context/ListItemContext";
 
-export default ({ agencyName, assetDetails, attributes }) => {
-  const {
+export default ({ agencyName }) => {
+  
+  const {assetDetails: {
     assetState,
     assetType,
     balconies,
+    description,
     entranceDate = "",
     furnitureDescription = "",
     parking,
     squareMetersGarden,
     squareMetersBuilt,
-    totalFloors
-  } = assetDetails;
+    totalFloors}, attributes} = useContext(ListItemContext)
+
   const displayEntranceDate = entranceDate || "לא צוין תאריך כניסה";
   const attributesArray = Object.values(attributes);
   
@@ -27,7 +30,7 @@ export default ({ agencyName, assetDetails, attributes }) => {
         )}
         <br />
         <div>
-          <b>תיאור הנכס</b> <p>{assetDetails.description}</p>
+          <b>תיאור הנכס</b> <p>{description}</p>
           <div className="smallest-text">
             {assetType !== "מגרשים" && (
               <div className="open-listing__description__details-container">
@@ -64,7 +67,7 @@ export default ({ agencyName, assetDetails, attributes }) => {
         </div>
         <br />
         <b>מה יש בנכס?</b>
-        <div className="open-listing__description__details-container no-border">
+        <div className="no-border">
           <div className="open-listing__description__details-container no-border smallest-text">
             <DisplayArrayAttributes attributesArray={attributesArray} />
           </div>

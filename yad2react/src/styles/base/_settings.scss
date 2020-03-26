@@ -11,6 +11,7 @@ $promo-yellow: #fdf9c5;
 $very-dark-orange: #df6200;
 
 //sizes
+$fifth : 20%;
 $quarter: 25%;
 $third: 33%;
 $half: 50%;
@@ -27,7 +28,7 @@ $s-border: 1px;
 
 //list-item sizes
 $li-width: 695px;
-$li-heigth: 120px;
+$li-height: 120px;
 
 //maring and padding
 $l-mp: 5%;
@@ -177,6 +178,14 @@ $mobile-breakpoint: 45rem;
   width: 100%
 }
 
+.height-half {
+  height: $half;
+}
+
+.height-full {
+  height: $full;
+}
+
 .align-items-center {
   align-items: center;
 }
@@ -196,7 +205,7 @@ $mobile-breakpoint: 45rem;
   background: red;
 }
 
-@mixin full-heigth {
+@mixin full-height {
   height: 100%;
 }
 
@@ -209,7 +218,7 @@ $mobile-breakpoint: 45rem;
 }
 
 .page {
-  @include full-heigth();
+  @include full-height();
   @include align-column();
 }
 
@@ -239,6 +248,10 @@ $mobile-breakpoint: 45rem;
   @if $color == white {
     color: $off-black;
   }
+}
+
+.button__off-white {
+  @include button($off-white, auto)
 }
 
 @mixin field-box {

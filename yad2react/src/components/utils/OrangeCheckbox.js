@@ -15,11 +15,15 @@ const style = withStyles({
 });
 
 export default style(props => {
+  
   const {
-    form: { setFieldValue },
+    form: { setFieldValue, values },
     field: { name }
   } = props;
-  const clickHandler = e => {
+  
+  const value = values[name]
+  
+  const changeHandler = e => {
     setFieldValue(name, e.target.checked);
   };
 
@@ -27,8 +31,8 @@ export default style(props => {
     <MuiCheckbox
       color="default"
       id={name}
-      onClick={clickHandler}
-      value="true"
+      onChange={changeHandler}
+      checked={value}
       {...props}
     />
   );

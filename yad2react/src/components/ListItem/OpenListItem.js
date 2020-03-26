@@ -1,63 +1,45 @@
-import React from "react";
-import RecordImage from "./RecordImage";
-import RecordAddress from "./RecordAddress";
-import CoreDetails from "./CoreDetails";
-import DetailsDropdown from "./DetailsDropDown";
-import Description from "./Description";
+import React, { useContext } from 'react'
+import RecordImage from './RecordImage'
+import RecordAddress from './RecordAddress'
+import CoreDetails from './CoreDetails'
+import DetailsDropdown from './DetailsDropDown'
+import Description from './Description'
+import ListItemContext from '../../context/ListItemContext'
+import displayPrice from '../../utils/displayPrice'
 
-const OpenListItem = ({
-  numOfRecordImagesMinusOne,
-  src,
-  mainAddress,
-  addressDetails,
-  assetDetails,
-  formatedPrice,
-  listingUser,
-  attributes
-}) => {
-  const { rooms, floor, totalSquareMeters } = assetDetails;  
-  const { agencyName = "" } = listingUser.userDetails;
-  
+const OpenListItem = () => {
+  const {
+    saleDetails: { price }
+  } = useContext(ListItemContext)
+  const formatedPrice = displayPrice(price)
+
   return (
     <div>
       <div className="record-container record-container__open">
-        <RecordImage
-          numOfRecordImagesMinusOne={numOfRecordImagesMinusOne}
-          src={src}
-        />
+        <RecordImage />
 
         <div className="open-listing--middle-container">
-          <RecordAddress
-            className="align-column"
-            mainAddress={mainAddress}
-            addressDetails={addressDetails}
-          />
+          <RecordAddress className="align-column" />
           <br />
-          <CoreDetails
-            className="middle-container"
-            rooms={rooms}
-            floor={floor}
-            totalSquareMeters={totalSquareMeters}
-          />
+          <CoreDetails className="middle-container" />
         </div>
 
         <div className="push-left">
           <div className="left-container">
-            {formatedPrice || "לא צוין מחיר"}
+            {formatedPrice}
           </div>
-          <DetailsDropdown listingUser={listingUser} />
+          <DetailsDropdown />
         </div>
       </div>
 
-      <Description
-        assetDetails={assetDetails}
-        agencyName={agencyName}
-        attributes={attributes}
-      />
+      <Description />
 
-      <div className='open-listing--footer'><div>פרטי התקשרות</div><div>מצאתי טעות</div></div>
+      <div className="open-listing--footer">
+        <div>פרטי התקשרות</div>
+        <div>מצאתי טעות</div>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default OpenListItem;
+export default OpenListItem

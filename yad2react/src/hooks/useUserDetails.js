@@ -7,6 +7,7 @@ export default () => {
         phone: useState(''),
         phone2: useState(''),
         email: useState(''),
-        password: useState('')
+        password: useState(''),
+        agencyName: useState('')
     }
 }

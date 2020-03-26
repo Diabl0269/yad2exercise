@@ -5,9 +5,10 @@ const multer = require("multer");
 const parseNewListingBody = require('../../middleware/parseNewListingBody');
 const upload = multer();
 const uploadMedia = require("../../middleware/media/uploadMedia");
-const fieldSize = "10mb";
 const router = express.Router();
 const getUser = require('../../middleware/users/getUser');
+
+const fieldSize = "10mb";
 
 module.exports = router.post(
   "/add",

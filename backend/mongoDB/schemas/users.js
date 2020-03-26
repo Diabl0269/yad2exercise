@@ -57,6 +57,7 @@ module.exports = new Schema({
           throw Error('Please enter a valid email')
         }
       }
-    }
+    },
+    agencyName: { type: String }
   }
 })

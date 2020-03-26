@@ -8,7 +8,7 @@ export default async userDetails => {
     const { tokens } = user;
     const { token } = tokens[tokens.length - 1];
     localStorage.setItem("token", token);
-
+    
     return user;
   } catch (error) {
     return;

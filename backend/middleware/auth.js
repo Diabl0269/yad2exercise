@@ -3,7 +3,6 @@ require('dotenv').config({ path: __dirname + '/../.env' })
 const { failure } = require('../utils/messageColor')
 
 module.exports = async (req, res, next) => {
-    
   const errorMessage = 'User authentication failed \n'
   const successMessage = 'User authentication succefully \n'
   try {

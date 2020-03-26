@@ -5,7 +5,6 @@ import ListingsTypeContext from '../../context/ListingsTypeContext'
 import Pagination from './Pagination'
 import React, { useState, useEffect, useReducer } from 'react'
 import SortBar from './SortBar/SortBar'
-import getFilterdListings from '../../communication/getFilterdListings'
 import listingsTypeReducer from '../../reducers/listingsType'
 import useQuery from '../../hooks/useQuery'
 import getListings from '../../communication/getListings'
@@ -33,14 +32,12 @@ const ListingsContainer = () => {
         >
           <Filters dispatch={listingsDispatch} />
 
-          <div id="listing" className="list-center">
-            <div>
-              <SortBar />
-              <Listings />
-              <Pagination />
-            </div>
-            <div className="map"></div>
+          <div id="listing">
+            <SortBar />
+            <Listings />
+            <Pagination />
           </div>
+          
         </ListingsTypeContext.Provider>
       </FiltersContext.Provider>
     </div>

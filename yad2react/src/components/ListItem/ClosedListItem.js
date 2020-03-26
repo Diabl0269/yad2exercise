@@ -1,39 +1,25 @@
-import React from "react";
-import CoreDetails from "./CoreDetails";
-import RecordImage from "./RecordImage";
-import RecordAddress from "./RecordAddress";
+import React, { useContext } from 'react'
+import CoreDetails from './CoreDetails'
+import RecordImage from './RecordImage'
+import RecordAddress from './RecordAddress'
+import displayPrice from '../../utils/displayPrice'
+import ListItemContext from '../../context/ListItemContext'
+import moment from 'moment'
 
-const ClosedListItem = ({
-  addressDetails,
-  assetDetails,
-  formatedPrice,
-  hasUpdatedToday,
-  mainAddress,
-  numOfRecordImagesMinusOne,
-  src,
-}) => {
-  const { rooms, floor, totalSquareMeters} = assetDetails;  
+const ClosedListItem = () => {
+  const { saleDetails: {price}, updatedAt } = useContext(ListItemContext)  
+  const formatedPrice = displayPrice(price)
+  const hasUpdatedToday = moment().isSame(updatedAt, 'day')
+  
   const openNewTab = e => {
-    e.stopPropagation();
-    alert("כאן יפתח טאב חדש");
-  };
+    e.stopPropagation()
+    alert('כאן יפתח טאב חדש')
+  }
   return (
     <div className="record-container">
-      <RecordImage
-        numOfRecordImagesMinusOne={numOfRecordImagesMinusOne}
-        src={src}
-      />
-      <RecordAddress
-        addressDetails={addressDetails}
-        className="record__inside-container"
-        mainAddress={mainAddress}
-      />
-      <CoreDetails
-        className="record__inside-container middle-container"
-        floor={floor}
-        rooms={rooms}
-        totalSquareMeters={totalSquareMeters}
-      />
+      <RecordImage />
+      <RecordAddress className="record__inside-container" />
+      <CoreDetails className="record__inside-container middle-container" />
 
       <div className="record__inside-container">
         <div className="left-container">
@@ -42,12 +28,12 @@ const ClosedListItem = ({
               טאב חדש
             </span>
             {formatedPrice}
-            <span>{hasUpdatedToday ? "עודכן היום" : ""}</span>
+            <span>{hasUpdatedToday ? 'עודכן היום' : ''}</span>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ClosedListItem;
+export default ClosedListItem

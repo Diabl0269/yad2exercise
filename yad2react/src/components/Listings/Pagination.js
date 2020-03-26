@@ -1,17 +1,19 @@
 import React, { useContext } from "react";
 import ReactPaginate from "react-paginate";
 import FiltersContext from "../../context/FiltersContext";
-import getFilterdListings from '../../communication/getFilterdListings';
+import getListings from '../../communication/getListings';
 
-const Pagination = () => {
+export default () => {
   const { queryObj, dispatch } = useContext(FiltersContext);
   const pageCount = Math.ceil(queryObj.count[0] / 10);
   const dispatchSkip = queryObj.skip[1];
+
   const changePageHandler = pageNum => {
-    const skipBy = pageNum.selected  * 10     
+    const skipBy = pageNum.selected  * 10 
     dispatchSkip(skipBy)
-    getFilterdListings(queryObj, dispatch);
+    getListings(queryObj, dispatch)
   };
+  
   return (
     <ReactPaginate
       containerClassName={"pagination--container"}
@@ -29,5 +31,3 @@ const Pagination = () => {
     />
   );
 };
-
-export default Pagination;

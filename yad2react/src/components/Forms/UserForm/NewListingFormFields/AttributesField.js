@@ -7,7 +7,7 @@ export default ({field: {type, text}}) => {
 
   const { values, setFieldValue } = useFormikContext()
   const value =values[type]
-
+  
   const clickHandler = e => {
     setFieldValue(type, e.target.value)
   }
@@ -19,7 +19,7 @@ export default ({field: {type, text}}) => {
         <Field
           component={OrangeCheckbox}
           onClick={clickHandler}
-          value={value}
+          value={value || undefined}
           inputProps={{ type: "checkbox" }}
           name={type}
         />

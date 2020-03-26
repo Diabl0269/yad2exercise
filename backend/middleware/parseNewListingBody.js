@@ -1,6 +1,6 @@
-module.exports = (req, res, next) => {   
-  req.body = JSON.parse(req.body.fields);
-  const { body } = req;
+module.exports = (req, res, next) => {
+  req.body = JSON.parse(req.body.fields)
+  const { body } = req
   req.body = {
     listingType: body.listingType,
     address: {
@@ -29,26 +29,26 @@ module.exports = (req, res, next) => {
       entranceDate: body.entranceDate
     },
     attributes: {
-      exclusivity: body.exclusivity,
-      airConditioned: body.airConditioned,
-      kitchen: body.kitchen,
-      kosherKithecn: body.kosherKithecn,
-      lift: body.lift,
-      bars: body.bars,
-      renovated: body.renovated,
-      disabledAccess: body.disabledAccess,
-      safeSpace: body.safeSpace,
-      pandorDoor: body.pandorDoor,
-      warehouse: body.warehouse,
-      tadiranAirConditioned: body.tadiranAirConditioned,
-      furniture: body.furniture,
-      livingUnit: body.livingUnit
+      exclusivity: { exists: !!body.exclusivity },
+      airConditioned: { exists: !!body.airConditioned },
+      kitchen: { exists: !!body.kitchen },
+      kosherKithecn: { exists: !!body.kosherKithecn },
+      lift: { exists: !!body.lift },
+      bars: { exists: !!body.bars },
+      renovated: { exists: !!body.renovated },
+      disabledAccess: { exists: !!body.disabledAccess },
+      safeSpace: { exists: !!body.safeSpace },
+      pandorDoor: { exists: !!body.pandorDoor },
+      warehouse: { exists: !!body.warehouse },
+      tadiranAirConditioned: { exists: !!body.tadiranAirConditioned },
+      furniture: { exists: !!body.furniture },
+      livingUnit: { exists: !!body.livingUnit }
     },
     media: {
       images: [],
       videos: []
     },
     listingUser: req.userID
-  };
+  }
   next()
-};
+}

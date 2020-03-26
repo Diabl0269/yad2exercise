@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useFormikContext } from "formik";
+import MediaModal from "../../../utils/MediaModal";
 
 export default ({ field: { type, text } }) => {
   const [filesMessage, setFilesMessage] = useState("העלה מדיה");
-  const { setFieldValue } = useFormikContext();
-
+  const { setFieldValue, values } = useFormikContext();
+  const value = values[type]
+  
   const changeHandler = async e => {
     e.preventDefault();
     const { files } = e.target;
@@ -13,9 +15,9 @@ export default ({ field: { type, text } }) => {
   };
 
   return (
-    <div key={type}>
+    <div key={type} className='align-row'>
       {text + ":"}
-      <label id="uploadMedia">
+      {!!value.length ? <MediaModal type={type}/> : <label id="uploadMedia">
         {filesMessage}
         <input
           onChange={e => changeHandler(e)}
@@ -25,7 +27,7 @@ export default ({ field: { type, text } }) => {
           className="width-half"
           accept={`${type === "images" ? "image" : "video"}/*`}
         />
-      </label>
+      </label>}
     </div>
   );
 };

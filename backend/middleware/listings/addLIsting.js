@@ -9,7 +9,6 @@ module.exports = async (req, res, next) => {
     //Add the listing
     const listing = await listingModel.create(newListing);
     const { id } = listing;
-    console.log(listing);
     
     
     //Update user listings data

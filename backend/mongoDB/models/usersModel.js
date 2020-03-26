@@ -5,6 +5,8 @@ const crypto = require('crypto')
 require('dotenv').config({ path: __dirname + '../../.env' })
 const schema = require('../schemas/users')
 
+const saltLength = 32
+
 schema.pre('save', async function(next) {
   const user = this
 
@@ -57,7 +59,8 @@ schema.methods.filterExpiredTokens = async function() {
 }
 
 schema.statics.login = async (email, password) => {
-  const user = await usersModel.findOne({ 'userDetails.email': email })  
+  const user = await usersModel.findOne({ 'userDetails.email': email })
+  
   if (!user) return
   await user.filterExpiredTokens()
   const isMatch = await bcrypt.compare(password + user.salt, user.password)  

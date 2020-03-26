@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import ListItemContext from "../../context/ListItemContext";
 
-const CoreDetails = ({ rooms, floor, totalSquareMeters, className }) => {
-    return (
+export default ({ className }) => {
+  const {assetDetails: { rooms, floor, totalSquareMeters}} = useContext(ListItemContext);
+  return (
     <div className={className}>
       <div>
         {rooms}
@@ -18,5 +20,3 @@ const CoreDetails = ({ rooms, floor, totalSquareMeters, className }) => {
     </div>
   );
 };
-
-export default CoreDetails;

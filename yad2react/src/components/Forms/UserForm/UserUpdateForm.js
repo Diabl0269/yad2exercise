@@ -5,7 +5,8 @@ import UserContext from '../../../context/UserContext'
 import Loader from '../../utils/Loader'
 
 const UserUpdateForm = () => {
-  const user = useContext(UserContext)
+  const [user] = useContext(UserContext)
+  const {userDetails, agencyName} = user
   const [userUpdateMessage, setUserUpdateMessage] = useState('')
   const requiredFieldMessage = 'שדה חובה'
 
@@ -30,7 +31,7 @@ const UserUpdateForm = () => {
     return errors
   }
 
-  const ExpandedFiled = ({ text, type }) => (
+  const ExpandedField = ({ text, type }) => (
     <div>
       {text + ':'}
       <Field type={type} name={type} />
@@ -41,24 +42,26 @@ const UserUpdateForm = () => {
       />
     </div>
   )
+console.log(user);
 
   return (
     <div id="updateFormContainer">
       <h1>עדכון משתמש</h1>
-      {user[0].userDetails ? (
+      {userDetails ? (
         <Formik
-          initialValues={{ password: '', ...user[0].userDetails }}
+          initialValues={{ agencyName, password: '', ...userDetails }}
           validate={validate}
           onSubmit={handleSubmit}
         >
           <Form>
             {userUpdateMessage}
-            <ExpandedFiled text="שם פרטי" type="firstName" />
-            <ExpandedFiled text="שם משפחה" type="lastName" />
-            <ExpandedFiled text="אימייל" type="email" />
-            <ExpandedFiled text="פלאפון" type="phone" />
-            <ExpandedFiled text="פלאפון2" type="phone2" />
-            <ExpandedFiled text="סיסמה" type="password" />
+            <ExpandedField text="שם פרטי" type="firstName" />
+            <ExpandedField text="שם משפחה" type="lastName" />
+            <ExpandedField text="אימייל" type="email" />
+            <ExpandedField text="פלאפון" type="phone" />
+            <ExpandedField text="פלאפון2" type="phone2" />
+            <ExpandedField text="סיסמה" type="password" />
+            <ExpandedField text="שם סוכנות" type="agencyName" />
             <button type="submit">עדכן נתונים</button>
           </Form>
         </Formik>

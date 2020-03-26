@@ -3,26 +3,25 @@
   display: flex;
   flex-direction: column;
   list-style: none;
-  padding: 0;  
-}
-
-.list-item-container {
-  width: $li-width;
+  width: 95%;
 }
 
 //main container
 .record-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
   background: $promo-yellow;
-  height: 87px;
-  width: $li-width;
+  height: $full;
   border: $s-border solid $border-color !important;
   border-radius: $s-border;
+  .img-icon-container {
+    display: none;
+  }
   &:hover {
     box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.1);
     .img-icon-container {
+      display: flex;
       background: transparentize($off-black, 0.15);
       color: transparentize($off-black, 0.15);
       position: absolute;

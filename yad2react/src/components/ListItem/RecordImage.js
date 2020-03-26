@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useContext } from 'react'
+import ListItemContext from '../../context/ListItemContext'
 
-const RecordImage = ({ src, numOfRecordImagesMinusOne }) => {
+export default () => {
+  const {
+    media: { images }
+  } = useContext(ListItemContext)
+  const numOfRecordImagesMinusOne = images.length - 1
+  const src = images[0] ? process.env.REACT_APP_STORAGE_PATH + images[0] : '/images/noImgs.jpg'
   return (
     <div className="img-container">
       <img src={src} alt="img" />
-      {numOfRecordImagesMinusOne !== null && (
+      {numOfRecordImagesMinusOne !== -1 && (
         <div className="img-icon-container">
-          <div className="img-icon smaller-text">
-            {numOfRecordImagesMinusOne}+
-          </div>
+          <div className="img-icon smaller-text">{numOfRecordImagesMinusOne}+</div>
         </div>
       )}
     </div>
-  );
-};
-
-export default RecordImage;
+  )
+}
