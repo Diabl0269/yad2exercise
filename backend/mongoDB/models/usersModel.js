@@ -53,6 +53,7 @@ schema.methods.filterExpiredTokens = async function() {
       await user.save()
     } catch (e) {
       console.log(e)
+      return
     }
   }
   return
@@ -60,13 +61,13 @@ schema.methods.filterExpiredTokens = async function() {
 
 schema.statics.login = async (email, password) => {
   const user = await usersModel.findOne({ 'userDetails.email': email })
-  
+
   if (!user) return
   await user.filterExpiredTokens()
-  const isMatch = await bcrypt.compare(password + user.salt, user.password)  
+  const isMatch = await bcrypt.compare(password + user.salt, user.password)
   await user.generateAuthToken()
   return isMatch ? user : null
 }
-const usersModel = mongoose.model("users", schema);
+const usersModel = mongoose.model('users', schema)
 
-module.exports = usersModel;
+module.exports = usersModel

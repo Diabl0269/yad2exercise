@@ -7,7 +7,7 @@ const ListItem = () => {
   const clickHandler = () => setIsOpen(!isOpen)
 
   return (
-    <li onClick={clickHandler}>
+    <li onClick={clickHandler} className='listing__list-item'>
       {isOpen ? <OpenListItem /> : <ClosedListItem />}
     </li>
   )

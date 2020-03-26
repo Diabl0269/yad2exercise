@@ -17,7 +17,5 @@
     }
     button {
         @include button($off-white, $s-size);
-        width: $half;
-        align-self: center;
     }
 }

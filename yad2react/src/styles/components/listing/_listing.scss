@@ -8,6 +8,7 @@
 
 //main container
 .record-container {
+  width: auto;
   display: flex;
   justify-content: space-between; 
   align-items: center;
@@ -81,4 +82,9 @@
   &:disabled {
     cursor: default;
   }
+}
+
+.listing__list-item {
+  // display: fl/ex;
+  width: 100%;
 }
