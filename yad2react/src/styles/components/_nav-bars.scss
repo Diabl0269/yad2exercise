@@ -1,7 +1,7 @@
 .list__nav-bar {
   align-items: center;
   display: flex;
-  height: 100%;
+  height: $full;
   justify-content: space-between;
   list-style: none;
 }
@@ -15,11 +15,10 @@
 .main-nav-bar--container {
   align-items: center;
   background: $orange;
-  display: flex;
-  flex-direction: row;
+  @include flex-row;
   height: $l-size;
   justify-content: space-between;
-  width: 100%;
+  width: $full;
   @media (max-width: $mobile-breakpoint) {
     height: $s-size;
   }

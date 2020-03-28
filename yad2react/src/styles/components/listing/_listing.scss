@@ -1,7 +1,6 @@
 //list
 .listing-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;;
   list-style: none;
   width: 95%;
 }
@@ -29,10 +28,10 @@
       border-radius: 30%;
       width: 45px;
       height: 35px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
+      top: $half;
+      left: $half;
+      transform: translate(-$half, -$half);
+      -ms-transform: translate(-$half, -$half);
       ::selection {
         color: none;
         background: none;
@@ -40,16 +39,16 @@
     }
     .img-icon {
       -moz-border-radius: 2px;
-      -ms-transform: translate(-50%, -50%);
+      -ms-transform: translate(-$half, -$half);
       -webkit-border-radius: 2px;
       background: white;
       border-radius: 2px;
       border: black 1px solid;
       height: 18px;
-      left: 50%;
+      left: $half;
       position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      top: $half;
+      transform: translate(-$half, -$half);
       width: 24px;
     }
     .img-icon::before {
@@ -85,6 +84,5 @@
 }
 
 .listing__list-item {
-  // display: fl/ex;
-  width: 100%;
+  width: $full;
 }

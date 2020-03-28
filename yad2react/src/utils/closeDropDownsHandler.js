@@ -2,7 +2,7 @@ export default event => {
   if (
     !event.target.matches(
       '.details-button, #assetTypeDropDown, #moreTypesFilterButton, .checkbox__input, .filters__asset-type-checkbox__list,' +
-        '.checkbox__list-item, #roomsDropDown, #roomsDropDown *, .checkbox, #sortDropDown'
+        '.checkbox__list-item, #roomsDropDown, #roomsDropDown *, .checkbox, #sortDropDown, #recordMedia'
     )
   ) {
     const dropdowns = Array.from(

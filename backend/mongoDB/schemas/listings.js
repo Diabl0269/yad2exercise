@@ -4,7 +4,8 @@ const {
   assetTypes,
   assetStates,
   listingTypes
-} = require('../../middleware/assetCategories')
+} = require('../../data/assetCategories')
+
 
 module.exports = new Schema(
   {

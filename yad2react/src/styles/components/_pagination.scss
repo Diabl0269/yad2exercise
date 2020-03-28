@@ -36,7 +36,7 @@
 
 .pagination__ends-disabled {
     background: $grey;
-    color: darken($grey, 50%);
+    color: darken($grey, $half);
     &:hover {
         background: darken($grey, 10%);
     }

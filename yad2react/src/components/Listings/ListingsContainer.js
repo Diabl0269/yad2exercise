@@ -1,20 +1,13 @@
 import Filters from './Filters/Filters'
 import FiltersContext from '../../context/FiltersContext'
 import Listings from './Listings'
-import ListingsTypeContext from '../../context/ListingsTypeContext'
 import Pagination from './Pagination'
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
 import SortBar from './SortBar/SortBar'
-import listingsTypeReducer from '../../reducers/listingsType'
 import useQuery from '../../hooks/useQuery'
 import getListings from '../../communication/getListings'
 
 const ListingsContainer = () => {
-  const [currentListingsType, dispatchListingsType] = useReducer(
-    listingsTypeReducer,
-    'מכירה'
-  )
-
   const [listings, listingsDispatch] = useState([])
   const queryObj = useQuery()
 
@@ -27,9 +20,6 @@ const ListingsContainer = () => {
       <FiltersContext.Provider
         value={{ queryObj, listings, dispatch: listingsDispatch }}
       >
-        <ListingsTypeContext.Provider
-          value={{ currentListingsType, dispatchListingsType }}
-        >
           <Filters dispatch={listingsDispatch} />
 
           <div id="listing">
@@ -38,7 +28,6 @@ const ListingsContainer = () => {
             <Pagination />
           </div>
           
-        </ListingsTypeContext.Provider>
       </FiltersContext.Provider>
     </div>
   )

@@ -5,10 +5,10 @@
         display: flex;
         justify-content: space-between;
         margin: $l-mp 0;
-        width: 100%;
+        width: $full;
     }
     #userDetailsFormContainer {
-        width: 100%;        
+        width: $full;        
         display: flex;
         flex-direction: column;
         h1 {

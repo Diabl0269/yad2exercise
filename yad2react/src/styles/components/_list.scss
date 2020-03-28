@@ -1,7 +1,6 @@
 .list-container {
   align-content: center;
   align-self: center;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;;
   width: 60%;
 }

@@ -2,6 +2,7 @@ const addListing = require('./routes/addListing')
 const auth = require('../middleware/auth')
 const authRoute = require('./routes/auth')
 const addMedia = require('./routes/addMedia');
+const deleteListing = require('./routes/deleteListing');
 const deleteMedia = require('./routes/deleteMedia')
 const deleteUser = require('./routes/deleteUser');
 const getListings = require('./routes/getListings')
@@ -16,8 +17,9 @@ module.exports = app => {
 
   app.use('/listings', auth)
   app.use('/listings', addListing)
+  app.use('/listings', deleteListing)
 
-  app.use('/media', auth, getUser)
+  app.use('/media', auth)
   app.use('/media', deleteMedia)
   app.use('/media', addMedia)
 

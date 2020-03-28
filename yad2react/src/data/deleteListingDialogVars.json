@@ -1,0 +1,9 @@
+{
+    "buttonText": "מחק מודעה",
+    "deleteButtonText": "מחק",
+    "cancelButtonText": "ביטול",
+    "titleText": "מחיקת מודעה",
+    "errorMessage": "תקלת שרת",
+    "defaultBodyText": "פעולה זה תמחק את המודעה ואת כל מידע שבה, האם אתה בטוח שברצונך להמשיך?",
+    "navigateTo": "/user"
+  }

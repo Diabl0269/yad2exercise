@@ -6,8 +6,7 @@
 }
 
 .open-listing__description-sub-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;;
   width: auto;
   padding: $s-mp;
 }
@@ -23,12 +22,11 @@
 .open-listing__description--agency {
   display: flex;
   border-bottom: $s-border solid $border-color;
-  width: 100%;
+  width: $full;
 }
 
 .open-listing__description__details-container {
-  display: flex;
-  flex-direction: row;
+  @include flex-row;
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: $s-mp 0 $s-mp 0;

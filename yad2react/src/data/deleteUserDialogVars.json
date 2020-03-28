@@ -1,0 +1,9 @@
+{
+    "buttonText": "מחק משתמש",
+    "deleteButtonText": "מחק",
+    "cancelButtonText": "ביטול",
+    "titleText": "מחיקת משתמש",
+    "errorMessage": "תקלת שרת",
+    "defaultBodyText": "פעולה זה תמחק את המשתמש ואת כל מידע שבו, האם אתה בטוח שברצונך להמשיך?",
+    "navigateTo": "/"
+  }

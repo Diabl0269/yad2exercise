@@ -8,8 +8,8 @@ export default async () => {
         Authorization: `Bearer ${token}`
       }
     })
-    const success = status === 204 
-    if(success) localStorage.removeItem('token')
+    const success = status === 204
+    if (success) localStorage.removeItem('token')
     return success
   } catch {
     return

@@ -32,12 +32,16 @@ export default ({ type }) => {
 
   const deleteHandler = async () => {
     const didMediaGetDeleted = await deleteMedia(mediaIDObj.id)
-    if (didMediaGetDeleted) setMediaDeleted(didMediaGetDeleted)
+    if (didMediaGetDeleted) {
+      setMediaDeleted(didMediaGetDeleted)
+      const newMediaArr = value.filter(id => id !== mediaIDObj.id)
+      setFieldValue(type, newMediaArr)
+    }
   }
 
   const advanceMedia = target => {
     const { index } = mediaIDObj
-    const newIndex = index + (target === 'next' ? +1 : -1)
+    const newIndex = index + (target === 'next' ? +1 : -1)    
     setMediaIDObj({ id: value[newIndex], index: newIndex })
     checkAdvance(newIndex)
   }

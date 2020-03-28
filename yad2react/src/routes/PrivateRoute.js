@@ -7,8 +7,6 @@ export default ({ Component }) => {
   useEffect(() => {
     const checkAuth = async () => {
       const isAuth = await auth()
-      console.log(isAuth);
-      
       if (!isAuth) navigate(loginPageURI)
     }
     checkAuth()

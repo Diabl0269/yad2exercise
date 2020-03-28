@@ -15,7 +15,7 @@ const OpenListItem = () => {
 
   return (
     <div>
-      <div className="record-container record-container__open">
+      <div className="record-container">
         <RecordImage />
 
         <div className="open-listing--middle-container">

@@ -1,16 +1,15 @@
 import axios from 'axios'
 
-export default async () => {
+export default async id => {
   const { token } = localStorage
-  if (!token) return
   try {
-    const { status } = await axios.get('/users/auth', {
+    const { status } = await axios.delete(`/listings/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
-    return status === 200
-  } catch {
+    return status === 204
+  } catch (e) {
     return
   }
 }

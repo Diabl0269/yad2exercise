@@ -5,18 +5,19 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import deleteUser from '../../communication/deleteUser'
 import { navigate } from 'hookrouter'
 
-export default () => {
-  const [open, setOpen] = React.useState(false)
-
-  const buttonText = 'מחק משתמש'
-  const deleteButtonText = 'מחק'
-  const cancelButtonText = 'ביטול'
-  const titleText = 'מחיקת משתמש'
-  const errorMessage = 'תקלת שרת'
-  const defaultBodyText = 'פעולה זה תמחק את המשתמש ואת כל מידע שבו, האם אתה בטוח שברצונך להמשיך?'
+export default ({ varsObj, deleteFunc, buttonClassName = '', id}) => {
+  const [open, setOpen] = useState(false)
+  const {
+    buttonText,
+    deleteButtonText,
+    cancelButtonText,
+    titleText,
+    errorMessage,
+    defaultBodyText,
+    navigateTo
+  } = varsObj
   const [bodyText, setBodyText] = useState(defaultBodyText)
 
   const handleClickOpen = () => {
@@ -25,28 +26,25 @@ export default () => {
 
   const handleClose = () => {
     setOpen(false)
+    setBodyText(defaultBodyText)
   }
 
   const handleDelete = async () => {
-    const userDeleted = await deleteUser()
-    userDeleted ? navigate('/') : setBodyText(errorMessage)
+    const objectDeleted = await deleteFunc(id)
+    objectDeleted ? navigate(navigateTo) : setBodyText(errorMessage)
   }
 
   return (
-    <div>
-      <Button  color="primary" onClick={handleClickOpen}>
-        {buttonText}
-      </Button>
+    <div className={buttonClassName}>
+      <Button onClick={handleClickOpen}>{buttonText}</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{titleText}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">{bodyText}</DialogContentText>
+          <DialogContentText>{bodyText}</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            {cancelButtonText}
-          </Button>
-          <Button onClick={handleDelete} color="primary" autoFocus>
+          <Button onClick={handleClose}>{cancelButtonText}</Button>
+          <Button onClick={handleDelete} autoFocus>
             {deleteButtonText}
           </Button>
         </DialogActions>

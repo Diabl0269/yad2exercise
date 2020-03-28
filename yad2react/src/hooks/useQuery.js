@@ -8,6 +8,7 @@ const useQuery = () => {
     entranceDate: useState(),
     floor: useState(edgesObj),
     freeText: useState(""),
+    listingType: useState("מכירה"),
     onlyWithPhotos: useState(false),
     onlyWithPrice: useState(false),
     price: useState(edgesObj),

@@ -1,8 +1,7 @@
 //open record styles
 
 .open-listing--middle-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;;
   justify-content: space-between;
   margin-left: auto;
 }
@@ -19,17 +18,15 @@
 
 //details
 .details--table {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;;
   justify-content: flex-start;
-  width: 100%;
+  width: $full;
 }
 
 .details--table-row {
   align-items: flex-start;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+  @include flex-row;
+  width: $full;
 }
 
 .details--table-data {
@@ -41,8 +38,7 @@
   align-items: center;
   background: white;
   border: $s-border solid $border-color;
-  display: flex;
-  flex-direction: row;
+  @include flex-row;
   height: $s-size;
   justify-content: space-evenly;
  }
