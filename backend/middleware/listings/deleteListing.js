@@ -5,11 +5,13 @@ module.exports = async (req, res, next) => {
   const errorMessage = 'Unable to delete listing \n'
   try {
     const {
-      params: { id }
+      params: { id },
+      user
     } = req
 
     req.listing = await listings.findByIdAndDelete(id)
-
+    user.listings.filter(_id => _id === id)
+    await user.save()
     req.message = successMessage
     next()
   } catch (e) {

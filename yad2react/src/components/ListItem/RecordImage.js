@@ -4,16 +4,25 @@ import useStyles from '../../muiStyles/modal'
 import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop'
 import Fade from '@material-ui/core/Fade'
+import favoriteSvg from '../../svg/favorite.svg'
+import favoriteBorderSvg from '../../svg/favorite_border.svg'
+import UserContext from '../../context/UserContext'
+import toggleFavorite from '../../communication/toggleFavorite'
 
 export default () => {
-  const noMediaImgPath = '/images/noImgs.jpg'
-
   const classes = useStyles()
+  const pleaseLoginMessage = 'אנא התחבר'
+  const [user, setUser] = useContext(UserContext)
+  const noMediaImgPath = '/images/noImgs.jpg'
+  const { favorites } = user
   const [open, setOpen] = useState(false)
-
   const {
-    media: { images, videos }
+    media: { images, videos },
+    _id
   } = useContext(ListItemContext)
+  const isListingFavorite = favorites && favorites.includes(_id)
+  const initSvg = isListingFavorite ? favoriteSvg : favoriteBorderSvg
+  const [svg, setSvg] = useState(initSvg)
   const numOfRecordImagesMinusOne = images.length - 1
 
   const mediaArr = images.concat(videos)
@@ -23,13 +32,22 @@ export default () => {
   const [isNextMedia, setIsNextMedia] = useState(!!mediaArr[1])
   const [isPreviousMedia, setIsPreviousMedia] = useState(false)
 
+  const handleFavoriteClick = async e => {
+    e.stopPropagation()
+    if (!favorites) return alert(pleaseLoginMessage)
+    const success = await toggleFavorite(_id)
+    if (!success) return alert('תקלת שרת')
+    const svgToSet = Object.is(svg, favoriteBorderSvg) ? favoriteSvg : favoriteBorderSvg
+    return setSvg(svgToSet)
+  }
+
   const MediaTag = () => {
     const { id, type } = mediaObj
     const src = id ? process.env.REACT_APP_STORAGE_PATH + id : noMediaImgPath
     return type === 'img' ? (
       <img src={src} className={classes.media} id="recordMedia" />
     ) : (
-      <video src={src} id="recordMedia" controls/>
+      <video src={src} id="recordMedia" controls />
     )
   }
 
@@ -37,7 +55,7 @@ export default () => {
     e.stopPropagation()
     const { index } = mediaObj
     const newIndex = index + (target === 'next' ? +1 : -1)
-    const isImgIndex = newIndex < images.length    
+    const isImgIndex = newIndex < images.length
     const type = isImgIndex ? 'img' : 'video'
     setMediaObj({ id: mediaArr[newIndex], index: newIndex, type })
     checkAdvance(newIndex)
@@ -57,8 +75,11 @@ export default () => {
   }
   const handleClose = () => setOpen(false)
   return (
-    <div className="img-container">
-      <div onClick={handleOpen}>
+    <div className="img-container-root">
+      <div onClick={handleOpen} id="img-container">
+        <div id="faivoriteSvgContainer" onClick={handleFavoriteClick}>
+          <img src={svg} id="faivoriteSvg" />
+        </div>
         <MediaTag />
       </div>
 
@@ -85,7 +106,7 @@ export default () => {
                 קודם
               </button>
               <button
-                onClick={(e) => advanceMedia(e, 'next')}
+                onClick={e => advanceMedia(e, 'next')}
                 className={classes.advanceButton}
                 disabled={!isNextMedia}
               >

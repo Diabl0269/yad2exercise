@@ -20,7 +20,7 @@ export default () => {
     <div id="listingsTypeSelect">
       <Select value={listingType} onChange={handleChange}>
         {listingTypes.map(type => (
-          <MenuItem value={type}>{type}</MenuItem>
+          <MenuItem value={type} key={type}>{type}</MenuItem>
         ))}
       </Select>
     </div>

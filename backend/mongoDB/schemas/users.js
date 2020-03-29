@@ -22,10 +22,14 @@ module.exports = new Schema({
   ],
   listings: [
     {
-      listing: {
-        type: Schema.Types.ObjectId,
-        ref: 'listings'
-      }
+      type: Schema.Types.ObjectId,
+      ref: 'listings'
+    }
+  ],
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'listings'
     }
   ],
   userDetails: {

@@ -1,5 +1,6 @@
 import React from 'react'
 import EditListingPage from '../components/Pages/EditListingPage';
+import FavoritesListingsPage from '../components/Pages/UserPages/FavoritesListingsPage';
 import LoginPage from '../components/Pages/LoginPage'
 import MainPage from '../components/Pages/MainPage'
 import NewListingPage from '../components/Pages/UserPages/NewListingPage'
@@ -16,6 +17,7 @@ const routes = {
   '/signup': () => <SignUpPage />,
 
   '/user': () => <PrivateRoute Component={UserDetailsPage} />,
+  '/user/favorites': () => <PrivateRoute Component={FavoritesListingsPage} />,
   '/user/listings': () => <PrivateRoute Component={UserListingsPage} />,
   '/user/listings/add': () => <PrivateRoute Component={NewListingPage} />,
   '/user/listings/edit': () => <PrivateRoute Component={EditListingPage} />,

@@ -1,14 +1,14 @@
 import React from "react";
 import PageTemplate from "../PageTemplate";
-import UserListingsForm from '../../Forms/UserForm/UserListingsForm';
 import closeDropDownsHandler from '../../../utils/closeDropDownsHandler';
+import ListingsContainer from "../../Listings/ListingsContainer";
 
 export default () => {
   window.onclick = e => closeDropDownsHandler(e);
 
   return (
     <PageTemplate
-      Component={UserListingsForm}
+      Component={ListingsContainer}
     />
   );
 };

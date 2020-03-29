@@ -37,10 +37,12 @@ module.exports = async (req, res, next) => {
     // $text: {$search:  },
     // ...req.advanced
   }
+
   if (req.user) filterObject.listingUser = req.userID
 
   try {
     res.count = await listingsModel.countDocuments(filterObject)
+
     res.listings = await listingsModel
       .find(filterObject)
       .sort(req.body.sortBy)
@@ -48,6 +50,7 @@ module.exports = async (req, res, next) => {
       .limit(10)
       .populate('listingUser', '-password -_id -salt -tokens')
       .exec()
+
     req.message = successMessage
 
     next()
