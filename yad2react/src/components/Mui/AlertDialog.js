@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
@@ -6,9 +6,11 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import { navigate } from 'hookrouter'
+import UserContext from '../../context/UserContext'
 
-export default ({ varsObj, deleteFunc, buttonClassName = '', id}) => {
+export default ({ varsObj, deleteFunc, buttonClassName = '', id }) => {
   const [open, setOpen] = useState(false)
+  const user = useContext(UserContext)
   const {
     buttonText,
     deleteButtonText,
@@ -31,7 +33,7 @@ export default ({ varsObj, deleteFunc, buttonClassName = '', id}) => {
 
   const handleDelete = async () => {
     const objectDeleted = await deleteFunc(id)
-    objectDeleted ? navigate(navigateTo) : setBodyText(errorMessage)
+    objectDeleted ? user[1]({}) && navigate(navigateTo) : setBodyText(errorMessage)
   }
 
   return (

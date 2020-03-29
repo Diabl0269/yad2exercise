@@ -12,17 +12,21 @@ import toggleFavorite from '../../communication/toggleFavorite'
 export default () => {
   const classes = useStyles()
   const pleaseLoginMessage = 'אנא התחבר'
-  const [user, setUser] = useContext(UserContext)
   const noMediaImgPath = '/images/noImgs.jpg'
+  const [user] = useContext(UserContext)
+
   const { favorites } = user
   const [open, setOpen] = useState(false)
+
   const {
     media: { images, videos },
     _id
   } = useContext(ListItemContext)
+
   const isListingFavorite = favorites && favorites.includes(_id)
   const initSvg = isListingFavorite ? favoriteSvg : favoriteBorderSvg
   const [svg, setSvg] = useState(initSvg)
+
   const numOfRecordImagesMinusOne = images.length - 1
 
   const mediaArr = images.concat(videos)
@@ -45,7 +49,7 @@ export default () => {
     const { id, type } = mediaObj
     const src = id ? process.env.REACT_APP_STORAGE_PATH + id : noMediaImgPath
     return type === 'img' ? (
-      <img src={src} className={classes.media} id="recordMedia" />
+      <img src={src} className={classes.media} id="recordMedia" alt="" />
     ) : (
       <video src={src} id="recordMedia" controls />
     )
@@ -78,7 +82,7 @@ export default () => {
     <div className="img-container-root">
       <div onClick={handleOpen} id="img-container">
         <div id="faivoriteSvgContainer" onClick={handleFavoriteClick}>
-          <img src={svg} id="faivoriteSvg" />
+          <img src={svg} id="faivoriteSvg" alt="" />
         </div>
         <MediaTag />
       </div>

@@ -40,3 +40,12 @@
     width: $quarter;
   }
 }
+
+#newListingEntranceDateContainer {
+  .MuiInputBase-root {
+    flex-direction: row-reverse;
+  }
+  .MuiInputBase-input {
+    width: 43%;
+  }
+}

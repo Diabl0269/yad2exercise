@@ -52,7 +52,6 @@ schema.methods.filterExpiredTokens = async function() {
     try {
       await user.save()
     } catch (e) {
-      console.log(e)
       return
     }
   }

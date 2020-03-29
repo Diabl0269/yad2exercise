@@ -5,7 +5,7 @@ const useQuery = () => {
 
   return {
     citySearchValue: useState(""),
-    entranceDate: useState(),
+    entranceDate: useState(new Date().getTime()),
     floor: useState(edgesObj),
     freeText: useState(""),
     listingType: useState("מכירה"),
@@ -13,7 +13,7 @@ const useQuery = () => {
     onlyWithPrice: useState(false),
     price: useState(edgesObj),
     rooms: useState(edgesObj),
-    roomsMates: useState(edgesObj),
+    roomMates: useState(edgesObj),
     selectedAssetTypes: useState([]),
     selectedAttributes: useState([]),
     squareMetersTotal: useState(edgesObj),

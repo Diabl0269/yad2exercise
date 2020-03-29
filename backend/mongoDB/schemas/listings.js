@@ -27,13 +27,14 @@ module.exports = new Schema(
       furnitureDescription: String,
       parking: Number,
       rooms: Number,
+      roomMates: Number,
       squareMetersBuilt: { type: Number, required: true },
       squareMetersGarden: Number,
       totalFloors: { type: Number, require: true }
     },
     saleDetails: {
       price: Number,
-      entranceDate: Date
+      entranceDate: Number
     },
     attributes: {
       exclusivity: {

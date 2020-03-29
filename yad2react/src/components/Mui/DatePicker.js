@@ -12,8 +12,8 @@ export default ({
   const value = values[name];
 
   const handleChange = e => {
-    const today = new Date(e._d).toLocaleDateString();
-    setFieldValue(name, today);
+    const day = new Date(e._d).getTime();
+    setFieldValue(name, day);
   };
   
   return (
@@ -23,6 +23,9 @@ export default ({
         color="primary"
         value={value}
         onChange={handleChange}
+        InputProps={{
+          disableUnderline: true,
+         }}
       />
     </MuiPickersUtilsProvider>
   );

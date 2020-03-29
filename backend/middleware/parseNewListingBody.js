@@ -1,5 +1,6 @@
 module.exports = (req, res, next) => {
   req.body = JSON.parse(req.body.fields)
+
   const { body } = req
   req.body = {
     listingType: body.listingType,
@@ -50,5 +51,6 @@ module.exports = (req, res, next) => {
     },
     listingUser: req.userID
   }
+
   next()
 }

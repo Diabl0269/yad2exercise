@@ -3,7 +3,9 @@ module.exports = async (req, res, next) => {
   const errorMessage = 'Unabe to get favorites listings'
   const { user } = req
   try {
-    await user.populate('favorites').execPopulate()
+    await user
+      .populate({ path: 'favorites', match: quryObj })
+      .execPopulate()
 
     console.log(user)
   } catch (e) {

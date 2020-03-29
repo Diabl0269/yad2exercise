@@ -6,7 +6,7 @@ import Loader from '../../utils/Loader'
 
 const UserUpdateForm = () => {
   const [user] = useContext(UserContext)
-  const {userDetails, agencyName} = user
+  const { userDetails, agencyName } = user
   const [userUpdateMessage, setUserUpdateMessage] = useState('')
   const requiredFieldMessage = 'שדה חובה'
 
@@ -35,15 +35,9 @@ const UserUpdateForm = () => {
     <div>
       {text + ':'}
       <Field type={type} name={type} />
-      <ErrorMessage
-        name={type}
-        component="div"
-        className="error-message-container"
-      />
+      <ErrorMessage name={type} component="div" className="error-message-container" />
     </div>
   )
-console.log(user);
-
   return (
     <div id="updateFormContainer">
       <h1>עדכון משתמש</h1>

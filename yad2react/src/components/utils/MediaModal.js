@@ -21,7 +21,11 @@ export default ({ type }) => {
   const MediaTag = () => {
     const { id } = mediaIDObj
     const src = process.env.REACT_APP_STORAGE_PATH + id
-    return type === 'images' ? <img src={src} className={classes.media} /> : <video src={src} />
+    return type === 'images' ? (
+      <img src={src} className={classes.media} alt="" />
+    ) : (
+      <video src={src} />
+    )
   }
   const handleOpen = () => {
     setOpen(true)
@@ -41,7 +45,7 @@ export default ({ type }) => {
 
   const advanceMedia = target => {
     const { index } = mediaIDObj
-    const newIndex = index + (target === 'next' ? +1 : -1)    
+    const newIndex = index + (target === 'next' ? +1 : -1)
     setMediaIDObj({ id: value[newIndex], index: newIndex })
     checkAdvance(newIndex)
   }

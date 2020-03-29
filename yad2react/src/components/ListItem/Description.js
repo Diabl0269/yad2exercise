@@ -1,24 +1,29 @@
-import React, { useContext } from "react";
-import DisplayArrayAttributes from "../utils/DisplayArrayAttributes";
-import ListItemContext from "../../context/ListItemContext";
+import React, { useContext } from 'react'
+import DisplayArrayAttributes from '../utils/DisplayArrayAttributes'
+import ListItemContext from '../../context/ListItemContext'
 
 export default ({ agencyName }) => {
-  
-  const {assetDetails: {
-    assetState,
-    assetType,
-    balconies,
-    description,
-    entranceDate = "",
-    furnitureDescription = "",
-    parking,
-    squareMetersGarden,
-    squareMetersBuilt,
-    totalFloors}, attributes} = useContext(ListItemContext)
+  const {
+    assetDetails: {
+      assetState,
+      assetType,
+      balconies,
+      description,
+      furnitureDescription = '',
+      parking,
+      squareMetersGarden,
+      squareMetersBuilt,
+      totalFloors
+    },
+    attributes,
+    saleDetails: { entranceDate }
+  } = useContext(ListItemContext)
+  console.log(entranceDate)
 
-  const displayEntranceDate = entranceDate || "לא צוין תאריך כניסה";
-  const attributesArray = Object.values(attributes);
-  
+  const displayEntranceDate =
+    (!!entranceDate && new Date(entranceDate).toLocaleDateString()) || 'לא צוין תאריך כניסה'
+  const attributesArray = Object.values(attributes)
+
   return (
     <div className="open-listing__description-container smaller-text">
       <div className="open-listing__description--ad">כאן תהיה פרסומת</div>
@@ -32,7 +37,7 @@ export default ({ agencyName }) => {
         <div>
           <b>תיאור הנכס</b> <p>{description}</p>
           <div className="smallest-text">
-            {assetType !== "מגרשים" && (
+            {assetType !== 'מגרשים' && (
               <div className="open-listing__description__details-container">
                 <div className="open-listing__description__details-item">
                   מצב הנכס <b>{assetState}</b>
@@ -44,7 +49,7 @@ export default ({ agencyName }) => {
                   קומות בבניין <b>{totalFloors}</b>
                 </div>
                 <div className="open-listing__description__details-item">
-                  חניות <b>{parking ? parking : "ללא"}</b>
+                  חניות <b>{parking ? parking : 'ללא'}</b>
                 </div>
                 {balconies && (
                   <div className="open-listing__description__details-item">
@@ -80,5 +85,5 @@ export default ({ agencyName }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

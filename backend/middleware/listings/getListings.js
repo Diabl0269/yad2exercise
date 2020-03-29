@@ -3,6 +3,10 @@ const listingsModel = require('../../mongoDB/models/listingsModel')
 module.exports = async (req, res, next) => {
   const errorMessage = 'Failed to retrive listings \n'
   const successMessage = 'Got listings successfully \n'
+
+  const { body, query } = req
+  console.log('hey', query)
+
   const filterObject = {
     // price: {
     // saleDetails: {
@@ -44,13 +48,14 @@ module.exports = async (req, res, next) => {
     res.count = await listingsModel.countDocuments(filterObject)
 
     res.listings = await listingsModel
-      .find(filterObject)
-      .sort(req.body.sortBy)
-      .skip(req.body.skip)
+      .find(query)
+      .sort(body.sortBy)
+      .skip(body.skip)
       .limit(10)
       .populate('listingUser', '-password -_id -salt -tokens')
       .exec()
-
+    console.log(res.listings);
+    
     req.message = successMessage
 
     next()

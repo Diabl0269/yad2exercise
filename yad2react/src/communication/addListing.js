@@ -1,29 +1,25 @@
-import axios from "axios";
-import appendFormFromArray from "../utils/appendFormFromArray";
+import axios from 'axios'
+import appendFormFromArray from '../utils/appendFormFromArray'
 
 export default async values => {
-  const { images, videos } = values;
-  let formData = new FormData();
-  const { token } = localStorage;
+  const { images, videos } = values
+  let formData = new FormData()
+  const { token } = localStorage
 
   //Append all media and values to the form
-  appendFormFromArray(formData, images, "images");
-  appendFormFromArray(formData, videos, "videos");
-  formData.append("fields", JSON.stringify(values));
-  
+  appendFormFromArray(formData, images, 'images')
+  appendFormFromArray(formData, videos, 'videos')
+  formData.append('fields', JSON.stringify(values))
+
   try {
-    const res = await axios.post("/listings/add", formData, {
+    const res = await axios.post('/listings/add', formData, {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    });
+    })
 
-    if (res) {
-      return true;
-    }
+    return !!res
   } catch (e) {
-    console.log(e);
-
-    return false;
+    return
   }
-};
+}

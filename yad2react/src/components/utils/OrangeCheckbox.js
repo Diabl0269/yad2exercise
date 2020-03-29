@@ -26,13 +26,12 @@ export default style(props => {
   const changeHandler = e => {
     setFieldValue(name, e.target.checked);
   };
-
   return (
     <MuiCheckbox
       color="default"
       id={name}
       onChange={changeHandler}
-      checked={value}
+      checked={!!value}
       {...props}
     />
   );
