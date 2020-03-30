@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
   if (req.user) filterObject.listingUser = req.userID
 
   try {
-    res.count = await listingsModel.countDocuments(filterObject)
+    res.count = await listingsModel.countDocuments(query)
 
     res.listings = await listingsModel
       .find()
