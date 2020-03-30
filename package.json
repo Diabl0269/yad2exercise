@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon ./backend && set PORT=3001 && react-scripts start"
+    "start": "node ./backend/server/server.js"
   },
   "repository": {
     "type": "git",
