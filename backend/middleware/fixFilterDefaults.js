@@ -1,5 +1,4 @@
 module.exports = (req, res, next) => {
-
   const { body } = req
   const {
     citySearchValue,
@@ -23,20 +22,21 @@ module.exports = (req, res, next) => {
     edgesObj.$gte = (!!min && min) || undefined
     edgesObj.$lte = (!!max && max) || undefined
   }
-  const filtersQuery = { listingType, sortBy }
-  filtersQuery['address.city'] = citySearchValue ? citySearchValue : undefined
-  filtersQuery['assetDetails.floor'] = convertEdges(floor)
-  filtersQuery['saleDetails.entranceDate'] = { $gte: entranceDate }
-  if (onlyWithPrice) filtersQuery['saleDetails.price'] = { $exists: true }
-  filtersQuery['saleDetails.price'] = convertEdges(price)
-  filtersQuery['assetDetails.rooms'] = convertEdges(rooms)
-  filtersQuery['assetDetails.roomMates'] = convertEdges(roomMates)
-  filtersQuery['assetDetails.assetType'] = { $in: selectedAssetTypes }
-  selectedAttributes.forEach(attribute => {
-    filtersQuery[`attributes.${attribute}.exists`] = true
-  })
-  if (onlyWithPhotos) filtersQuery['media.images'] = { $where: 'this.media.images.length > 0' }
-  filtersQuery['assetDetails.squareMetersTotal'] = convertEdges(squareMetersTotal)
+  const filtersQuery = { listingType }
+  // if (!!citySearchValue) filtersQuery.address = { city: citySearchValue }
+  //  ? citySearchValue : undefined
+  // filtersQuery['assetDetails.floor'] = convertEdges(floor)
+  // filtersQuery['saleDetails.entranceDate'] = { $gte: entranceDate }
+  // if (onlyWithPrice) filtersQuery['saleDetails.price'] = { $exists: true }
+  // filtersQuery['saleDetails.price'] = convertEdges(price)
+  // filtersQuery['assetDetails.rooms'] = convertEdges(rooms)
+  // filtersQuery['assetDetails.roomMates'] = convertEdges(roomMates)
+  // filtersQuery['assetDetails.assetType'] = { $in: selectedAssetTypes }
+  // selectedAttributes.forEach(attribute => {
+  //   filtersQuery[`attributes.${attribute}.exists`] = true
+  // })
+  // if (onlyWithPhotos) filtersQuery['media.images'] = { $where: 'this.media.images.length > 0' }
+  // filtersQuery['assetDetails.squareMetersTotal'] = convertEdges(squareMetersTotal)
 
   req.query = filtersQuery
   next()
