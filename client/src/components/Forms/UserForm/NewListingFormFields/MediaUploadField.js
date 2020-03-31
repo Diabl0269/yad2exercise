@@ -8,7 +8,7 @@ export default ({ field: { type, text } }) => {
   const value = values[type]
   
   const changeHandler = async e => {
-    e.preventDefault();
+    e.stopPropagation();
     const { files } = e.target;
     if (!!files.length) setFilesMessage(files.length);
     setFieldValue(type, files);

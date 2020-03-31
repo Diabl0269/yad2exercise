@@ -30,7 +30,7 @@ export default () => {
     </div>
   )
   const submitHandler = async e => {
-    e.preventDefault()
+    e.stopPropagation()
     const user = await signUp(userDetails)
     if (!user) return dispatch(true)
     alert('משתמש נוצר בהצלחה')

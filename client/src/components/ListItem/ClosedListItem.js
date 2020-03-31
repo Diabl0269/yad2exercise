@@ -5,18 +5,24 @@ import RecordAddress from './RecordAddress'
 import displayPrice from '../../utils/displayPrice'
 import ListItemContext from '../../context/ListItemContext'
 import moment from 'moment'
+import OpenContext from '../../context/OpenContext'
 
-const ClosedListItem = () => {
-  const { saleDetails: {price}, updatedAt } = useContext(ListItemContext)  
+export default () => {
+  const {
+    saleDetails: { price },
+    updatedAt
+  } = useContext(ListItemContext)
+  const setOpen = useContext(OpenContext)
+
   const formatedPrice = displayPrice(price)
   const hasUpdatedToday = moment().isSame(updatedAt, 'day')
-  
+
   const openNewTab = e => {
     e.stopPropagation()
     alert('כאן יפתח טאב חדש')
   }
   return (
-    <div className="record-container">
+    <div className="record-container" onClick={() => setOpen(true)}>
       <RecordImage />
       <RecordAddress className="record__inside-container" />
       <CoreDetails className="record__inside-container middle-container" />
@@ -35,5 +41,3 @@ const ClosedListItem = () => {
     </div>
   )
 }
-
-export default ClosedListItem

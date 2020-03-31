@@ -3,8 +3,7 @@
   background: white;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   display: none;
-  min-width: 160px;
-  padding: 12px 16px;
+  padding: $s-mp $m-mp;
   position: absolute;
   &:hover {
     display: flex;
@@ -15,21 +14,24 @@
     background: $green;
     color: white;
     height: $s-size;
-    width: 10rem;
+    width: $full;
     &:hover {
       background: darken($green, 10%);
     }
+  }
+
+  .display-none{
+    display: none;
   }
   
   .details__dropdown {
     align-items: center;
     background: white;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    display: none;
+    // display: none;
+    display: flex;
     flex-direction: column;
-    min-width: 160px;
-    padding: 0;
-    padding: 12px 16px;
+    padding: $s-mp $m-mp;
     position: absolute;
   }
   

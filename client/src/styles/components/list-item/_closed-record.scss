@@ -1,39 +1,40 @@
 //closed record styles
 .record__inside-container {
-    display: flex;
-    flex-direction: column;
-    height: $full;
-    width: 25%;
-    justify-content: center;
-    padding-left: $s-mp;
-    border-left: $s-border solid $border-color;
-    span {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+  display: flex;
+  flex-direction: column;
+  height: $full;
+  justify-content: center;
+  width: $quarter;
+  // padding: 0 $s-mp;
+  border-left: $s-border solid $border-color;
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  
-  .middle-container {
+}
+
+.middle-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: $full;
+  // width: $full;
+  justify-content: space-evenly;
+  div {
     align-items: center;
     display: flex;
-    flex-direction: row;
-    height: $full;
-    justify-content: space-evenly;
-    width: 186px;
-    div {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      span {
-        font-weight: 300;
-      }
+    flex-direction: column;
+    justify-content: center;
+    span {
+      font-weight: 300;
     }
   }
-  
-  .left-container {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
-  }
+}
+
+.left-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  margin: 0 $m-mp;
+}

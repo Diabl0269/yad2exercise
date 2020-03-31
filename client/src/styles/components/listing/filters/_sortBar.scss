@@ -1,0 +1,13 @@
+#sortBar {
+    @include align-row;
+    all {
+        width: $third;
+    }
+    #mapDisaply{
+        width: $fifth;
+    }
+    #sortOption{
+        width: 10vw;
+        padding: $xs-mp;
+    }
+}

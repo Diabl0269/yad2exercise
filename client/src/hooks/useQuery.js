@@ -4,7 +4,7 @@ const useQuery = () => {
   const edgesObj = { min: '', max: '' }
   const query = {
     citySearchValue: useState(''),
-    entranceDate: useState(new Date().getTime()),
+    entranceDate: useState(),
     floor: useState(edgesObj),
     freeText: useState(''),
     listingType: useState('מכירה'),

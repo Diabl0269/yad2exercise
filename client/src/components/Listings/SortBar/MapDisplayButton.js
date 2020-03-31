@@ -1,7 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-const MapDisplayButton = () => {
-    return <div className='filters__field-box-container' onClick={() => alert('כאן תהיה תצוגת מפה')}>תצוגת מפה</div>
-}
-
-export default MapDisplayButton;
+export default () => (
+  <button
+    className="filters__field-box-container"
+    id="mapDisaply"
+    onClick={() => alert('כאן תהיה תצוגת מפה')}
+  >
+    תצוגת מפה
+  </button>
+)

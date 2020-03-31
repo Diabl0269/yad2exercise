@@ -19,9 +19,6 @@
   height: $l-size;
   justify-content: space-between;
   width: $full;
-  @media (max-width: $mobile-breakpoint) {
-    height: $s-size;
-  }
 }
 
 .main-nav-bar-button {
@@ -53,9 +50,6 @@
   height: $m-size;
   justify-content: space-between;
   margin: 0;
-  @media (max-width: $mobile-breakpoint) {
-    visibility: hidden;
-  }
 }
 
 .secondary-nav-bar-button {

@@ -48,11 +48,7 @@ const MainNavBar = () => {
                 {category.text}
               </button>
             )}
-            <div className="dropdown">
-              בלה בלה בלה
-              <br />
-              ננסה ככה
-            </div>
+            <div className="dropdown">כאן יהיו אפשרויות נוספות </div>
           </li>
         ))}
       </ul>
@@ -85,7 +81,9 @@ const MainNavBar = () => {
           )
         })}
         <li key="addListingButton">
-          <A className="main-nav-bar-button add-post-button" href={newListingUri}>פרסום מודעה </A>
+          <A className="main-nav-bar-button add-post-button" href={newListingUri}>
+            פרסום מודעה{' '}
+          </A>
         </li>
       </ul>
     </div>

@@ -1,53 +1,53 @@
 export default {
   container: {
-    flexDirection: "row-reverse",
-    display: "flex",
-    position: "relative"
+    flexDirection: 'row-reverse',
+    display: 'flex',
+    position: 'relative',
+    height: '100%',
+    marginTop: '4%',
   },
   input: {
-    width: "auto",
-    maxWidth: "183px",
-    borderRadius: "2px",
-    border: "1px solid #ccc",
-    fontFamily: "Helvetica, sans-serif",
+    width: '100%',
+    borderRadius: '2px',
+    border: '1px solid #ccc',
+    fontFamily: 'Helvetica, sans-serif',
     fontSize: 16,
     fontWeight: 300,
-    height: 40,
-    padding: "10px 10px 10px 0",
+    padding: '5%',
   },
   inputFocused: {
-    outline: "none"
+    outline: 'none'
   },
   inputOpen: {
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0
   },
   suggestionsContainer: {
-    display: "none"
+    display: 'none'
   },
   suggestionsContainerOpen: {
-    backgroundColor: "#fff",
-    border: "1px solid #aaa",
-    display: "block",
-    fontFamily: "Helvetica, sans-serif",
+    backgroundColor: '#fff',
+    border: '1px solid #aaa',
+    display: 'block',
+    fontFamily: 'Helvetica, sans-serif',
     fontSize: 16,
     fontWeight: 300,
-    position: "absolute",
+    position: 'absolute',
     top: 51,
     width: 280,
     zIndex: 2,
-    borderRadius: "2px"
+    borderRadius: '2px'
   },
   suggestionsList: {
     margin: 0,
     padding: 0,
-    listStyleType: "none"
+    listStyleType: 'none'
   },
   suggestion: {
-    cursor: "pointer",
-    padding: "10px 20px"
+    cursor: 'pointer',
+    padding: '10px 20px'
   },
   suggestionHighlighted: {
-    backgroundColor: "#ddd"
+    backgroundColor: '#ddd'
   }
-};
+}

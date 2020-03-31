@@ -1,14 +1,5 @@
-import React from "react";
-import PageTemplate from "../PageTemplate";
-import UserListingsForm from '../../Forms/UserForm/UserListingsForm';
-import closeDropDownsHandler from '../../../utils/closeDropDownsHandler';
+import React from 'react'
+import PageTemplate from '../PageTemplate'
+import UserListingsForm from '../../Forms/UserForm/UserListingsForm'
 
-export default () => {
-  window.onclick = e => closeDropDownsHandler(e);
-
-  return (
-    <PageTemplate
-      Component={UserListingsForm}
-    />
-  );
-};
+export default () => <PageTemplate Component={UserListingsForm} />

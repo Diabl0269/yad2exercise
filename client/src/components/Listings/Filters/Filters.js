@@ -7,53 +7,59 @@ import RoomsFilter from './RoomsFilter'
 import FiltersContext from '../../../context/FiltersContext'
 import toggleDropDown from '../../../utils/toggleDropDown'
 import SelectListingsType from './AdvancedFilters/SelectListingsType'
-import getListings from '../../../communication/getListings';
+import SortBar from '../SortBar/SortBar'
+import getListings from '../../../communication/getListings'
 
-const Filters = () => {
+export default () => {
   const { queryObj, dispatch } = useContext(FiltersContext)
-  const { listingType } = queryObj;
+  const { listingType } = queryObj
   const handleSubmit = () => {
     getListings(queryObj, dispatch)
   }
   return (
     <div>
-      <div className="filters__basic-container">
-        <b>
-          איזה נכס ל
-          <SelectListingsType />
-          תרצו לחפש?
-        </b>
+      <div>
+        <div className="filters__basic-container">
+          <b>
+            איזה נכס ל
+            <SelectListingsType />
+            תרצו לחפש?
+          </b>
 
-        <div className="filters--fields-container smaller-text">
-          <CitiesFilter />
+          <div className="filters--fields-container smaller-text">
+            <CitiesFilter />
 
-          {listingType === 'שותפים' ? (
-            <div className="filters--field-container">שותפים</div>
-          ) : (
-            <PropertyTypeFilter />
-          )}
+            {listingType === 'שותפים' ? (
+              <div className="filters--field-container">שותפים</div>
+            ) : (
+              <PropertyTypeFilter />
+            )}
 
-          {listingType === 'מסחרי' ? (
-            <div className="filters--field-container">בחרו עסקה</div>
-          ) : (
-            <RoomsFilter />
-          )}
-          <PriceFilter />
-
-          <button
-            className="filters--field-container filters--advanced-search-button"
-            onClick={e => toggleDropDown(e, 'advancedFilters')}
-          >
-            חיפוש מתקדם
-          </button>
-          <button className="filters--field-container main-nav-bar-button" onClick={handleSubmit}>
-            חיפוש
-          </button>
+            {listingType === 'מסחרי' ? (
+              <div className="filters--field-container">בחרו עסקה</div>
+            ) : (
+              <RoomsFilter />
+            )}
+            <PriceFilter />
+            <div className="align-row">
+              <button
+                className="filters--field-container filters--advanced-search-button"
+                onClick={e => toggleDropDown(e, 'advancedFilters')}
+              >
+                חיפוש מתקדם
+              </button>
+              <button
+                className="filters--field-container filters--search-button"
+                onClick={handleSubmit}
+              >
+                חיפוש
+              </button>
+            </div>
+          </div>
         </div>
+        <AdvancedFilters />
       </div>
-      <AdvancedFilters />
+      <SortBar />
     </div>
   )
 }
-
-export default Filters

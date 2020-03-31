@@ -9,18 +9,21 @@ const OnlyWithButton = ({ text, only }) => {
     FiltersContext
   );
   const clickHandler = () => {
+    
     dispatch(!value);    
+    
+    console.log(value);
     getFilterdListings(queryObj, listingsDispatch);
   };
   return (
-    <div
+    <button
       className={classNames("filters__field-box-container margin-right-m", {
         "orange-text orange-border": value
       })}
       onClick={clickHandler}
     >
       {text}
-    </div>
+    </button>
   );
 };
 

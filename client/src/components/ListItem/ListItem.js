@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import ClosedListItem from './ClosedListItem'
 import OpenListItem from './OpenListItem'
+import OpenContext from '../../context/OpenContext'
 
-const ListItem = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const clickHandler = () => setIsOpen(!isOpen)
-
+export default () => {
+  const [open,setOpen] = useState(false)
   return (
-    <li onClick={clickHandler} className='listing__list-item'>
-      {isOpen ? <OpenListItem /> : <ClosedListItem />}
-    </li>
+    <OpenContext.Provider value={setOpen}>
+      <li className="listing__list-item">
+        {open ? <OpenListItem /> : <ClosedListItem />}
+      </li>
+    </OpenContext.Provider>
   )
 }
-
-export default ListItem

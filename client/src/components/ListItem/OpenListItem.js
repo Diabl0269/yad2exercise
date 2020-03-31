@@ -6,16 +6,18 @@ import DetailsDropdown from './DetailsDropDown'
 import Description from './Description'
 import ListItemContext from '../../context/ListItemContext'
 import displayPrice from '../../utils/displayPrice'
+import OpenContext from '../../context/OpenContext'
 
-const OpenListItem = () => {
+export default () => {
   const {
     saleDetails: { price }
   } = useContext(ListItemContext)
+  const setOpen = useContext(OpenContext)
   const formatedPrice = displayPrice(price)
 
   return (
     <div>
-      <div className="record-container">
+      <div className="record-container" onClick={() => setOpen(false)}>
         <RecordImage />
 
         <div className="open-listing--middle-container">
@@ -41,5 +43,3 @@ const OpenListItem = () => {
     </div>
   )
 }
-
-export default OpenListItem

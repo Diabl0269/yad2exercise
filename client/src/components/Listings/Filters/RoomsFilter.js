@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import openDropDown from '../../../utils/openDropDown';
-import FiltersContext from "../../../context/FiltersContext";
+import React, { useContext, useState } from 'react'
+import FiltersContext from '../../../context/FiltersContext'
 
-const RoomsFilterBox = () => {
-  const [roomsNumber, setRooms] = useContext(FiltersContext).queryObj.rooms;
+export default () => {
+  const [open, setOpen] = useState(false)
+  const [roomsNumber, setRooms] = useContext(FiltersContext).queryObj.rooms
   const numbersOptionsArray = [
-    "הכל",
+    'הכל',
     1,
     1.5,
     2,
@@ -29,18 +29,18 @@ const RoomsFilterBox = () => {
     11,
     11.5,
     12
-  ];
+  ]
   const numbersOptionsJSX = () => {
-    return numbersOptionsArray.map(option => <option value={option} key={option}/>);
-  };
+    return numbersOptionsArray.map(option => <option value={option} key={option} />)
+  }
   const roomsNumberDisplay =
     !roomsNumber.max && !roomsNumber.min
-      ? "חדרים"
+      ? 'חדרים'
       : roomsNumber.max && !roomsNumber.min
       ? `עד - ${roomsNumber.max}`
       : !roomsNumber.max && roomsNumber.min
       ? `מ - ${roomsNumber.min}`
-      : `${roomsNumber.min} - ${roomsNumber.max}`;
+      : `${roomsNumber.min} - ${roomsNumber.max}`
 
   const innerInputContainer = (placeholder, change) => (
     <input
@@ -51,34 +51,29 @@ const RoomsFilterBox = () => {
       key={change}
       onChange={({ target }) =>
         setRooms(curRooms => {
-          const { value } = target;
-          return { ...curRooms, [change]: value };
+          const { value } = target
+          return { ...curRooms, [change]: value }
         })
       }
     />
-  );
+  )
   const dropDown = () => (
     <div id="roomsDropDown" className="filters__rooms-dropdown-container">
-      {innerInputContainer("מ-", "min")}
-      {innerInputContainer("עד-", "max")}
+      {innerInputContainer('מ-', 'min')}
+      {innerInputContainer('עד-', 'max')}
       <datalist id="roomsNumber">{numbersOptionsJSX()}</datalist>
     </div>
-  );
+  )
 
   return (
     <div className="filters--field-container">
       חדרים
       <div>
-        <button
-          className="filters__field-box-container"
-          onClick={e => openDropDown(e, "roomsDropDown")}
-        >
+        <button className="filters__field-box-container" onClick={() => setOpen(!open)}>
           {roomsNumberDisplay}
         </button>
-        {dropDown()}
+        {open && dropDown()}
       </div>
     </div>
-  );
-};
-
-export default RoomsFilterBox;
+  )
+}

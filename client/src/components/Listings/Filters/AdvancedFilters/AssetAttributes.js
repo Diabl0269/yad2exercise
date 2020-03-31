@@ -1,31 +1,31 @@
-import React, { useContext } from "react";
-import FiltersContext from "../../../../context/FiltersContext";
-import Checkbox from "../../../utils/Checkbox";
+import React, { useContext } from 'react'
+import FiltersContext from '../../../../context/FiltersContext'
+import Checkbox from '../../../utils/Checkbox'
 
-const AssetAttributes = () => {
+export default () => {
   const [selectedAttributes, setSelectedAttributes] = useContext(
     FiltersContext
-  ).queryObj.selectedAttributes;
+  ).queryObj.selectedAttributes
 
   const attributes = [
-    "דלתות פנדור",
-    "חניה",
-    "מעלית",
-    "מיזוג",
-    "מרפסת",
+    'דלתות פנדור',
+    'חניה',
+    'מעלית',
+    'מיזוג',
+    'מרפסת',
     'ממ"ד',
-    "סורגים",
-    "מחסן",
-    "גישה לנכים",
-    "משפוצת",
-    "מרוהטת",
-    "בבלעדיות"
-  ];
+    'סורגים',
+    'מחסן',
+    'גישה לנכים',
+    'משפוצת',
+    'מרוהטת',
+    'בבלעדיות'
+  ]
 
   return (
     <div className="filters__advanced--asset-attributes-container border-bottom">
       <b>מאפייני דירה</b>
-      <div className="filters__advanced--asset-attributes checkbox__list-row">
+      <div className="filters__advanced--asset-attributes">
         {attributes.map(attribute => (
           <Checkbox
             key={attribute}
@@ -36,7 +36,5 @@ const AssetAttributes = () => {
         ))}
       </div>
     </div>
-  );
-};
-
-export default AssetAttributes;
+  )
+}

@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react'
 import { assetTypes } from '../../../data/assetCategories.json'
-
-import openDropDown from '../../../utils/openDropDown'
 import Checkbox from '../../utils/Checkbox'
 import FiltersContext from '../../../context/FiltersContext'
 
-const PropertyTypeFilter = () => {
+export default () => {
+  const [open, setOpen] = useState(false)
+  const [expandedDropDown, setExpandedDropDown] = useState(false)
   const [selectedAssetTypes, setSelectedAssetType] = useContext(
     FiltersContext
   ).queryObj.selectedAssetTypes
-  const [isAssetTypeDropDownOpen] = useState(false)
 
   const buttonID = 'moreTypesFilterButton'
 
@@ -19,48 +18,50 @@ const PropertyTypeFilter = () => {
       : selectedAssetTypes.length > 1
       ? `נכסים(${selectedAssetTypes.length})`
       : selectedAssetTypes[0]
-  const displayMoreText = isAssetTypeDropDownOpen ? 'עוד' : 'פחות'
+  const displayMoreText = expandedDropDown ? 'עוד' : 'פחות'
 
   return (
     <div className="filters--field-container">
       סוג נכס
       <div>
-        <button
-          className="filters__field-box-container"
-          onClick={e => openDropDown(e, 'assetTypeDropDown')}
-        >
+        <button className="filters__field-box-container" onClick={() => setOpen(!open)}>
           {assetTypesCount}
         </button>
-        <div id="assetTypeDropDown" className="filters__asset-type--dropdown">
-          <ul className="checkbox__list-col">
-            {isAssetTypeDropDownOpen
-              ? assetTypes.map(type => (
-                  <Checkbox
-                    key={type}
-                    item={type}
-                    selectedItems={selectedAssetTypes}
-                    setItem={setSelectedAssetType}
-                  />
-                ))
-              : assetTypes
-                  .slice(0, 6)
-                  .map(type => (
+        {open && (
+          <div id="assetTypeDropDown" className="filters__asset-type--dropdown">
+            <ul className="checkbox__list-col">
+              {expandedDropDown
+                ? assetTypes.map(type => (
                     <Checkbox
                       key={type}
                       item={type}
                       selectedItems={selectedAssetTypes}
                       setItem={setSelectedAssetType}
                     />
-                  ))}
-          </ul>
-          <button id={buttonID} className="background-none orange-text">
-            {' '}
-            {displayMoreText} סוגים >
-          </button>
-        </div>
+                  ))
+                : assetTypes
+                    .slice(0, 6)
+                    .map(type => (
+                      <Checkbox
+                        key={type}
+                        item={type}
+                        selectedItems={selectedAssetTypes}
+                        setItem={setSelectedAssetType}
+                      />
+                    ))}
+            </ul>
+            <button
+              id={buttonID}
+              className="background-none orange-text"
+              onClick={() => {
+                setExpandedDropDown(!expandedDropDown)
+              }}
+            >
+              {displayMoreText} סוגים >
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )
 }
-
-export default PropertyTypeFilter

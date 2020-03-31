@@ -10,7 +10,7 @@ const EntranceDateFilter = () => {
   const isTodayItem = "isToday";
   const placeholderText = "החל מ- הזינו תאריך 📆";
   const datePickerChangeHandler = date => {
-    setEntranceDate(date);
+    setEntranceDate(date.getTime());
   };
 
   return (

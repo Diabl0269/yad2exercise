@@ -15,6 +15,7 @@ $fifth : 20%;
 $quarter: 25%;
 $third: 33%;
 $half: 50%;
+$four-fifths: 80%;
 $full: 100%;
 
 //text-sizes
@@ -65,7 +66,7 @@ $mobile-breakpoint: 45rem;
 .align-row {
   @include flex-row;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
 }
 
 @mixin align-row {
@@ -272,11 +273,9 @@ $mobile-breakpoint: 45rem;
   display: -webkit-box;
   @include flex-row;
   font-size: 0.875rem;
-  height: 40px;
   justify-content: space-between;
   line-height: 1.0625rem;
   margin-top: 5px;
-  min-width: 120px;
   padding: $s-mp;
   width: auto;
 }
