@@ -5,14 +5,15 @@ module.exports = async (req, res, next) => {
   const successMessage = 'Got listings successfully \n'
 
   const { body, query } = req
-
+  console.log({...query});
+  
   if (req.user) filterObject.listingUser = req.userID
 
   try {
     res.count = await listingsModel.countDocuments(query)
 
     res.listings = await listingsModel
-      .find()
+      .find(query)
       .sort(body.sortBy)
       .skip(body.skip)
       .limit(10)

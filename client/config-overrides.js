@@ -16,7 +16,5 @@ module.exports = config => {
       cache: true
     })
   ]
-
-  console.log(config)
   return config
 }

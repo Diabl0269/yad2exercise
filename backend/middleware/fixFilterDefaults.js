@@ -1,5 +1,6 @@
 module.exports = (req, res, next) => {
   const { body } = req
+  
   const {
     citySearchValue,
     entranceDate,
@@ -23,7 +24,7 @@ module.exports = (req, res, next) => {
     edgesObj.$lte = (!!max && max) || undefined
   }
   const filtersQuery = { listingType }
-  // if (!!citySearchValue) filtersQuery.address = { city: citySearchValue }
+  if (!!citySearchValue) filtersQuery['address.city'] = citySearchValue
   //  ? citySearchValue : undefined
   // filtersQuery['assetDetails.floor'] = convertEdges(floor)
   // filtersQuery['saleDetails.entranceDate'] = { $gte: entranceDate }
@@ -37,7 +38,8 @@ module.exports = (req, res, next) => {
   // })
   // if (onlyWithPhotos) filtersQuery['media.images'] = { $where: 'this.media.images.length > 0' }
   // filtersQuery['assetDetails.squareMetersTotal'] = convertEdges(squareMetersTotal)
-
+  // console.log(filtersQuery);
+  
   req.query = filtersQuery
   next()
 }

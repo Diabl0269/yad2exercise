@@ -2,7 +2,9 @@ import getUserListings from './getUserListings'
 import getFilterdListings from './getFilterdListings'
 import getFavoritesListings from './getFavoritesListings'
 
-export default async (queryObj, listingsDispatch) => {
+export default async (queryObj, listingsDispatch, type) => {
+  if (type) queryObj = { ...queryObj, listingType: [type] }
+
   listingsDispatch([])
   let data
   try {

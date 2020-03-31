@@ -1,31 +1,33 @@
-import React from "react";
+import React, { useEffect } from 'react'
+import { listingTypes } from '../../data/assetCategories.json'
+import getListings from '../../communication/getListings'
 
-const SecondaryNavBar = () => {
-  const dosentExistAlert = text => alert(`כאן יהיה עמוד ${text}`);
-  const secondaryNavBarCategories = [
-    { text: "מכירה", clickHandler: dosentExistAlert },
-    { text: "השכרה", clickHandler: dosentExistAlert },
-    { text: "דירות שותפים", clickHandler: dosentExistAlert },
-    { text: 'נדל"ן מסחרי', clickHandler: dosentExistAlert }
-  ];
+const SecondaryNavBar = ({ queryObj ,setListings }) => {
+  const dosentExistAlert = text => alert(`כאן יהיה עמוד ${text}`)
+  
+  const {
+    listingType: [listingType, listingTypeDispatch]
+  } = queryObj
+
+  const changeListingType = type => {
+    listingTypeDispatch(type)
+    getListings(queryObj, setListings, type)
+  }
 
   const secondaryNavBarActions = [
-    { text: "כונס נכסים", clickHandler: dosentExistAlert },
+    { text: 'כונס נכסים', clickHandler: dosentExistAlert },
     { text: 'מדד הנדל"ן', clickHandler: dosentExistAlert },
-    { text: "יד1 דירות חדשות", clickHandler: dosentExistAlert },
-    { text: "הערכת שווי נכס", clickHandler: dosentExistAlert }
-  ];
+    { text: 'יד1 דירות חדשות', clickHandler: dosentExistAlert },
+    { text: 'הערכת שווי נכס', clickHandler: dosentExistAlert }
+  ]
 
   return (
     <div className="secondary-nav-bar--container">
       <ul className="list__nav-bar right-list">
-        {secondaryNavBarCategories.map(category => (
-          <li key={category.text} className="list-item__nav-bar">
-            <button
-              className="secondary-nav-bar-button"
-              onClick={() => category.clickHandler(category.text)}
-            >
-              {category.text}
+        {listingTypes.map(type => (
+          <li key={type} className="list-item__nav-bar">
+            <button className="secondary-nav-bar-button" onClick={() => changeListingType(type)}>
+              {type}
             </button>
           </li>
         ))}
@@ -43,7 +45,7 @@ const SecondaryNavBar = () => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default SecondaryNavBar;
+export default SecondaryNavBar

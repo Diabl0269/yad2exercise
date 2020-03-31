@@ -7,27 +7,26 @@ import SortBar from './SortBar/SortBar'
 import useQuery from '../../hooks/useQuery'
 import getListings from '../../communication/getListings'
 
-const ListingsContainer = () => {
-  const [listings, listingsDispatch] = useState([])
-  const queryObj = useQuery()
+const ListingsContainer = ({ queryObjFromParent, listingsFromParent = [] }) => {
+  const [listings, listingsDispatch] = useState(listingsFromParent)
 
+  const query = useQuery()
+  const queryObj = queryObjFromParent || query
+  
   useEffect(() => {
     getListings(queryObj, listingsDispatch)
   }, [])
 
   return (
     <div className="list-container">
-      <FiltersContext.Provider
-        value={{ queryObj, listings, dispatch: listingsDispatch }}
-      >
-          <Filters dispatch={listingsDispatch} />
+      <FiltersContext.Provider value={{ queryObj, listings, dispatch: listingsDispatch }}>
+        <Filters dispatch={listingsDispatch} />
 
-          <div id="listing">
-            <SortBar />
-            <Listings />
-            <Pagination />
-          </div>
-          
+        <div id="listing">
+          <SortBar />
+          <Listings />
+          <Pagination />
+        </div>
       </FiltersContext.Provider>
     </div>
   )
