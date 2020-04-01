@@ -33,10 +33,11 @@ module.exports = new Schema({
     }
   ],
   userDetails: {
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
+    firstName: { type: String, required: true, trim: true },
+    lastName: { type: String, required: true, trim: true },
     phone: {
       type: String,
+      trim: true,
       required: true,
       validate(value) {
         if (!validator.isMobilePhone(value, 'he-IL')) {
@@ -46,6 +47,7 @@ module.exports = new Schema({
     },
     phone2: {
       type: String,
+      trim: true,
       validate(value) {
         if (!validator.isMobilePhone(value, 'he-IL') && value !== '') {
           throw Error('Please enter a valid phone number')
@@ -54,6 +56,7 @@ module.exports = new Schema({
     },
     email: {
       type: String,
+      trim: true,
       unique: true,
       required: true,
       validate(value) {

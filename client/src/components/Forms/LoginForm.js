@@ -10,7 +10,7 @@ const LoginForm = () => {
   const setUser = useContext(UserContext)[1];
   
   const loginHandler = async (e) => {
-    e.stopPropagation();
+    e.preventDefault();
     const userData = await login({email: email[0], password: password[0]});              
     if (!userData) return dispatchLoginFail(true);
     setUser(userData);

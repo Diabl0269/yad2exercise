@@ -1,30 +1,25 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const {
-  assetTypes,
-  assetStates,
-  listingTypes
-} = require('../../data/assetCategories')
-
+const { assetTypes, assetStates, listingTypes } = require('../../data/assetCategories')
 
 module.exports = new Schema(
   {
     listingType: { type: String, required: true, enum: listingTypes },
     address: {
-      city: { type: String, required: true },
-      street: String,
+      city: { type: String, required: true, trim: true },
+      street: { type: String, trim: true },
       streetNumber: Number,
       entrance: Number,
-      neighborhood: String,
-      area: String
+      neighborhood: { type: String, trim: true },
+      area: { type: String, trim: true }
     },
     assetDetails: {
       assetState: { type: String, required: true, enum: assetStates },
       assetType: { type: String, required: true, enum: assetTypes },
       balconies: Number,
-      description: { type: String, max: 200 },
+      description: { type: String, max: 200, trim: true },
       floor: { type: Number, required: true },
-      furnitureDescription: String,
+      furnitureDescription: {type: String, trim: true},
       parking: Number,
       rooms: Number,
       roomMates: Number,

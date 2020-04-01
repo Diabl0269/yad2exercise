@@ -18,7 +18,6 @@ export default ({ agencyName }) => {
     attributes,
     saleDetails: { entranceDate }
   } = useContext(ListItemContext)
-  console.log(entranceDate)
 
   const displayEntranceDate =
     (!!entranceDate && new Date(entranceDate).toLocaleDateString()) || 'לא צוין תאריך כניסה'
