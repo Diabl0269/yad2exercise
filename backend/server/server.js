@@ -6,7 +6,7 @@ const { success } = require('../utils/messageColor')
 const path = require('path')
 
 app.use(bodyParser.json())
-app.use('/*', express.static(path.join(__dirname, '../../client/build')))
+app.use(express.static(path.join(__dirname, '../../client/build')))
 
 require('./serverInit')(app)
 

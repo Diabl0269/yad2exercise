@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.2739fb8a.chunk.css",
-    "main.js": "/static/js/main.483b60f5.chunk.js",
-    "main.js.map": "/static/js/main.483b60f5.chunk.js.map",
+    "main.css": "/static/css/main.08bd79de.chunk.css",
+    "main.js": "/static/js/main.afe8c2db.chunk.js",
+    "main.js.map": "/static/js/main.afe8c2db.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.d73a5c01.js",
     "runtime-main.js.map": "/static/js/runtime-main.d73a5c01.js.map",
     "static/css/2.8f70debd.chunk.css": "/static/css/2.8f70debd.chunk.css",
     "static/js/2.3241ab5d.chunk.js": "/static/js/2.3241ab5d.chunk.js",
     "static/js/2.3241ab5d.chunk.js.map": "/static/js/2.3241ab5d.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.0beff8552414c6f16c62ae14d0986a25.js": "/precache-manifest.0beff8552414c6f16c62ae14d0986a25.js",
-    "precache-manifest.0beff8552414c6f16c62ae14d0986a25.js.gz": "/precache-manifest.0beff8552414c6f16c62ae14d0986a25.js.gz",
+    "precache-manifest.af00fa066315b7860a107ffeef8f3990.js": "/precache-manifest.af00fa066315b7860a107ffeef8f3990.js",
+    "precache-manifest.af00fa066315b7860a107ffeef8f3990.js.gz": "/precache-manifest.af00fa066315b7860a107ffeef8f3990.js.gz",
     "service-worker.js": "/service-worker.js",
     "service-worker.js.gz": "/service-worker.js.gz",
     "static/css/2.8f70debd.chunk.css.map": "/static/css/2.8f70debd.chunk.css.map",
-    "static/css/main.2739fb8a.chunk.css.map": "/static/css/main.2739fb8a.chunk.css.map",
+    "static/css/main.08bd79de.chunk.css.map": "/static/css/main.08bd79de.chunk.css.map",
     "static/js/2.3241ab5d.chunk.js.LICENSE.txt": "/static/js/2.3241ab5d.chunk.js.LICENSE.txt",
     "static/js/2.3241ab5d.chunk.js.gz": "/static/js/2.3241ab5d.chunk.js.gz",
-    "static/js/main.483b60f5.chunk.js.gz": "/static/js/main.483b60f5.chunk.js.gz",
+    "static/js/main.afe8c2db.chunk.js.gz": "/static/js/main.afe8c2db.chunk.js.gz",
     "static/js/runtime-main.d73a5c01.js.gz": "/static/js/runtime-main.d73a5c01.js.gz",
     "static/media/favorite.svg": "/static/media/favorite.8688eb29.svg",
     "static/media/favorite_border.svg": "/static/media/favorite_border.307e3743.svg"
@@ -26,7 +26,7 @@
     "static/js/runtime-main.d73a5c01.js",
     "static/css/2.8f70debd.chunk.css",
     "static/js/2.3241ab5d.chunk.js",
-    "static/css/main.2739fb8a.chunk.css",
-    "static/js/main.483b60f5.chunk.js"
+    "static/css/main.08bd79de.chunk.css",
+    "static/js/main.afe8c2db.chunk.js"
   ]
 }

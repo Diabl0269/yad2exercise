@@ -5,16 +5,21 @@ const authRoute = require('./routes/auth')
 const deleteListing = require('./routes/deleteListing')
 const deleteMedia = require('./routes/deleteMedia')
 const deleteUser = require('./routes/deleteUser')
-const getFavoritesListings = require('../middleware/users/getFavoritesListings');
+const getFavoritesListings = require('../middleware/users/getFavoritesListings')
 const getListings = require('./routes/getListings')
 const getUser = require('../middleware/users/getUser')
 const getUserRoute = require('./routes/getUser')
 const login = require('./routes/login')
 const signUp = require('./routes/signUp')
-const toggleFavorite = require('./routes/toggleFavorite');
+const toggleFavorite = require('./routes/toggleFavorite')
 const updateUser = require('./routes/updateUser')
+const path = require('path')
 
 module.exports = app => {
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../client/build/index.html'))
+  })
+
   app.use('/listings', getListings)
 
   app.use('/listings', auth)
