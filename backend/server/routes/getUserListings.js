@@ -1,14 +1,12 @@
+const express = require('express')
+const router = express.Router()
 const logMessage = require('../../middleware/logMessage')
-const getUserListings = require('../../middleware/users/getUserListings');
+const getUserListings = require('../../middleware/users/getUserListings')
 
-module.exports =
-  ('/listings',
-  getUserListings,
-  logMessage,
-  (req, res) => {
-    const { count, userListings } = req
-    let status = 200
-    if (req.error) status = 500
-    if (userListings.length === 0) status = 204
-    res.status(status).send({ userListings, count })
-  })
+module.exports = router.post('/', getUserListings, logMessage, (req, res) => {
+  if (req.error) return res.sendStatus(500)
+  const { listings = [], count } = res
+  console.log(listings);
+  
+  res.status(200).send({ listings, count })
+})

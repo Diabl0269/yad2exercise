@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import ListingsContainer from '../../Listings/ListingsContainer';
-import useQuery from '../../../hooks/useQuery';
-import FiltersContext from '../../../context/FiltersContext';
-import getListings from '../../../communication/getListings';
+import ListingsContainer from '../../Listings/ListingsContainer'
+import useQuery from '../../../hooks/useQuery'
+import FiltersContext from '../../../context/FiltersContext'
+import getListings from '../../../communication/getListings'
 
 export default () => {
   const [listings, setListings] = useState()
@@ -20,7 +20,6 @@ export default () => {
   useEffect(() => {
     const startGetListings = async () => {
       const { listings = '', count } = await getListings(queryObj)
-      
       setListings(listings)
       setCount(count)
     }

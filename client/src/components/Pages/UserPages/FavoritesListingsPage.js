@@ -1,11 +1,11 @@
 import React from "react";
 import PageTemplate from "../PageTemplate";
-import ListingsContainer from "../../Listings/ListingsContainer";
+import FavoritesListingsForm from '../../Forms/UserForm/FavoritesListingsForm';
 
 export default () => {
   return (
     <PageTemplate
-      Component={ListingsContainer}
+      Component={FavoritesListingsForm}
     />
   );
 };

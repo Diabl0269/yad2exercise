@@ -14,6 +14,7 @@ const signUp = require('./routes/signUp')
 const toggleFavorite = require('./routes/toggleFavorite')
 const updateUser = require('./routes/updateUser')
 const path = require('path')
+const getUserListings = require('./routes/getUserListings');
 
 module.exports = app => {
   app.get('/*', (req, res) => {
@@ -40,5 +41,5 @@ module.exports = app => {
   app.use('/users/favorite-listings', getUser, getFavoritesListings)
   app.use('/users', getUserRoute)
   app.use('/users', updateUser)
-  app.use('/users/listings', getUser, getListings)
+  app.use('/users/listings', getUser, getUserListings)
 }
