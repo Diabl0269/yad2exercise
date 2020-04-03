@@ -1,19 +1,18 @@
-.checkbox__list-col {
-  @include align-column;
-  overflow: hidden;
+.list-style-none {
   list-style: none;
-  padding-right: $s-mp;
+  padding: $xs-mp $l-mp;
+  flex-wrap: wrap;
 }
 
 .checkbox__list-item {
   list-style: none;
-  width: $quarter;
+  // width: $quarter;
+  margin: $m-mp;
+  @include flex-row;
+  align-items: center;
+  // @include align-row;
+  label {
+    white-space: nowrap;
+  }
 }
 
-.checkbox__input {
-  margin-left: $s-mp;
-}
-
-.checkbox {
-  margin-left: $s-mp;
-}

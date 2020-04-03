@@ -15,11 +15,20 @@
   padding: $s-mp;
 }
 
-.filters--field-container {
+@mixin filters--field-container {
   @include flex-column;
   margin: 0 $s-mp;
-  width: $fifth;
   justify-content: space-between;
+}
+
+.filters--field-container {
+  @include filters--field-container;
+  width: $fifth;
+}
+
+.filters--field-container__advanced {
+  @include filters--field-container;
+  width: $third;
 }
 
 .filters--advanced-search-button {
@@ -51,7 +60,17 @@
 
 //Asset type selector
 .filters__asset-type--dropdown {
-  align-items: center;
+  width: $tenth;
+  background: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+}
+
+.filters__asset-type--dropdown-open {
+  width: $third;
   background: white;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -74,7 +93,7 @@
 .filters__rooms-picker-container {
   align-items: center;
   @include flex-row;
-  width: 10vw;
+  width: 6vw;
   padding: $s-mp;
   border-radius: $round-border-radius;
   border: 1px solid #ccc;
@@ -99,7 +118,7 @@
 }
 
 .filters__advanced-dropdown-container {
-  display: none;
+  display: flex;
   background: white;
   box-shadow: 0 5px 6px 0 $border-color;
   flex-direction: column;
@@ -107,10 +126,19 @@
 }
 
 .filters__advanced--asset-attributes {
-  padding: $m-mp;
-  margin: $s-mp 0;
   @include flex-row;
   flex-wrap: wrap;
+  li {
+    width: $fifth;
+  }
+}
+
+#moreTypesFilterButton{
+  color: $orange;
+  background: unset;
+  &:hover{
+    background: unset;
+  }
 }
 
 #listingsTypeSelect {

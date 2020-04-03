@@ -1,19 +1,18 @@
-import React, { useContext } from "react";
-import CitiesAutoComplete from '../../utils/CitiesAutoComplete';
+import React, { useContext } from 'react'
+import CityAutoComplete from '../../utils/CityAutoComplete';
+import FiltersContext from '../../../context/FiltersContext'
 
-import FiltersContext from "../../../context/FiltersContext";
+export default () => {
+  const {
+    queryObj: {
+      citySearchValue: [citySearchValue, setCitySearchValue]
+    }
+  } = useContext(FiltersContext)
 
-const CitiesFilter = () => {  
-const [citySearchValue, setCitySearchValue] = useContext(FiltersContext).queryObj.citySearchValue;
   return (
     <div className="filters--field-container">
       חפשו עיר
-      <CitiesAutoComplete
-        value={citySearchValue}
-        setValue={setCitySearchValue}
-      />
+      <CityAutoComplete value={citySearchValue} setValue={setCitySearchValue} />
     </div>
-  );
-};
-
-export default CitiesFilter;
+  )
+}

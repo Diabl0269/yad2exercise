@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useContext } from 'react'
 import { listingTypes } from '../../data/assetCategories.json'
-import getListings from '../../communication/getListings'
+import FiltersContext from '../../context/FiltersContext'
 
-const SecondaryNavBar = ({ queryObj ,setListings }) => {
+export default () => {
   const dosentExistAlert = text => alert(`כאן יהיה עמוד ${text}`)
-  
+
   const {
-    listingType: [listingType, listingTypeDispatch]
-  } = queryObj
+    queryObj: {
+      listingType: [, setListingType]
+    }
+  } = useContext(FiltersContext)
 
   const changeListingType = type => {
-    listingTypeDispatch(type)
-    getListings(queryObj, setListings, type)
+    setListingType(type)   
   }
 
   const secondaryNavBarActions = [
@@ -47,5 +48,3 @@ const SecondaryNavBar = ({ queryObj ,setListings }) => {
     </div>
   )
 }
-
-export default SecondaryNavBar

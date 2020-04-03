@@ -2,7 +2,7 @@ const dictonary = require('../data/attributesDictionary.json')
 
 module.exports = (req, res, next) => {
   const { body } = req
-
+  
   const {
     citySearchValue,
     entranceDate,

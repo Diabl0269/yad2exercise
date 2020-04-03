@@ -1,20 +1,20 @@
-import React, { useContext } from "react";
-import getFilterdListings from '../../communication/getFilterdListings';
-import FiltersContext from "../../context/FiltersContext";
+import React, { useContext } from 'react'
+import FiltersContext from '../../context/FiltersContext'
 
 export default ({ value, group, className }) => {
-
-  const { queryObj, dispatch: listingsDispatch } = useContext(FiltersContext);
-  const sortByDispatch = queryObj.sortBy[1];
+  const {
+    queryObj: {
+      sortBy: [, setSortBy]
+    }
+  } = useContext(FiltersContext)
 
   const changeSortHandler = async () => {
-    sortByDispatch(value[1]);
-    getFilterdListings(queryObj, listingsDispatch);
-  };
+    setSortBy(value[1])
+  }
 
-  const defaultChecked = document.querySelector(`#${value[1]}`);
+  const defaultChecked = document.querySelector(`#${value[1]}`)
   if (defaultChecked) {
-    defaultChecked.setAttribute("checked", "");
+    defaultChecked.setAttribute('checked', '')
   }
 
   return (
@@ -28,5 +28,5 @@ export default ({ value, group, className }) => {
       />
       <label>{value[0]}</label>
     </div>
-  );
-};
+  )
+}

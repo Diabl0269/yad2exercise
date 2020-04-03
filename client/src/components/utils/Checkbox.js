@@ -12,7 +12,7 @@ const Checkbox = ({ item, selectedItems, setItem }) => {
   }
 
   return (
-    <li className="checkbox__list-item" key={item}>
+    <li key={item} className='checkbox__list-item'>
       <UnifiedThemeProvider
         Component={MuiCheckbox}
         color="#ff7100"

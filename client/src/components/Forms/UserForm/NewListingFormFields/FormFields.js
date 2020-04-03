@@ -29,7 +29,7 @@ export default ({ fields }) => {
       case 'videos':
         return <MediaUploadField key={i} field={field} />
       case 'furnitureDescription':
-        return <ExpandedField field={field} key={i} component="textarea" />
+        return <ExpandedField field={field} key={i} component="textarea" className='new-listings-select-field'/>
       case 'assetType':
         return <SelectField field={field} key={i} categories={assetTypes} />
       case 'assetState':
@@ -39,6 +39,6 @@ export default ({ fields }) => {
       default:
         break
     }
-    return <ExpandedField field={field} key={i} categories={listingTypes} />
+    return <ExpandedField field={field} key={i} categories={listingTypes} className='new-listings-select-field'/>
   })
 }

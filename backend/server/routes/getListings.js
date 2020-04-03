@@ -9,7 +9,7 @@ module.exports = router.post(
   fixFilterDefaults,
   getListings,
   logMessage,
-  (req, res) => {
+  (req, res) => {    
     if (req.error) return res.sendStatus(500)
     const { listings, count } = res
     

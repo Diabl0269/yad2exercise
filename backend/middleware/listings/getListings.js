@@ -5,6 +5,7 @@ module.exports = async (req, res, next) => {
   const successMessage = 'Got listings successfully \n'
 
   const { body, query } = req
+  console.log(query);
   
   if (req.user) filterObject.listingUser = req.userID
 

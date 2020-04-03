@@ -46,7 +46,7 @@ const FloorFilter = () => {
     />
   );
   return (
-    <div className="filters--field-container">
+    <div className="filters--field-container__advanced">
       קומה
       <div className="align-row">
         {innerInputContainer("מ-", "min")}

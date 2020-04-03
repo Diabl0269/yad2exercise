@@ -16,6 +16,6 @@
         }
     }
     button {
-        @include button($off-white, $s-size);
+        @include button($off-white, auto);
     }
 }

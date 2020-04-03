@@ -11,7 +11,8 @@ $promo-yellow: #fdf9c5;
 $very-dark-orange: #df6200;
 
 //sizes
-$fifth : 20%;
+$tenth: 10%;
+$fifth: 20%;
 $quarter: 25%;
 $third: 33%;
 $half: 50%;
@@ -54,13 +55,13 @@ $mobile-breakpoint: 45rem;
 }
 
 .align-column {
-  @include flex-column;;
+  @include flex-column;
   justify-content: space-evenly;
 }
 
 @mixin flex-row {
   display: flex;
-  flex-direction: row;  
+  flex-direction: row;
 }
 
 .align-row {
@@ -72,7 +73,7 @@ $mobile-breakpoint: 45rem;
 @mixin align-row {
   @include flex-row;
   align-items: center;
-  justify-content: space-between;  
+  justify-content: space-between;
 }
 
 .align-right {
@@ -93,6 +94,11 @@ $mobile-breakpoint: 45rem;
 
 .border-left {
   border-left: $s-border solid $border-color;
+}
+
+.justify-flex-row-center {
+  justify-content: center;
+  @include flex-row()
 }
 
 .white-text {
@@ -161,13 +167,12 @@ $mobile-breakpoint: 45rem;
 }
 
 .margin-top-m {
-  margin-top: $m-mp
+  margin-top: $m-mp;
 }
 
 .margin-top-bottom-l {
-  margin: $l-mp 0
+  margin: $l-mp 0;
 }
-
 
 .block {
   display: block;
@@ -177,12 +182,20 @@ $mobile-breakpoint: 45rem;
   visibility: hidden;
 }
 
+.width-third {
+  width: $third;
+}
+
+.width-quarter{
+  width: $quarter;
+}
+
 .width-half {
   width: $half;
 }
 
 .width-full {
-  width: $full
+  width: $full;
 }
 
 .height-half {
@@ -208,6 +221,10 @@ $mobile-breakpoint: 45rem;
   padding: 3px;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .red-background {
   background: red;
 }
@@ -217,8 +234,8 @@ $mobile-breakpoint: 45rem;
 }
 
 @mixin align-column {
-  @include flex-column;;
-  justify-content: space-between; 
+  @include flex-column;
+  justify-content: space-between;
   align-items: center;
   align-self: center;
 }
@@ -237,7 +254,7 @@ $mobile-breakpoint: 45rem;
   background: white;
 }
 
-@mixin button($color, $height){
+@mixin button($color, $height) {
   align-items: center;
   justify-content: center;
   background: $color;
@@ -250,21 +267,17 @@ $mobile-breakpoint: 45rem;
   }
   @if $color == $off-white {
     color: $off-black;
-  } 
+  }
   @if $color == white {
     color: $off-black;
   }
 }
 
 .button__off-white {
-  @include button($off-white, auto)
+  @include button($off-white, auto);
 }
 
 @mixin field-box {
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: justify;
   align-items: center;
   background-color: #fff;
   border-radius: 2px;
@@ -272,9 +285,9 @@ $mobile-breakpoint: 45rem;
   color: #999;
   display: -webkit-box;
   @include flex-row;
-  font-size: 0.875rem;
+  // font-size: 0.875rem;
   justify-content: space-between;
-  line-height: 1.0625rem;
+  // line-height: 1.0625rem;
   margin-top: 5px;
   padding: $s-mp;
   width: auto;

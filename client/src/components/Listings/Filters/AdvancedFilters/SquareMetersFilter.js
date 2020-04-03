@@ -12,7 +12,7 @@ const SquareMetersFilter = () => {
     }
   };
   return (
-    <div className="filters--field-container">
+    <div className="filters--field-container__advanced">
       גודל דירה (במ"ר)
       <div className="filters__price-container">
         <input

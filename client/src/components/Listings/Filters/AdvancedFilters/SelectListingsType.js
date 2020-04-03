@@ -3,19 +3,17 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import { listingTypes } from '../../../../data/assetCategories.json'
 import FiltersContext from '../../../../context/FiltersContext'
-import getListings from '../../../../communication/getListings'
 
 export default () => {
-  const { queryObj, dispatch } = useContext(FiltersContext)
-
   const {
-    listingType: [listingType, listingTypeDispatch]
-  } = queryObj
+    queryObj: {
+      listingType: [listingType, listingTypeDispatch]
+    }
+  } = useContext(FiltersContext)
 
   const handleChange = e => {
     const { value } = e.target
     listingTypeDispatch(value)
-    getListings(queryObj, dispatch, value)
   }
 
   return (

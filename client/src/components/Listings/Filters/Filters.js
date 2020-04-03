@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import AdvancedFilters from './AdvancedFilters/AdvancedFilters'
 import CitiesFilter from './CitiesFilter'
 import PriceFilter from './PriceFilter'
@@ -11,11 +11,19 @@ import SortBar from '../SortBar/SortBar'
 import getListings from '../../../communication/getListings'
 
 export default () => {
-  const { queryObj, dispatch } = useContext(FiltersContext)
-  const { listingType } = queryObj
-  const handleSubmit = () => {
-    getListings(queryObj, dispatch)
+  const [open, setOpen] = useState(false)
+  const { queryObj, setListings } = useContext(FiltersContext)
+  const {
+    listingType: [listingType],
+    count: [, setCount]
+  } = queryObj
+
+  const handleSubmit = async () => {
+    const { listings = '', count } = await getListings(queryObj)
+    setListings(listings)
+    setCount(count)
   }
+
   return (
     <div>
       <div>
@@ -44,7 +52,7 @@ export default () => {
             <div className="align-row">
               <button
                 className="filters--field-container filters--advanced-search-button"
-                onClick={e => toggleDropDown(e, 'advancedFilters')}
+                onClick={() => setOpen(!open)}
               >
                 חיפוש מתקדם
               </button>
@@ -57,7 +65,7 @@ export default () => {
             </div>
           </div>
         </div>
-        <AdvancedFilters />
+        {open && <AdvancedFilters />}
       </div>
       <SortBar />
     </div>

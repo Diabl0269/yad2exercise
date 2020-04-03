@@ -1,10 +1,10 @@
-import React from "react";
-import AssetAttributes from './AssetAttributes';
-import AssetDetails from './AssetDetails';
-import FreeTextFilter from "./FreeTextFilter";
-import SearchAndReset from './SearchAndReset';
+import React from 'react'
+import AssetAttributes from './AssetAttributes'
+import AssetDetails from './AssetDetails'
+import FreeTextFilter from './FreeTextFilter'
+import SearchAndReset from './SearchAndReset'
 
-const AdvancedFilters = () => {
+export default () => {
   return (
     <div id="advancedFilters" className="filters__advanced-dropdown-container">
       <AssetAttributes />
@@ -12,7 +12,5 @@ const AdvancedFilters = () => {
       <FreeTextFilter />
       <SearchAndReset />
     </div>
-  );
-};
-
-export default AdvancedFilters;
+  )
+}

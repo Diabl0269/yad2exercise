@@ -1,26 +1,23 @@
 import getUserListings from './getUserListings'
 import getFilterdListings from './getFilterdListings'
 import getFavoritesListings from './getFavoritesListings'
+import mapStateToData from '../utils/mapStateToData'
 
-export default async (queryObj, listingsDispatch, type) => {
-  if (type) queryObj = { ...queryObj, listingType: [type] }
-
-  listingsDispatch([])
-  let data
+export default async (queryObj, listingsDispatch) => {
+  const queryData = mapStateToData(queryObj)
   try {
     const isUserListings = window.location.pathname === '/user/listings'
     const isFavoritesListings = window.location.pathname === '/user/favorites'
-    data = isUserListings
-      ? await getUserListings(queryObj)
+
+    //Data is listings and count
+    const data = isUserListings
+      ? await getUserListings(queryData)
       : isFavoritesListings
-      ? await getFavoritesListings(queryObj)
-      : await getFilterdListings(queryObj)
+      ? await getFavoritesListings(queryData)
+      : await getFilterdListings(queryData)
+
+    return data
   } catch {
-    return (document.querySelector('#loader').innerHTML = 'תקלת שרת')
+    return {}
   }
-  const { listings, count } = data
-  if (listings.length === 0)
-    return (document.querySelector('#loader').innerHTML = 'לא נמצאו רשומות')
-  queryObj.count[1](count)
-  listingsDispatch(listings)
 }
