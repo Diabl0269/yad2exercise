@@ -16,7 +16,7 @@ export default ({ field: { type, text }, categories }) => {
   return (
     <div key={type}>
       {text + ':'}
-      <div id='newListingsSelectField'>
+      <div id="newListingsSelectField">
         <Select
           value={value}
           onBlur={e => blurHandler(e, type, setTouched, setErrors)}
@@ -28,12 +28,8 @@ export default ({ field: { type, text }, categories }) => {
             </MenuItem>
           ))}
         </Select>
-        <ErrorMessage
-          name={type}
-          component="div"
-          className="error-message-container margin-top-s"
-        />
       </div>
+      <ErrorMessage name={type} component="div" className="error-message-container margin-top-s" />
     </div>
   )
 }

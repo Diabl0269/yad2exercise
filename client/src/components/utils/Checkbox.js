@@ -8,6 +8,8 @@ const Checkbox = ({ item, selectedItems, setItem }) => {
     if (selectedItems.includes(item))
       newSelectedItems = selectedItems.filter(curItem => curItem !== item)
     else newSelectedItems = selectedItems.concat(item)
+    console.log(newSelectedItems);
+    
     setItem(newSelectedItems)
   }
 
