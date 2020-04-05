@@ -15,10 +15,20 @@
             @include align-column;
         }
     }
+    #userDetailsTopContainer{
+        @include align-row;
+        justify-content: space-between;
+    }
     button {
         @include button($off-white, auto);
+        width: auto;
     }
     .MuiPaper-root {
         position: absolute;
+    }
+    .MuiButtonBase-root {
+        border-radius: 0;
+        height: auto;
+        font: inherit;
     }
 }

@@ -1,13 +1,28 @@
 #sortBar {
-    @include align-row;
-    all {
-        width: $third;
-    }
-    #mapDisaply{
-        width: $fifth;
-    }
-    #sortOption{
-        width: 10vw;
-        padding: $xs-mp;
-    }
+  @include align-row;
+  div {
+      width: $third;
+  }
+  #mapDisaply {
+    width: $fifth;
+  }
+  #sortOptionContainer {
+      width: $full;
+    // margin: 0 $xs-mp;
+  }
+  #sortOption {
+    padding: $xs-mp;
+  }
+
+  #sortDropDown {
+    background: white;
+    width: auto;
+    padding: $m-mp;
+    line-height: initial;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+  }  
 }

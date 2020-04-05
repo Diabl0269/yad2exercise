@@ -12,10 +12,10 @@ export default () => {
   }
 
   return (
-    <div className='filters--field-container__advanced'>
+    <div className="filters--field-container__advanced">
       תאריך כניסה
       <DatePicker
-      className='red-background'
+        className="date-picker-field"
         selected={entranceDate}
         onChange={date => datePickerChangeHandler(date)}
         placeholderText={placeholderText}

@@ -10,6 +10,7 @@
     }
     input {
         @include field-box;
+        width: $half;
     }
     button {
         margin-top: $l-mp;

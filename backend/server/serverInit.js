@@ -17,9 +17,7 @@ const path = require('path')
 const getUserListings = require('./routes/getUserListings');
 
 module.exports = app => {
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../client/build/index.html'))
-  })
+  
 
   app.use('/listings', getListings)
 
@@ -42,4 +40,8 @@ module.exports = app => {
   app.use('/users', getUserRoute)
   app.use('/users', updateUser)
   app.use('/users/listings', getUser, getUserListings)
+
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../client/build/index.html'))
+  })
 }

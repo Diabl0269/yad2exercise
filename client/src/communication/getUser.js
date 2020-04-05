@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios'
 
 export default async () => {
-  const { token } = localStorage;
-  if (!token) return;
+  const { token } = localStorage
+  if (!token) return
   axios.defaults.headers.Authorization = token
   try {
-    const res = await axios.get(`/users`);        
-    return res.data;
+    const { data } = await axios.get(`/users`)
+    return data
   } catch {
-    return;
+    return
   }
-};
+}

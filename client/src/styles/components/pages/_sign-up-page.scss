@@ -1,6 +1,13 @@
 .sign-up--form {
-  @include white-container($half);
-  align-items: flex-start;
+  @include white-container($third);
+  #updateFieldContainer {
+    @include align-row
+  }
+  #signUpButtonContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: $m-mp;
+  }
   form {
     width: $full;
   }
@@ -12,8 +19,8 @@
     margin-left: $l-mp;
     white-space: nowrap;
   }
-  button {
-    margin-right: $half;
-    @include button($orange, $m-size);
+  input {
+    @include field-box;
+    width: $half;
   }
 }

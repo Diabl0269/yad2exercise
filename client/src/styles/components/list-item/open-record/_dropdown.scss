@@ -15,6 +15,7 @@
     color: white;
     height: $s-size;
     width: $full;
+    white-space: nowrap;
     &:hover {
       background: darken($green, 10%);
     }

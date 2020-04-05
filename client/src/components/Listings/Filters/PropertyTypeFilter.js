@@ -36,7 +36,7 @@ export default () => {
               { 'filters__asset-type--dropdown-open': expandedDropDown }
             )}
           >
-            <ul className="list-style-none">
+            <ul>
               {expandedDropDown ? (
                 <div className="align-row flex-wrap">
                   {assetTypes.map(type => (

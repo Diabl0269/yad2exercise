@@ -1,5 +1,11 @@
 .login-form {
-    @include white-container($quarter)
+    @include white-container($quarter); 
+    input{
+        @include field-box
+    }
+    form{
+        padding: $m-mp;
+    }
 }
 
 .login-button {

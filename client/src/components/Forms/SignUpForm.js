@@ -8,17 +8,9 @@ export default () => {
   const setUser = useContext(UserContext)[1]
   const [attemptFailed, dispatch] = useState(false)
   const userDetails = useUserDetails()
-  const {
-    firstName,
-    lastName,
-    phone,
-    phone2,
-    email,
-    password,
-    agencyName
-  } = userDetails
+  const { firstName, lastName, phone, phone2, email, password, agencyName } = userDetails
   const input = (type, state, text, placeholder = text) => (
-    <div className="align-row">
+    <div id="updateFieldContainer">
       <span>{text}:</span>
       <input
         type={type}
@@ -49,7 +41,9 @@ export default () => {
         {input('text', email, '*אימייל')}
         {input('password', password, '*סיסמה', 'לפחות שמונה תווים')}
         {input('text', agencyName, 'שם סוכנות')}
-        <button tabIndex="0">הרשם</button>
+        <div id='signUpButtonContainer'>
+          <button tabIndex="0">הרשם</button>
+        </div>
       </form>
     </div>
   )

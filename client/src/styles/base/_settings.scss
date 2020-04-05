@@ -20,6 +20,7 @@ $four-fifths: 80%;
 $full: 100%;
 
 //text-sizes
+$h1-font: 3vw;
 $l-font: 16px;
 $m-font: 14px;
 $s-font: 12px;
@@ -285,12 +286,10 @@ $mobile-breakpoint: 45rem;
   color: #999;
   display: -webkit-box;
   @include flex-row;
-  // font-size: 0.875rem;
   justify-content: space-between;
-  // line-height: 1.0625rem;
   margin-top: 5px;
   padding: $s-mp;
-  width: auto;
+  // width: auto;
 }
 
 @mixin box-shadow {

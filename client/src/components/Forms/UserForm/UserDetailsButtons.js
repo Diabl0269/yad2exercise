@@ -17,11 +17,11 @@ export default () => {
 
   return (
     <div className="align-column">
-      <div className="align-row">
+      <div id='userDetailsTopContainer'>
         <button onClick={() => navigate('/user/update')}>עדכן נתונים</button>
         <button onClick={() => navigate('/user/listings/add')}>מודעה חדשה</button>
         <button onClick={() => navigate('/user/listings')}>הצג מודעות</button>
-        <AlertDialog varsObj={varsObj} deleteFunc={deleteUser}/>
+        <AlertDialog varsObj={varsObj} deleteFunc={deleteUser} />
       </div>
       <button onClick={logOut}>התנתק</button>
     </div>

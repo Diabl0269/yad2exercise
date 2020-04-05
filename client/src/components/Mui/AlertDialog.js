@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import { navigate } from 'hookrouter'
 import UserContext from '../../context/UserContext'
 
-export default ({ varsObj, deleteFunc, buttonClassName = '', id }) => {
+export default ({ varsObj, deleteFunc, containerClassName = '', id }) => {
   const [open, setOpen] = useState(false)
   const user = useContext(UserContext)
   const {
@@ -37,7 +37,7 @@ export default ({ varsObj, deleteFunc, buttonClassName = '', id }) => {
   }
 
   return (
-    <div className={buttonClassName}>
+    <div className={containerClassName}>
       <Button onClick={handleClickOpen}>{buttonText}</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{titleText}</DialogTitle>

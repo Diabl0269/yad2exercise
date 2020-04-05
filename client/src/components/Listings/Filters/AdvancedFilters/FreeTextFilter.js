@@ -5,8 +5,8 @@ const FreeTextFilter = () => {
   const  [freeText, setFreeText ] = useContext(FiltersContext).queryObj.freeText;
 
   return (
-    <div className="filters--field-container border-bottom">
-      <div className="width-half">
+    <div className="margin-bottom-m border-bottom width-full">
+      <div className="">
         טקסט חופשי
         <input
           type="text"
