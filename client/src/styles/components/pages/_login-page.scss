@@ -1,7 +1,8 @@
 .login-form {
     @include white-container($quarter); 
     input{
-        @include field-box
+        @include field-box;
+        // width: $full;
     }
     form{
         padding: $m-mp;

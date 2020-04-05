@@ -9,7 +9,6 @@ export default ({ field: { type, value } }) => (
       component={OrangeDatePicker}
       type={type}
       value={value}
-      inputProps={{ type: "checkbox" }}
       name={type}
     />
   </div>
