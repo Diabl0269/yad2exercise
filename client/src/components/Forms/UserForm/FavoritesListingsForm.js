@@ -13,15 +13,13 @@ export default () => {
     onlyWithPhotos: [onlyWithPhotos],
     onlyWithPrice: [onlyWithPrice],
     listingType: [listingType],
-    count: [, setCount],
     sortBy: [sortBy]
   } = queryObj
 
   useEffect(() => {
     const startGetListings = async () => {
-      const { listings = '', count } = await getListings(queryObj)
+      const listings = await getListings(queryObj)
       setListings(listings)
-      setCount(count)
     }
     startGetListings()
     return setListings()

@@ -7,7 +7,7 @@ export default async loginObj => {
     const { token } = tokens[tokens.length - 1]
     localStorage.setItem('token', token)
     return data
-  } catch {
+  } catch (e){
     return
   }
 }

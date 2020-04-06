@@ -7,6 +7,6 @@ export default async queryData => {
       Authorization: `Bearer ${token}`
     }
   })
-
+  
   return data
 }

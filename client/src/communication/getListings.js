@@ -3,7 +3,7 @@ import getFilterdListings from './getFilterdListings'
 import getFavoritesListings from './getFavoritesListings'
 import mapStateToData from '../utils/mapStateToData'
 
-export default async (queryObj, listingsDispatch) => {
+export default async (queryObj) => {
   
   const queryData = mapStateToData(queryObj)
   
