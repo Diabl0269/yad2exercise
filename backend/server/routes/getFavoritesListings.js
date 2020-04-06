@@ -11,8 +11,8 @@ module.exports = router.post(
   logMessage,
   (req, res) => {
     if (req.error) return res.sendStatus(500)
-    const { listings, count } = res
-
-    res.status(200).send({ listings, count })
+    const { listings = [] } = res
+    
+    res.status(200).send(listings)
   }
 )

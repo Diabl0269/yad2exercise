@@ -1,24 +1,20 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import { navigate } from 'hookrouter'
-import UserContext from '../../context/UserContext'
 
-export default ({ varsObj, deleteFunc, containerClassName = '', id }) => {
+export default ({ varsObj, deleteFunc, id, setDeleted }) => {
   const [open, setOpen] = useState(false)
-  const user = useContext(UserContext)
   const {
     buttonText,
     deleteButtonText,
     cancelButtonText,
     titleText,
     errorMessage,
-    defaultBodyText,
-    navigateTo
+    defaultBodyText
   } = varsObj
   const [bodyText, setBodyText] = useState(defaultBodyText)
 
@@ -33,11 +29,12 @@ export default ({ varsObj, deleteFunc, containerClassName = '', id }) => {
 
   const handleDelete = async () => {
     const objectDeleted = await deleteFunc(id)
-    objectDeleted ? user[1]({}) && navigate(navigateTo) : setBodyText(errorMessage)
+    if (!objectDeleted) return setBodyText(errorMessage)
+    setDeleted(true)
   }
 
   return (
-    <div className={containerClassName}>
+    <div id="deleteDialogContainer">
       <Button onClick={handleClickOpen}>{buttonText}</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{titleText}</DialogTitle>

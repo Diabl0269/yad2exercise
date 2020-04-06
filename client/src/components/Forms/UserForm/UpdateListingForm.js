@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import FormFields from './NewListingFormFields/FormFields'
+import FormGroup from '@material-ui/core/FormGroup'
+import updateListing from '../../../communication/updateListing';
 import fieldsObj from '../../../utils/listingObj'
+import mapValuesToListing from '../../../utils/mapValuesToListing'
 import { Formik, Form } from 'formik'
 import { navigate } from 'hookrouter'
-import FormGroup from '@material-ui/core/FormGroup'
-import addListing from '../../../communication/addListing'
-import FormFields from './NewListingFormFields/FormFields'
 
 export default () => {
   //addListing-updateListing, add delete media button
@@ -12,14 +13,14 @@ export default () => {
   const userURI = '/user'
   const serverErrorMessage = 'תקלת שרת, אנה נסה שנית מאוחר יותר'
   const requiredFieldMessage = 'שדה חובה'
+  const successMessage = 'המודעה נערכה בהצלחה!'
   const [displayServerErrorMessage, setDisplayServerErrorMessage] = useState(false)
 
   const listing = JSON.parse(localStorage.getItem('listing'))
-  const { address, assetDetails, saleDetails, attributes, media, listingType } = listing
+  const { address, assetDetails, saleDetails, attributes, media, listingType, id } = listing
   const attributesValues = {}
-  for(let [key,value] of Object.entries(attributes))
-    attributesValues[key] = value.exists
-    
+  for (let [key, value] of Object.entries(attributes)) attributesValues[key] = value.exists
+
   const initialValues = {
     ...address,
     ...assetDetails,
@@ -30,10 +31,11 @@ export default () => {
   }
 
   const handleSubmit = async values => {
-    const listingAdded = await addListing(values)
-    if (listingAdded) {
-      alert('המודעה נערכה בהצלחה!')
-      navigate(userURI)
+    const updatedListing = mapValuesToListing(values)
+    const listingUpdated = await updateListing(updatedListing, id)
+    if (listingUpdated) {
+      alert(successMessage)
+      return navigate(userURI)
     }
     setDisplayServerErrorMessage(true)
   }
@@ -61,7 +63,9 @@ export default () => {
           <FormGroup>
             <FormFields fields={fieldsObj} />
           </FormGroup>
-          <button type="submit" id='submitButton'>העלה מודעה</button>
+          <button type="submit" id="submitButton">
+            {title}
+          </button>
         </Form>
       </Formik>
     </div>

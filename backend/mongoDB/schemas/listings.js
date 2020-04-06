@@ -19,7 +19,7 @@ module.exports = new Schema(
       balconies: Number,
       description: { type: String, max: 200, trim: true },
       floor: { type: Number, required: true },
-      furnitureDescription: {type: String, trim: true},
+      furnitureDescription: { type: String, trim: true },
       parking: Number,
       rooms: Number,
       roomMates: Number,
@@ -33,38 +33,31 @@ module.exports = new Schema(
     },
     attributes: {
       exclusivity: {
-        text: { type: String, default: 'בלעדיות' },
         exists: Boolean
       },
       airConditioned: {
-        text: { type: String, default: 'מיזוג' },
         exists: Boolean
       },
-      kitchen: { text: { type: String, default: 'מטבח' }, exists: Boolean },
+      kitchen: { exists: Boolean },
       kosherKithecn: {
-        text: { type: String, default: 'מטבח כשר' },
         exists: Boolean
       },
-      lift: { text: { type: String, default: 'מעלית' }, exists: Boolean },
-      bars: { text: { type: String, default: 'סורגים' }, exists: Boolean },
-      renovated: { text: { type: String, default: 'משופצת' }, exists: Boolean },
+      lift: { exists: Boolean },
+      bars: { exists: Boolean },
+      renovated: { exists: Boolean },
       disabledAccess: {
-        text: { type: String, default: 'גישה לנכים' },
         exists: Boolean
       },
-      safeSpace: { text: { type: String, default: 'ממ"ד' }, exists: Boolean },
+      safeSpace: { exists: Boolean },
       pandorDoor: {
-        text: { type: String, default: 'דלתות פנדור' },
         exists: Boolean
       },
-      warehouse: { text: { type: String, default: 'מחסן' }, exists: Boolean },
+      warehouse: { exists: Boolean },
       tadiranAirConditioned: {
-        text: { type: String, default: 'מזגן תדיראן' },
         exists: Boolean
       },
-      furniture: { text: { type: String, default: 'ריהוט' }, exists: Boolean },
+      furniture: { exists: Boolean },
       livingUnit: {
-        text: { type: String, default: 'יחידת דיור' },
         exists: Boolean
       }
     },

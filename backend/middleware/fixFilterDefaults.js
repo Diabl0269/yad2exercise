@@ -30,7 +30,6 @@ module.exports = (req, res, next) => {
   if (price.min || price.max) filtersQuery['saleDetails.price'] = convertEdges(price)
   if (floor.min || floor.max) filtersQuery['assetDetails.floor'] = convertEdges(floor)
   if (entranceDate) filtersQuery['saleDetails.entranceDate'] = { $gte: entranceDate }
-
   if (rooms.min || rooms.max) filtersQuery['assetDetails.rooms'] = convertEdges(rooms)
   if (roomMates && (roomMates.min || roomMates.max))
     filtersQuery['assetDetails.roomMates'] = convertEdges(roomMates)
@@ -45,8 +44,6 @@ module.exports = (req, res, next) => {
     filtersQuery['assetDetails.squareMetersTotal'] = convertEdges(squareMetersTotal)
 
   if (onlyWithPhotos) filtersQuery['media.images.0'] = { $exists: true }
-  
-  console.log(filtersQuery)
 
   req.query = filtersQuery
   next()

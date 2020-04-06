@@ -16,13 +16,13 @@ export default ({ type }) => {
   const [mediaIDObj, setMediaIDObj] = useState(defaultIDObj)
   const [isNextMedia, setIsNextMedia] = useState(!!value[1])
   const [isPreviousMedia, setIsPreviousMedia] = useState(false)
-  const [mediaDeleted, setMediaDeleted] = useState(false)
 
   const MediaTag = () => {
     const { id } = mediaIDObj
-    const src = process.env.REACT_APP_STORAGE_PATH + id
+    const src = id && process.env.REACT_APP_STORAGE_PATH + id
+    const alt = 'תקלת שרת'
     return type === 'images' ? (
-      <img src={src} className={classes.media} alt="" />
+      <img src={src} className={classes.media} alt={alt} />
     ) : (
       <video src={src} />
     )
@@ -37,17 +37,12 @@ export default ({ type }) => {
   const deleteHandler = async () => {
     const didMediaGetDeleted = await deleteMedia(mediaIDObj.id)
     if (didMediaGetDeleted) {
-      setMediaDeleted(didMediaGetDeleted)
+      // setMediaDeleted(didMediaGetDeleted)
       const newMediaArr = value.filter(id => id !== mediaIDObj.id)
+      setMediaIDObj({ id: newMediaArr[0], index: 0 })
+      setIsPreviousMedia(false)
       setFieldValue(type, newMediaArr)
     }
-  }
-
-  const advanceMedia = target => {
-    const { index } = mediaIDObj
-    const newIndex = index + (target === 'next' ? +1 : -1)
-    setMediaIDObj({ id: value[newIndex], index: newIndex })
-    checkAdvance(newIndex)
   }
 
   const checkAdvance = newIndex => {
@@ -56,6 +51,13 @@ export default ({ type }) => {
 
     const nextExists = !!value[newIndex + 1]
     setIsNextMedia(nextExists)
+  }
+
+  const advanceMedia = target => {
+    const { index } = mediaIDObj
+    const newIndex = index + (target === 'next' ? +1 : -1)
+    setMediaIDObj({ id: value[newIndex], index: newIndex })
+    checkAdvance(newIndex)
   }
 
   return (
@@ -76,7 +78,7 @@ export default ({ type }) => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            {mediaDeleted ? <h1>נמחק</h1> : <MediaTag />}
+            <MediaTag />
             <div className={classes.advanceButtonsContainer}>
               <button
                 onClick={advanceMedia}

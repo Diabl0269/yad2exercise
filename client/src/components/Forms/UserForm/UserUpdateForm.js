@@ -4,11 +4,14 @@ import updateUser from '../../../communication/updateUser'
 import UserContext from '../../../context/UserContext'
 import Loader from '../../utils/Loader'
 
-const UserUpdateForm = () => {
+export default () => {
+  const mailErrorMessage = 'כתובת מייל אינה תקינה'
+  const passwordErrorMessage = 'הסיסמה חייבת להכיל לפחות שמונה תווים'
+  const requiredFieldMessage = 'שדה חובה'
+
   const [user] = useContext(UserContext)
   const { userDetails, agencyName } = user
   const [userUpdateMessage, setUserUpdateMessage] = useState('')
-  const requiredFieldMessage = 'שדה חובה'
 
   const handleSubmit = async values => {
     const updatedUser = await updateUser(values)
@@ -24,10 +27,10 @@ const UserUpdateForm = () => {
       if (!value) errors[key] = requiredFieldMessage
     }
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = 'כתובת מייל אינה תקינה'
+      errors.email = mailErrorMessage
     }
     if (values.password.length > 0 && values.password.length < 8)
-      errors.password = 'הסיסמה חייבת להכיל לפחות שמונה תווים'
+      errors.password = passwordErrorMessage
     return errors
   }
 
@@ -65,5 +68,3 @@ const UserUpdateForm = () => {
     </div>
   )
 }
-
-export default UserUpdateForm

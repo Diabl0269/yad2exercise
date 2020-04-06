@@ -13,7 +13,8 @@ db.once("open", function() {
 
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 mongoose.set('useCreateIndex', true);

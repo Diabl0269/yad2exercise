@@ -263,6 +263,7 @@ $mobile-breakpoint: 45rem;
   display: flex;
   height: $height;
   padding: $s-mp;
+  transition: background-color .3s ease-out;
   &:hover {
     background: darken($color, 10%);
   }
@@ -276,6 +277,10 @@ $mobile-breakpoint: 45rem;
 
 .button__off-white {
   @include button($off-white, auto);
+}
+
+.button__orange {
+  @include button($orange, auto);
 }
 
 @mixin field-box {

@@ -47,6 +47,7 @@ export default () => {
 
   const MediaTag = () => {
     const { id, type } = mediaObj
+    
     const src = id ? process.env.REACT_APP_STORAGE_PATH + id : noMediaImgPath
     return type === 'img' ? (
       <img src={src} className={classes.media} id="recordMedia" alt="" />

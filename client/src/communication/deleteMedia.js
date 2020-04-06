@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-export default async (id) => {
-  const { token } = localStorage
+export default async mediaId => {
+  const { listing, token } = localStorage
+  const { id: listingId } = JSON.parse(listing)
+
   try {
-    const { status } = await axios.delete(`/media/${id}`, {
+    const { status } = await axios.delete(`/media/${listingId}/${mediaId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

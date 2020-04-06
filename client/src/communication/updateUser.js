@@ -1,13 +1,11 @@
 import axios from 'axios'
 
-export default async (user, values) => {
+export default async (listingBody, id) => {
   const { token } = localStorage
   if (!token) return
-  const updates = { ...user, ...values }
-  const id = window.location.pathname.split('/')[2]
 
   try {
-    const { data } = await axios.patch(`/users/${id}`, updates, {
+    const { data } = await axios.patch(`/users/${id}`, listingBody, {
       headers: {
         Authorization: `Bearer ${token}`
       }

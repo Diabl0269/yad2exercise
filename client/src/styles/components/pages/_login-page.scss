@@ -2,10 +2,6 @@
     @include white-container($quarter); 
     input{
         @include field-box;
-        // width: $full;
-    }
-    form{
-        padding: $m-mp;
     }
 }
 

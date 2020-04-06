@@ -4,6 +4,7 @@ module.exports = async (req, res, next) => {
     const { user } = req
     try {
       await user.populate('listings').execPopulate()
+
       req.message = successMessage
       next()
     } catch (e) {

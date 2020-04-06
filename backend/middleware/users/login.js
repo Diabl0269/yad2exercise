@@ -4,7 +4,7 @@ module.exports = async (req, res, next) => {
   const successMessage = 'User logged in'
   const errorMessage = 'User failed to log in'
   try {
-    res.user = await usersModel.login(req.body.email, req.body.password)
+    res.user = await usersModel.login(req.body.email, req.body.password)    
     req.message = successMessage
     next()
   } catch (e) {

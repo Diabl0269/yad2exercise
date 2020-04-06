@@ -9,6 +9,9 @@ import displayPrice from '../../utils/displayPrice'
 import OpenContext from '../../context/OpenContext'
 
 export default () => {
+  const { pathname } = window.location
+  const isUserListings = pathname === '/user/favorites' || pathname === '/user/listings'
+
   const {
     saleDetails: { price }
   } = useContext(ListItemContext)
@@ -27,10 +30,8 @@ export default () => {
         </div>
 
         <div className="push-left">
-          <div className="left-container">
-            {formatedPrice}
-          </div>
-          <DetailsDropdown />
+          <div className="left-container">{formatedPrice}</div>
+          {!isUserListings && <DetailsDropdown />}
         </div>
       </div>
 

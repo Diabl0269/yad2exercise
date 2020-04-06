@@ -5,19 +5,21 @@ module.exports = async (req, res, next) => {
   const successMessage = 'Media deleted succefully \n'
   const errorMessage = 'Unable to delete media \n'
 
-  const { params: id } = req
-  params.Key = id
+  const {
+    params: { listingId, mediaId }
+  } = req
+  params.Key = mediaId
 
   try {
     await s3.deleteObject(params).promise()
-    const listing = await listings.findById(id)
+    const listing = await listings.findById(listingId)
 
-    listing.media.images.filter(mediaID => mediaID != id)
-    listing.media.videos.filter(mediaID => mediaID != id)
-
+    listing.media.images.filter(id => id != mediaId)
+    listing.media.videos.filter(id => id != mediaId)
+    
     await listing.save()
 
-    listing.req.message += successMessage
+    req.message += successMessage
     next()
   } catch (e) {
     req.error = e

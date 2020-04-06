@@ -1,24 +1,22 @@
 import React, { useContext } from 'react'
 import ListItemContext from '../../context/ListItemContext'
 import { navigate } from 'hookrouter'
-import AlertDialog from '../Mui/AlertDialog'
+import DeleteDialog from '../Mui/DeleteDialog'
 import varsObj from '../../data/deleteListingDialogVars.json'
 import deleteListing from '../../communication/deleteListing'
 
 export default () => {
   const listing = useContext(ListItemContext)
 
-  const editListingHandler = e => {
+  const editListingHandler = () => {
     localStorage.setItem('listing', JSON.stringify(listing))
     navigate('/user/listings/edit')
   }
-  const className = 'width-full height-half button__off-white'
+  
   return (
-    <div>
-      <button onClick={editListingHandler} className={className}>
-        עריכת מודעה
-      </button>
-      <AlertDialog varsObj={varsObj} deleteFunc={deleteListing} buttonClassName={className} id={listing._id}/>
+    <div id="userListingsButtons">
+      <button onClick={editListingHandler}>עריכת מודעה</button>
+      <DeleteDialog varsObj={varsObj} deleteFunc={deleteListing} id={listing._id} />
     </div>
   )
 }
