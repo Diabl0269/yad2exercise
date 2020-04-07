@@ -16,6 +16,7 @@ module.exports = (req, res, next) => {
     roomMates,
     selectedAssetTypes,
     selectedAttributes,
+    selectedDealTypes,
     squareMetersTotal
   } = body
 
@@ -36,6 +37,7 @@ module.exports = (req, res, next) => {
     filtersQuery['assetDetails.roomMates'] = convertEdges(roomMates)
   if (selectedAssetTypes.length > 0)
     filtersQuery['assetDetails.assetType'] = { $in: selectedAssetTypes }
+  if (selectedDealTypes.length > 0) filtersQuery['dealType'] = { $in: selectedDealTypes }
 
   selectedAttributes.forEach(attribute => {
     filtersQuery[`attributes.${dictonary[attribute]}.exists`] = true
@@ -46,7 +48,7 @@ module.exports = (req, res, next) => {
   if (onlyWithPrice) filtersQuery['saleDetails.price'] = true
   if (onlyWithPhotos) filtersQuery['media.images.0'] = { $exists: true }
 
-  if(!!freeText) filtersQuery.$text= {$search: freeText}
+  if (!!freeText) filtersQuery.$text = { $search: freeText }
 
   req.query = filtersQuery
   next()

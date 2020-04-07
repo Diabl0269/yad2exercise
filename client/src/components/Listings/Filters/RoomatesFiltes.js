@@ -3,7 +3,11 @@ import FiltersContext from '../../../context/FiltersContext'
 
 export default () => {
   const [open, setOpen] = useState(false)
-  const [roomsNumber, setRooms] = useContext(FiltersContext).queryObj.rooms
+  const {
+    queryObj: {
+      roomMates: [roomMates, setRoomMates]
+    }
+  } = useContext(FiltersContext)
   const numbersOptionsArray = [
     1,
     1.5,
@@ -32,26 +36,26 @@ export default () => {
   const numbersOptionsJSX = () => {
     return numbersOptionsArray.map(option => <option value={option} key={option} />)
   }
-  const roomsNumberDisplay =
-    !roomsNumber.max && !roomsNumber.min
-      ? 'חדרים'
-      : roomsNumber.max && !roomsNumber.min
-      ? `עד - ${roomsNumber.max}`
-      : !roomsNumber.max && roomsNumber.min
-      ? `מ - ${roomsNumber.min}`
-      : `${roomsNumber.min} - ${roomsNumber.max}`
+  const roomMatesDisplay =
+    !roomMates.max && !roomMates.min
+      ? 'שותפים'
+      : roomMates.max && !roomMates.min
+      ? `עד - ${roomMates.max}`
+      : !roomMates.max && roomMates.min
+      ? `מ - ${roomMates.min}`
+      : `${roomMates.min} - ${roomMates.max}`
 
   const innerInputContainer = (placeholder, change) => (
     <input
       type="text"
-      list="roomsNumber"
+      list="roomMates"
       className="filters__rooms-picker-container"
       placeholder={placeholder}
       key={change}
       onChange={({ target }) =>
-        setRooms(curRooms => {
+        setRoomMates(curRoomMates => {
           const { value } = target
-          return { ...curRooms, [change]: value }
+          return { ...curRoomMates, [change]: value }
         })
       }
     />
@@ -60,16 +64,16 @@ export default () => {
     <div id="roomsDropDown" className="filters__rooms-dropdown-container">
       {innerInputContainer('מ-', 'min')}
       {innerInputContainer('עד-', 'max')}
-      <datalist id="roomsNumber">{numbersOptionsJSX()}</datalist>
+      <datalist id="roomMates">{numbersOptionsJSX()}</datalist>
     </div>
   )
 
   return (
     <div className="filters--field-container">
-      חדרים
+      שותפים
       <div>
         <button className="filters__field-box-container" onClick={() => setOpen(!open)}>
-          {roomsNumberDisplay}
+          {roomMatesDisplay}
         </button>
         {open && dropDown()}
       </div>

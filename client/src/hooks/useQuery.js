@@ -4,6 +4,7 @@ const useQuery = () => {
   const edgesObj = { min: '', max: '' }
   const query = {
     citySearchValue: useState(''),
+    count: useState(0),
     entranceDate: useState(),
     floor: useState(edgesObj),
     freeText: useState(''),
@@ -11,14 +12,14 @@ const useQuery = () => {
     onlyWithPhotos: useState(false),
     onlyWithPrice: useState(false),
     price: useState(edgesObj),
-    rooms: useState(edgesObj),
     roomMates: useState(edgesObj),
+    rooms: useState(edgesObj),
     selectedAssetTypes: useState([]),
     selectedAttributes: useState([]),
-    squareMetersTotal: useState(edgesObj),
-    sortBy: useState('-updatedAt'),
+    selectedDealTypes: useState([]),
     skip: useState(0),
-    count: useState(0)
+    sortBy: useState('-updatedAt'),
+    squareMetersTotal: useState(edgesObj),
   }
   return query
 }

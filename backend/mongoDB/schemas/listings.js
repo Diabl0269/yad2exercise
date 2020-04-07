@@ -5,6 +5,10 @@ const { assetTypes, assetStates, listingTypes } = require('../../data/assetCateg
 module.exports = new Schema(
   {
     listingType: { type: String, required: true, enum: listingTypes },
+
+    //Only for commercial
+    dealType: { type: String },
+
     address: {
       city: { type: String, required: true, trim: true },
       street: { type: String, trim: true },

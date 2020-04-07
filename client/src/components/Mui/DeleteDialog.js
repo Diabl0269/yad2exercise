@@ -30,7 +30,8 @@ export default ({ varsObj, deleteFunc, id, setDeleted }) => {
   const handleDelete = async () => {
     const objectDeleted = await deleteFunc(id)
     if (!objectDeleted) return setBodyText(errorMessage)
-    setDeleted(true)
+    if (setDeleted) setDeleted(true)
+    setOpen(false)
   }
 
   return (

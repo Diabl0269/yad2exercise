@@ -5,7 +5,6 @@ import FiltersContext from '../../../context/FiltersContext'
 import classNames from 'classnames'
 
 export default () => {
-  const maxAssetTypesInRow = 4
   const [open, setOpen] = useState(false)
   const [expandedDropDown, setExpandedDropDown] = useState(false)
   const [selectedAssetTypes, setSelectedAssetType] = useContext(
@@ -51,13 +50,6 @@ export default () => {
                   ))}
                 </div>
               ) : (
-                // return <Checkbox
-                //   key={type}
-                //   item={type}
-                //   selectedItems={selectedAssetTypes}
-                //   setItem={setSelectedAssetType}
-                // />
-
                 assetTypes
                   .slice(0, 6)
                   .map(type => (
