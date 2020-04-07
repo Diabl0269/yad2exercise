@@ -18,7 +18,7 @@ export default () => {
     count: [, setCount]
   } = queryObj
 
-  const handleSubmit = async () => {
+  const handleSubmit = async () => {    
     const { listings = '', count } = await getListings(queryObj)
     setListings(listings)
     setCount(count)

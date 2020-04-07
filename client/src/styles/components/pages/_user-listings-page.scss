@@ -1,13 +1,19 @@
+#userListingsContainer {
+  #listItemContainer {
+    width: 60vw;
+  }
+}
+
 #userListingsButtons {
-    #deleteDialogContainer{
-        @include button($orange, $half);
-        padding: 0;
-    }
-    & > button {
-        @include button($off-white, $half)
-    }
-    .MuiButtonBase-root{
-        font: inherit;
-        padding: $xs-mp;
-    }
+  #deleteDialogContainer {
+    @include button($orange, $half);
+    padding: 0;
+  }
+  & > button {
+    @include button($off-white, $half);
+  }
+  .MuiButtonBase-root {
+    font: inherit;
+    padding: $xs-mp;
+  }
 }

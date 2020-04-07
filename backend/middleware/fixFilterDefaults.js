@@ -2,11 +2,12 @@ const dictonary = require('../data/attributesDictionary.json')
 
 module.exports = (req, res, next) => {
   const { body } = req
-  
+
   const {
     citySearchValue,
     entranceDate,
     floor,
+    freeText,
     price,
     listingType,
     onlyWithPhotos,
@@ -42,8 +43,10 @@ module.exports = (req, res, next) => {
 
   if (squareMetersTotal.min || squareMetersTotal.max)
     filtersQuery['assetDetails.squareMetersTotal'] = convertEdges(squareMetersTotal)
-
+  if (onlyWithPrice) filtersQuery['saleDetails.price'] = true
   if (onlyWithPhotos) filtersQuery['media.images.0'] = { $exists: true }
+
+  if(!!freeText) filtersQuery.$text= {$search: freeText}
 
   req.query = filtersQuery
   next()

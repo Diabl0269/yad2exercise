@@ -4,8 +4,6 @@ module.exports = async (req, res, next) => {
   const { user } = req  
   try {
     await user.populate('favorites').populate('favorites.favorite.listingUser').execPopulate()
-
-    console.log(user.favorites);
     
     res.listings = user.favorites
     req.message = successMessage

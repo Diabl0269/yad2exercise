@@ -4,13 +4,15 @@ import Pagination from './Pagination'
 import React from 'react'
 
 export default () => {
+  const isUserFavoritesPage = window.location.pathname === '/user/favorites'
+
   return (
     <div className="list-container">
-      <Filters />
+      {!isUserFavoritesPage && <Filters />}
 
       <div id="listing">
         <Listings />
-        <Pagination />
+        {!isUserFavoritesPage && <Pagination />}
       </div>
     </div>
   )

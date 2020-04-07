@@ -21,7 +21,7 @@ export default () => {
   ) : (
     <ul className="listing-container">
       {listings.map((record, i) => (
-        <div className={classNames({ 'align-row': isUserListings })} key={i}>
+        <div className={classNames({ 'align-row': isUserListings })} key={i} id='listItemContainer'>
           <ListItemContext.Provider value={record}>
             <ListItem key={record._id} record={record} />
             {isUserListings && <UserListingsButtons />}
